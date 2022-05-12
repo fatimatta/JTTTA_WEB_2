@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DB_JTTTA_WEB" Class="DBContextDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=SMMHNB3401\SQLEXPRESS;Initial Catalog=DB_JTTTA_WEB;User ID=dev;MultipleActiveResultSets=True;Application Name=EntityFramework" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DB_JTTTA_WEBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.TBL_R_SHIFT" Member="TBL_R_SHIFTs">
+    <Type Name="TBL_R_SHIFT">
+      <Column Name="SHIFT_CODE" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SHIFT_NAME" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="SHIFT_AKTIF" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TBL_R_MATERIAL" Member="TBL_R_MATERIALs">
+    <Type Name="TBL_R_MATERIAL">
+      <Column Name="MATERIAL_CODE" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MATERIAL_NAME" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TBL_R_BERITA_ACARA" Member="TBL_R_BERITA_ACARAs">
+    <Type Name="TBL_R_BERITA_ACARA">
+      <Column Name="Id" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Tanggal" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Rom" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="MATERIAL_NAME" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Inventory" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Tm" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Im" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Ash" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Vm" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Fc" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Ts" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Cva" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Cvd" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Rd" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Hgi" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Csn" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="[Is]" Member="Is" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Mc" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Md" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Ml" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Ff" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="So" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Pr" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TBL_R_BA_QUALITY" Member="TBL_R_BA_QUALITies">
+    <Type Name="TBL_R_BA_QUALITY">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Tanggal" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="ROM_NAME" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="MATERIAL_NAME" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="TM" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="IM" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="ASH" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="VM" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="FC" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="TS" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="CVA" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="CVD" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="RD" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="HGI" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="CSN" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="[IS]" Member="IS" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="MC" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="MD" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="ML" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="FF" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="SO" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="PR" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TBL_R_ROM" Member="TBL_R_ROMs">
+    <Type Name="TBL_R_ROM">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ROM_CODE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ROM_NAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TBL_R_DESTINATION" Member="TBL_R_DESTINATIONs">
+    <Type Name="TBL_R_DESTINATION">
+      <Column Name="DEST_CODE" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DEST_NAME" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="DEST_CPP" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="DEST_TYPE" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TBL_R_PLANNING" Member="TBL_R_PLANNINGs">
+    <Type Name="TBL_R_PLANNING">
+      <Column Name="PLAN_ID" Type="System.String" DbType="VarChar(200) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PLAN_TANGGAL" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PLAN_SHIFT" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PLAN_START_TIME" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PLAN_END_TIME" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PLAN_SEAM" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PLAN_BLOCK" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PLAN_STRIP" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PLAN_ELEVASI" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PLAN_MATERIAL" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PLAN_DEST" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PLAN_INVENTORY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PLAN_ASH" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PLAN_TM" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PLAN_IM" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_VM" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_FC" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_TS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_CVA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_CVD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_RD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_HGI" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_CSN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_IS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_MC" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_MD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_ML" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_FF" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_SO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_PR" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TBL_R_LOADER" Member="TBL_R_LOADERs">
+    <Type Name="TBL_R_LOADER">
+      <Column Name="PUNIT_RAW_ID" Type="System.String" DbType="VarChar(200) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PUNIT_PLANNING_ID" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="PUNIT_LOADER" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="PUNIT_STARTDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="PUNIT_ENDDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VW_R_INDEX_PLANNING" Member="VW_R_INDEX_PLANNINGs">
+    <Type Name="VW_R_INDEX_PLANNING">
+      <Column Name="PLAN_ID" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="PLAN_TANGGAL" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IsAktif" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PLAN_SHIFT" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PLAN_SHIFT_NAME" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="PLAN_START_TIME" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PLAN_END_TIME" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PLAN_SEAM" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PLAN_BLOCK" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PLAN_STRIP" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PLAN_ELEVASI" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PLAN_MATERIAL" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PLAN_MAT_NAME" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="PLAN_DEST_NAME" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="PLAN_DEST" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PLAN_INVENTORY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PLAN_ASH" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PLAN_TM" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PLAN_IM" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_VM" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_FC" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_TS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_CVA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_CVD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_RD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_HGI" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_CSN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_IS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_MC" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_MD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_ML" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_FF" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_SO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_PR" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VW_R_INDEX_LOADER" Member="VW_R_INDEX_LOADERs">
+    <Type Name="VW_R_INDEX_LOADER">
+      <Column Name="PUNIT_RAW_ID" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="PUNIT_PLANNING_ID" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="PUNIT_LOADER" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="PUNIT_STARTDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="PUNIT_ENDDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="PUNIT_ISACTIVE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

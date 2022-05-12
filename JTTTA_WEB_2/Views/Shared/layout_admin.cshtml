@@ -1,0 +1,222 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <title>@ViewBag.Title</title>
+    @{
+        //ViewBag.pathParent = Url.Content("").Substring(0, Url.Content("/").Length - 1);
+        ViewBag.pathParent = Url.Content("~").Substring(0, Url.Content("~").Length - 1);
+    }
+
+
+    <style>
+
+        html {
+            scroll-behavior: smooth;
+        }
+        /* width */
+        ::-webkit-scrollbar {
+            width: 2px;
+            height: 10px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #000000;
+        }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+                background: #FFFFFF;
+            }
+    </style>
+
+
+    <script type="text/javascript" src="@ViewBag.pathParent/kendo/js/jquery.min.js"></script>
+    <script type="text/javascript" src="@ViewBag.pathParent/kendo/js/kendo.all.min.js"></script>
+    <script type="text/javascript" src="@ViewBag.pathParent/kendo/js/kendo.aspnetmvc.min.js"></script>
+
+    <link href="@ViewBag.pathParent/kendo/css/kendo.common.min.css" rel="stylesheet" type="text/css" />
+    <link href="@ViewBag.pathParent/kendo/css/kendo.metro.css" rel="stylesheet" type="text/css" />
+
+    <!-- Bootstrap -->
+    <link href="@ViewBag.pathParent/plugins/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="@ViewBag.pathParent/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="@ViewBag.pathParent/plugins/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="@ViewBag.pathParent/plugins/iCheck/skins/flat/green.css" rel="stylesheet">
+
+    <!-- bootstrap-progressbar -->
+    <link href="@ViewBag.pathParent/plugins/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="@ViewBag.pathParent/plugins/jqvmap/dist/jqvmap.min.css" rel="stylesheet" />
+    <!-- bootstrap-daterangepicker -->
+    <link href="@ViewBag.pathParent/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="@ViewBag.pathParent/plugins/build/css/custom.min.css" rel="stylesheet">
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title" style="border: 0;">
+
+                        <a href="#" class="site_title">
+                            <img src="~/plugins/images/smm.png" height="80px" width="80px" class="rounded" style="border-color:#FFFFFF;border-width:4px;">
+
+
+                            <span>JT SMM</span>
+                        </a>
+
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <!-- menu profile quick info -->
+                    <div class="profile clearfix">
+
+                        @*<div class="profile_info">
+                              <span>Welcome,</span>
+                              <h2>Bayu Ernowo</h2>
+                            </div>*@
+                    </div>
+                    <!-- /menu profile quick info -->
+
+                    <br />
+
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <h3>Menu</h3>
+                            <ul class="nav side-menu">
+                                @*<li>
+                                        <a><i class="fa fa-home"></i> DASHBOARD <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="/Dashboard/index">Dashboard Daily JT SMM</a></li>
+                                            <li><a href="/Dashboard/monthly">Dashboard Monthly JT SMM</a></li>
+                                        </ul>
+                                    </li>*@
+                                @Html.Raw(ViewBag.leftMenu)
+                            </ul>
+                        </div>
+
+
+                    </div>
+                    <!-- /sidebar menu -->
+                    <!-- /menu footer buttons -->
+                    @*<div class="sidebar-footer hidden-small">
+                          <a data-toggle="tooltip" data-placement="top" title="Settings">
+                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                          </a>
+                          <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                          </a>
+                          <a data-toggle="tooltip" data-placement="top" title="Lock">
+                            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                          </a>
+                          <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                          </a>
+                        </div>*@
+                    <!-- /menu footer buttons -->
+                </div>
+            </div>
+
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav>
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="">
+                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <img src="@ViewBag.pathParent/plugins/images/demo/users/face1.jpg" alt="">@*@Session["Name"]*@
+                                    <span class=" fa fa-angle-down"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                    <li><a href="@ViewBag.pathParent/Login/Profiles"><i class="icon-user-plus"></i> Change Profile</a></li>
+                                    <li><a href="@ViewBag.pathParent/Login/logout"><i class="icon-switch2"></i> Logout</a></li>
+                                </ul>
+                            </li>
+
+
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- /top navigation -->
+            <!-- page content -->
+            <div class="right_col" role="main">
+                @RenderBody()
+            </div>
+            <!-- /page content -->
+            <!-- footer content -->
+            <footer>
+                <div class="pull-right">
+                    &copy; 2021. <a href="#">Production Dashboard </a> by <a href="https://www.turanggaresources.com/" target="_blank">PT. Tuah Turangga Agung</a>
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
+        </div>
+    </div>
+
+    @*  <!-- jQuery -->
+        <script src="@ViewBag.pathParent/plugins/jquery/dist/jquery.min.js"></script>*@
+    <!-- Bootstrap -->
+    <script src="@ViewBag.pathParent/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="@ViewBag.pathParent/plugins/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="@ViewBag.pathParent/plugins/nprogress/nprogress.js"></script>
+    <!-- Chart.js -->
+    <script src="@ViewBag.pathParent/plugins/Chart.js/dist/Chart.min.js"></script>
+    <!-- gauge.js -->
+    <script src="@ViewBag.pathParent/plugins/gauge.js/dist/gauge.min.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="@ViewBag.pathParent/plugins/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="@ViewBag.pathParent/plugins/iCheck/icheck.min.js"></script>
+    <!-- Skycons -->
+    <script src="@ViewBag.pathParent/plugins/skycons/skycons.js"></script>
+    <!-- Flot -->
+    <script src="@ViewBag.pathParent/plugins/Flot/jquery.flot.js"></script>
+    <script src="@ViewBag.pathParent/plugins/Flot/jquery.flot.pie.js"></script>
+    <script src="@ViewBag.pathParent/plugins/Flot/jquery.flot.time.js"></script>
+    <script src="@ViewBag.pathParent/plugins/Flot/jquery.flot.stack.js"></script>
+    <script src="@ViewBag.pathParent/plugins/Flot/jquery.flot.resize.js"></script>
+    <!-- Flot plugins -->
+    <script src="@ViewBag.pathParent/plugins/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="@ViewBag.pathParent/plugins/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="@ViewBag.pathParent/plugins/flot.curvedlines/curvedLines.js"></script>
+    <!-- DateJS -->
+    <script src="@ViewBag.pathParent/plugins/DateJS/build/date.js"></script>
+    <!-- JQVMap -->
+    <script src="@ViewBag.pathParent/plugins/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="@ViewBag.pathParent/plugins/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="@ViewBag.pathParent/plugins/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="@ViewBag.pathParent/plugins/moment/min/moment.min.js"></script>
+    <script src="@ViewBag.pathParent/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="@ViewBag.pathParent/plugins/build/js/custom.min.js"></script>
+
+</body>
+</html>

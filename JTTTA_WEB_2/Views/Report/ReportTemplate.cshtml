@@ -1,0 +1,53 @@
+﻿@{
+    /**/
+    ViewBag.Title = "Tuah Turangga Agung";
+    ViewBag.dashboard = "Home";
+    ViewBag.dashboardSmall = "Report Inventory";
+    Layout = "~/Views/Shared/layout_admin.cshtml";
+    ViewBag.pathParent = Url.Content("~").Substring(0, Url.Content("~").Length - 1);
+}
+
+<input type="hidden" id="urlPath" name="urlPath" value="@ViewBag.pathParent" />
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-flat">
+            <input type="hidden" id="Rptid" value="@(Request.QueryString["RptID"])"
+            <div class="panel-body">
+                <iframe id="slideshow_frame" src="#" frameborder="0" width="100%" height="500px" marginheight="0" marginwidth="0" scrolling="yes"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function resizeIframe(obj) {
+        obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+    }
+    function resizeIframe(iframeID) {
+        var myWidth = 0, myHeight = 0;
+        if (typeof (window.innerWidth) == 'number') {
+            //Non-IE
+            myWidth = window.innerWidth;
+            myHeight = window.innerHeight;
+        } else if (document.documentElement && (document.documentElement.clientWidth || document.documentElement.clientHeight)) {
+            //IE 6+ in 'standards compliant mode'
+            myWidth = document.documentElement.clientWidth;
+            myHeight = document.documentElement.clientHeight;
+        } else if (document.body && (document.body.clientWidth || document.body.clientHeight)) {
+            //IE 4 compatible
+            myWidth = document.body.clientWidth;
+            myHeight = document.body.clientHeight;
+        }
+        var iframe = window.parent.document.getElementById(iframeID);
+        var container = document.getElementById('container');
+        iframe.style.height = (myHeight - 150) + 'px';
+    }
+
+    resizeIframe("slideshow_frame");
+
+    $(function () {
+        var frame = document.getElementById("slideshow_frame");
+        frame.src = $("#urlPath").val() + "/ReportView/ReportViewer.aspx?rptID=" + $("#Rptid").val() + "";
+    });
+</script>

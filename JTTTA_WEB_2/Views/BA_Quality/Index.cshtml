@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Tuah Turangga Agung";
+    ViewBag.dashboard = "Home";
+    ViewBag.dashboardSmall = "List Shiftly Planning";
+    Layout = "~/Views/Shared/layout_admin.cshtml";
+    ViewBag.pathParent = Url.Content("~").Substring(0, Url.Content("~").Length - 1);
+}
+
+<style>
+    /*.k-grid {
+        font-size: 11px;
+    }*/
+
+    .k-grid .k-button {
+        border-radius: 4px;
+    }
+
+    .k-button k-button-icontext k-grid-edit {
+        color: #fff;
+        background-color: #428bca;
+        border-color: #357ebd;
+    }
+
+    .k-grid-edit {
+        background-color: #5bc0de;
+    }
+</style>
+<input type="hidden" id="urlPath" name="urlPath" value="@ViewBag.pathParent" />
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel-body">
+            <div class="row">
+                <div class="k-virtual-scrollable-wrap">
+                    <div id="gridData_Quality"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="dv_add"></div>
+
+<script type="text/javascript" src="@ViewBag.pathParent/JS/BA_Quality/Index.js"></script>
+<script type="text/javascript" src="@ViewBag.pathParent/Kendo/jszip.js"></script>
+<script type="text/javascript" src="@ViewBag.pathParent/Kendo/jszip.min.js"></script>

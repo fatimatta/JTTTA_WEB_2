@@ -1,0 +1,149 @@
+﻿@{
+    /**/
+    ViewBag.Title = "Tuah Turangga Agung";
+    ViewBag.dashboard = "Home";
+    ViewBag.dashboardSmall = "Input Transaksi";
+    Layout = "~/Views/Shared/_blankLayout.cshtml";
+    ViewBag.pathParent = Url.Content("~").Substring(0, Url.Content("~").Length - 1);
+}
+
+<style>
+    .k-list-scroller {
+        height: 170px !important;
+        overflow-y: scroll !important;
+    }
+</style>
+
+<input type="hidden" id="urlPath" name="urlPath" value="@ViewBag.pathParent" />
+@*<input type="hidden" id="noMasuk" name="urlPath" value="@(Request.QueryString["noMasuk"])" />*@
+
+<div class="row" style="margin-top:20px">
+    <div class="col-lg-12">
+        <div class="panel panel-flat">
+            <div class="panel-body">
+                <h6><b>.:: Input Transaksi ::. </b></h6>
+                <div class="row">
+                    <div class="col-md-3">
+                        <small id="passwordHelpInline" class="text-muted">
+                            Jembatan Timbang
+                        </small><br />
+                        <input type="text" id="txt_jt" class="form-control mx-md-6"><br />
+                    </div>
+                    <div class="col-md-3">
+                        <small id="passwordHelpInline" class="text-muted">
+                            Operator
+                        </small><br />
+                        <input type="text" id="txt_operator" class="form-control mx-md-6"><br />
+                    </div>
+                    <br />
+                    <div class="col-md-6">
+                        <small id="passwordHelpInline" class="text-muted">
+
+                        </small><br />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <small id="passwordHelpInline" class="text-muted">
+                            No Unit
+                        </small><br />
+                        <input type="text" id="txt_no_unit" class="form-control mx-md-6"><br />
+                    </div>
+                    <div class="col-md-3">
+                        <small id="passwordHelpInline" class="text-muted">
+                            Jam Timbang
+                        </small><br />
+                        <input type="text" id="txt_jam_timbang" class="form-control mx-md-6"><br />
+
+                    </div>
+
+                    <div class="col-md-6">
+                        <small id="passwordHelpInline" class="text-muted">
+
+                        </small><br />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <small id="passwordHelpInline" class="text-muted">
+                            PIT
+                        </small><br />
+                        <input type="text" id="txt_pit" class="form-control mx-md-6"><br />
+
+                    </div>
+                    <div class="col-md-3">
+                        <small id="passwordHelpInline" class="text-muted">
+                            SEAM
+                        </small><br />
+                        <input type="text" id="txt_seam" class="form-control mx-md-6"><br />
+
+                    </div>
+                    <div class="col-md-3">
+                        <small id="passwordHelpInline" class="text-muted">
+                            BLOCK
+                        </small><br />
+                        <input type="text" id="txt_block" class="form-control mx-md-6"><br />
+
+                    </div>
+                    <div class="col-md-3">
+                        <small id="passwordHelpInline" class="text-muted">
+                            ELEVASI
+                        </small><br />
+                        <input type="text" id="txt_elevasi" class="form-control mx-md-6"><br />
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <small id="passwordHelpInline" class="text-muted">
+                            RAW
+                        </small><br />
+                        <input type="text" id="txt_raw" class="form-control mx-md-6"><br />
+
+                    </div>
+                    <div class="col-md-3">
+                        <small id="passwordHelpInline" class="text-muted">
+                            Excavator
+                        </small><br />
+                        <input type="text" id="txt_excavator" class="form-control mx-md-6"><br />
+
+                    </div>
+                    <div class="col-md-3">
+                        <small id="passwordHelpInline" class="text-muted">
+                            Destination
+                        </small><br />
+                        <input type="text" id="txt_destination" class="form-control mx-md-6"><br />
+
+                    </div>
+                    <div class="col-md-3">
+                        <small id="passwordHelpInline" class="text-muted">
+                            Condition
+                        </small><br />
+                        <input type="text" id="txt_condition" class="form-control mx-md-6"><br />
+
+                    </div>
+
+                </div>
+                <input type="hidden" id="rawid">
+                <div class="row">
+
+                    <div class="col-md-12" style="text-align:center">
+                        @*<small id="passwordHelpInline" class="text-muted" style="color:red">
+                                *klik tombol Submit setelah editing data
+                            </small>*@
+                        <button id="btn_submit" type="button" class="btn btn-primary" onclick="btn_submit_onclick()">Submit</button>
+                        <button id="btn_close" type="button" class="btn btn-warning" onclick="btn_close_onclick()">Close</button>
+                    </div>
+                </div>
+                @*<button id="btn_submit" type="button" class="btn btn-primary" onclick="btn_submit_onclick()">Submit</button>
+                    <button id="btn_close" class="btn btn-danger" onclick="btn_close_onclick()">Close</button>*@
+
+
+                @*<button id="btn_close" class="btn btn-danger" onclick="btn_close_onclick()">Close</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="@ViewBag.pathParent/JS/TransaksiJTSMM/InsertTrans.js"></script>

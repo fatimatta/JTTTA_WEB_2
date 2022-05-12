@@ -1,0 +1,106 @@
+﻿@{
+    ViewBag.Title = "Tuah Turangga Agung";
+    ViewBag.dashboard = "Home";
+    ViewBag.dashboardSmall = "Transaksi JT SMM";
+    Layout = "~/Views/Shared/layout_admin.cshtml";
+    ViewBag.pathParent = Url.Content("~").Substring(0, Url.Content("~").Length - 1);
+}
+
+
+
+<style>
+    #gridData > table {
+        table-layout: fixed;
+    }
+
+    .k-list-scroller {
+        height: 170px !important;
+        overflow-y: scroll !important;
+    }
+</style>
+<h2>Index</h2>
+
+<input type="hidden" id="urlPath" name="urlPath" value="@ViewBag.pathParent" />
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-md-12" style="margin-top:10px">
+            <div class="row">
+                <div class="col-md-4 col-xs-12">
+                    <div class="card col-xs-12" style="border-radius: 5px;margin-top:3px;border:solid 1px #808080;padding-bottom:10px">
+                        <div class="x_title" style="color: #2156c6">
+                            <h2 style="font-weight: bold; color: #2156c6">Manage PIT</h2>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div id="gridData_Pit">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <div id="gridData_Cpp">
+
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <div class="card col-xs-12" style="border-radius: 5px;margin-top:3px;border:solid 1px #808080;padding-bottom:10px">
+                        <div class="x_title" style="color: #2156c6">
+                            <h2 style="font-weight: bold; color: #2156c6">Manage PIT</h2>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div id="gridData_JT">
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <div class="card col-xs-12" style="border-radius: 5px;margin-top:3px;border:solid 1px #808080;padding-bottom:10px">
+                        <div class="x_title" style="color: #2156c6">
+                            <h2 style="font-weight: bold; color: #2156c6">Manage PIT</h2>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div id="gridData_Destination">
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <div class="card col-xs-12" style="border-radius: 5px;margin-top:3px;border:solid 1px #808080;padding-bottom:10px">
+                        <div class="x_title" style="color: #2156c6">
+                            <h2 style="font-weight: bold; color: #2156c6">Manage PIT</h2>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div id="gridData_Material">
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <div class="card col-xs-12" style="border-radius: 5px;margin-top:3px;border:solid 1px #808080;padding-bottom:10px">
+                        <div class="x_title" style="color: #2156c6">
+                            <h2 style="font-weight: bold; color: #2156c6">Manage PIT</h2>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div id="gridData_Condition">
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="dv_add"></div>
+
+
+<script type="text/javascript" src="@ViewBag.pathParent/Js/Referensi/index.js"></script>
+<script type="text/javascript" src="@ViewBag.pathParent/Kendo/jszip.js"></script>
+<script type="text/javascript" src="@ViewBag.pathParent/Kendo/jszip.min.js"></script>

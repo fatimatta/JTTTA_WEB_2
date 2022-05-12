@@ -1,0 +1,450 @@
+﻿@{
+    ViewBag.Title = "Tuah Turangga Agung";
+    ViewBag.dashboard = "Home";
+    ViewBag.dashboardSmall = "List Shiftly Planning";
+    Layout = "~/Views/Shared/layout_admin.cshtml";
+    ViewBag.pathParent = Url.Content("~").Substring(0, Url.Content("~").Length - 1);
+}
+
+<style>
+    /*#gridData_Plan {*/
+        /*height: 500px;*/
+        /*height: calc(100% - 45px);
+    }*/
+    .k-grid-pager > .k-link {
+        display: none;
+    }
+
+    .btn {
+        font-weight: bold;
+    }
+
+    div.k-window-content {
+        overflow: unset;
+    }
+
+    .k-grid tbody td > .k-grid-delete {
+        margin-top: 5px;
+        background-color: white;
+        color: #5bc0de;
+    }
+
+    .k-grid .k-button {
+        border-radius: 4px;
+        width: 100px;
+    }
+
+    .k-grid tbody .k-button, .k-ie8 .k-grid tbody button.k-button {
+        background-color: #5bc0de;
+        min-width: 64px;
+        color: white;
+        font-weight: bold;
+    }
+
+    .k-grid-header th.k-header > .k-link, .k-grid-header th.k-header:first-child {
+        font-weight: bold;
+    }
+
+    #txt_seam, #txt_block, #txt_elevasi, #txt_strip, #txt_inven, #txt_ash, #txt_tm {
+        width: 70px;
+    }
+
+    .col-md-4 {
+        position: relative;
+        min-height: 1px;
+        float: left;
+        padding-right: 15px;
+        padding-left: 0;
+    }
+
+    .col-md-6 {
+        padding-left: 0;
+    }
+
+    .k-list-scroller {
+        overflow-y: scroll;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        /* display: none; <- Crashes Chrome on hover */
+        -webkit-appearance: none;
+        margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin-left: -19px;
+        /*grid-gap: 5px;*/
+    }
+
+    #btn_search {
+        margin-top: 19px;
+    }
+
+    /*.k-widget k-datepicker k-header k-input {
+        width:20%
+    }*/
+
+    /*.k-picker-wrap.k-state-default, .k-widget k-datepicker k-header k-input {
+        width: 161px;
+    }*/
+
+</style>
+
+<input type="hidden" id="idData" value="@(Request.QueryString["PLAN_ID"])" />
+<input type="hidden" id="urlPath" value="@ViewBag.pathParent" />
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel-body">
+            <div class="grid-container">
+
+                <div class="col-md-12">
+                    <div class="col-md-4">
+                        <label>Start Date</label>
+                        <input id="search1" placeholder="Start Date" title="datepicker" />
+                    </div>
+
+                    <div class="col-md-4">
+                        <label>End Date</label>
+                        <input id="search2" placeholder="End Date" title="datepicker" />
+                    </div>
+
+                    <div class="col-md-4">
+                        <button id="btn_search" type="button" class="btn btn-primary" onclick="btn_search_onclick()">Search</button>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+
+            <div class="row">
+                <div class="k-virtual-scrollable-wrap">
+                    <div id="gridData_Plan"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="windowLoader" style="display:none">
+    <div>
+        <div class="k-edit-label"><label>LOADER</label></div>
+        <div class="k-edit-field">
+            <input type="text" id="txt_loader" class="k-textbox" name="loader" required/>
+        </div>
+
+        <div class="k-edit-label"><label for="start">START DATE</label></div>
+        <div data-container-for="tanggal" class="k-edit-field">
+            <input id="txt_start"
+                   type="text"
+                   @*data-role="datetimepicker"
+                   data-interval="15"
+                   data-type="date"
+                   data-bind="value:start,invisible:isAllDay"                   
+                   onkeydown="return false;"*@
+                   name="date_start"
+                   required
+                   style="width:150px"
+                   />
+            <input id="time_start"
+                   type="text"
+                   data-role="datetimepicker"
+                   data-interval="15"
+                   data-type="date"
+                   data-bind="value:time_start,invisible:isAllDay"
+                   name="time_start"
+                   required />
+            <input hidden type="text" data-type="date" data-role="datetimepicker" data-bind="value:start,visible:isAllDay" onkeydown="return false;"/>
+            <span data-bind="text: startTimezone"></span>
+            @*<span data-for="start" class="k-invalid-msg" style="display: none;"></span>*@
+        </div>
+
+        <div class="k-edit-label"><label for="start">END DATE</label></div>
+        <div data-container-for="tanggal" class="k-edit-field">
+            <input id="txt_end"
+                   type="text"
+                   data-role="datetimepicker"
+                   data-interval="15"
+                   data-type="date"
+                   data-bind="value:end,invisible:isAllDay"
+                   name="date_end"
+                   required />
+            <input id="time_end"
+                   type="text"
+                   data-role="datetimepicker"
+                   data-interval="15"
+                   data-type="date"
+                   data-bind="value:time_end,invisible:isAllDay"
+                   name="time_end"
+                   required />
+            <input hidden type="text" data-type="date" data-role="datetimepicker" data-bind="value:end,visible:isAllDay" />
+            <span data-bind="text: startTimezone"></span>
+            @*<span data-for="end" class="k-invalid-msg" style="display: none;"></span>*@
+        </div>
+
+        <div class="row">
+            <div class="col-md-12" style="text-align:center; margin-top:20px; margin-left:-5px">
+                <button id="btn_submitL" type="button" class="btn btn-primary">Submit</button>
+                <button id="btn_updateL" type="button" class="btn btn-primary" onclick="btnL_update_onclick()">Update</button>
+                &nbsp;&nbsp;
+                <button id="btn_closeL" type="button" class="btn btn-light" onclick="btnL_close_onclick()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="dv_add"></div>
+<div id="windowForAssign" style="display:none">
+    <div>
+        <div class="k-edit-label"><label for="start">Tanggal</label></div>
+        <div data-container-for="tanggal" class="k-edit-field">
+            <input id="txt_tgl"
+                   type="text"
+                   data-role="datetimepicker"
+                   data-interval="15"
+                   data-type="date"
+                   data-bind="value:start,invisible:isAllDay"
+                   name="start" required/>
+            <input hidden type="text" data-type="date" data-role="datetimepicker" data-bind="value:start,visible:isAllDay" name="start" />
+            <span data-bind="text: startTimezone"></span>
+            <span data-for="start" class="k-invalid-msg" style="display: none;"></span>
+        </div>
+
+        <div class="k-edit-label"><label>Shift</label></div>
+        <div data-container-for="shift" class="k-edit-field">
+            <input id="txt_shift" name="shift" required/>
+        </div>
+
+        @*<div class="k-edit-label"><label for="start">Jam Awal</label></div>
+        <div data-container-for="start" class="k-edit-field">
+            <input id="txt_start"
+                   type="text"
+                   data-role="datetimepicker"
+                   data-interval="15"
+                   data-type="date"
+                   data-bind="value:start,invisible:isAllDay"
+                   name="start" />
+            <input hidden type="text" data-type="date" data-role="datetimepicker" data-bind="value:start,visible:isAllDay" name="start" />
+            <span data-bind="text: startTimezone"></span>
+            <span data-for="start" class="k-invalid-msg" style="display: none;"></span>
+        </div>
+
+        <div class="k-edit-label"><label for="end">Jam Akhir</label></div>
+        <div data-container-for="end" class="k-edit-field">
+            <input id="txt_end" type="text" data-type="date" data-role="datetimepicker" data-bind="value:end,invisible:isAllDay" name="end" data-datecompare-msg="End date should be greater than or equal to the start date" />
+            <input hidden id="txt_end" type="text" data-type="date" data-role="datetimepicker" data-bind="value:end,visible:isAllDay" name="end" data-datecompare-msg="End date should be greater than or equal to the start date" />
+            <span data-bind="text: endTimezone"></span>
+            <span data-bind="text: startTimezone, invisible: endTimezone"></span>
+            <span data-for="end" class="k-invalid-msg" style="display: none;"></span>
+        </div>*@
+
+        <div class="k-edit-label"><label for="description">Lokasi</label></div>
+        <div class="k-edit-field">
+            <div class="col-md-6">
+                <div class="col-md-4">
+                    <small>Seam</small><br />
+                    <input type="text" id="txt_seam" name="seam" class="k-textbox" required/>
+                </div>
+                <div class="col-md-4">
+                    <small>Block</small><br />
+                    <input type="text" name="block" id="txt_block" class="k-textbox" required/>
+                </div>
+            </div>
+        </div>
+        <div class="k-edit-field">
+            <div class="col-md-6">
+                <div class="col-md-4">
+                    <small>Elevasi</small><br />
+                    <input type="text" id="txt_elevasi" name="elevasi" class="k-textbox" required />
+                </div>
+                <div class="col-md-4">
+                    <small>Strip</small><br />
+                    <input type="text" id="txt_strip" name="strip" class="k-textbox" required />
+                </div>
+            </div>
+        </div>
+
+        <div class="k-edit-label"><label for="description">Inventory</label></div>
+        <div class="k-edit-field">
+            <input type="number" id="txt_inven" class="k-textbox"></input>
+        </div>
+
+        <div class="k-edit-label"><label>Material</label></div>
+        <div data-container-for="material" class="k-edit-field">
+            <input id="txt_mat" name="material" required/>
+        </div>
+
+        <div class="k-edit-label"><label>Destinasi</label></div>
+        <div data-container-for="destinasi" class="k-edit-field">
+            <input id="txt_dest" name="destinasi" required/>
+        </div>
+
+        <div class="k-edit-label"><label>Quality</label></div>
+        <div class="k-edit-field">
+            <div class="col-md-6">
+                <div class="col-md-4">
+                    <small>ASH</small><br />
+                    <input type="number" id="txt_ash" name="ash" class="k-textbox" required/>
+                </div>
+                <div class="col-md-4">
+                    <small>TM</small><br />
+                    <input type="number" id="txt_tm" name="tm" class="k-textbox" required/>
+                </div>
+            </div>
+        </div>
+
+        @*<div class="row">
+            <div class="col-md-11">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="text-center">
+                                TM
+                            </th>
+                            <th class="text-center">
+                                IM
+                            </th>
+                            <th class="text-center">
+                                ASH
+                            </th>
+                            <th class="text-center">
+                                VM
+                            </th>
+                            <th class="text-center">
+                                FC
+                            </th>
+                            <th class="text-center">
+                                TS
+                            </th>
+                            <th class="text-center">
+                                CVA
+                            </th>
+                            <th class="text-center">
+                                CVD
+                            </th>
+                            <th class="text-center">
+                                RD
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input type="number" id='txt_tm' class="form-control" />
+                            </td>
+                            <td data-name="im">
+                                <input type="number" id='txt_im' class="form-control" />
+                            </td>
+                            <td>
+                                <input type="number" id='txt_ash' class="form-control" />
+                            </td>
+                            <td>
+                                <input type="number" id='txt_vm' class="form-control" />
+                            </td>
+                            <td>
+                                <input type="number" id='txt_fc' class="form-control" />
+                            </td>
+                            <td>
+                                <input type="number" id='txt_ts' class="form-control" />
+                            </td>
+                            <td>
+                                <input type="number" id='txt_cva' class="form-control" />
+                            </td>
+                            <td>
+                                <input type="number" id='txt_cvd' class="form-control" />
+                            </td>
+                            <td>
+                                <input type="number" id='txt_rd' class="form-control" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>*@
+
+        @*<div class="row">
+            <div class="col-md-11">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="text-center">
+                                HGI
+                            </th>
+                            <th class="text-center">
+                                CSN
+                            </th>
+                            <th class="text-center">
+                                IS
+                            </th>
+                            <th class="text-center">
+                                MC
+                            </th>
+                            <th class="text-center">
+                                MD
+                            </th>
+                            <th class="text-center">
+                                ML
+                            </th>
+                            <th class="text-center">
+                                FF
+                            </th>
+                            <th class="text-center">
+                                SO
+                            </th>
+                            <th class="text-center">
+                                PR
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input type="number" id='txt_hgi' class="form-control" />
+                            </td>
+                            <td>
+                                <input type="number" id='txt_csn' class="form-control" />
+                            </td>
+                            <td>
+                                <input type="number" id='txt_is' class="form-control" />
+                            </td>
+                            <td>
+                                <input type="number" id='txt_mc' class="form-control" />
+                            </td>
+                            <td>
+                                <input type="number" id='txt_md' class="form-control" />
+                            </td>
+                            <td>
+                                <input type="number" id='txt_ml' class="form-control" />
+                            </td>
+                            <td>
+                                <input type="number" id='txt_ff' class="form-control" />
+                            </td>
+                            <td>
+                                <input type="number" id='txt_so' class="form-control" />
+                            </td>
+                            <td>
+                                <input type="number" id='txt_pr' class="form-control" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>*@
+
+        <div class="row">
+            <div class="col-md-12" style="text-align:center; margin-top:20px; margin-left:-5px">
+                <button id="btn_submit" type="button" class="btn btn-primary">Submit</button>
+                <button id="btn_update" type="button" class="btn btn-primary" onclick="btn_update_onclick()">Update</button>
+                &nbsp;&nbsp;
+                <button id="btn_close" type="button" class="btn btn-light" onclick="btn_close_onclick()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="@ViewBag.pathParent/JS/PlanTable/Index.js"></script>
+<script type="text/javascript" src="@ViewBag.pathParent/Kendo/jszip.js"></script>
+<script type="text/javascript" src="@ViewBag.pathParent/Kendo/jszip.min.js"></script>

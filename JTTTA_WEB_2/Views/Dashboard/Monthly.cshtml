@@ -1,0 +1,369 @@
+﻿@{
+    /**/
+    ViewBag.Title = "Tuah Turangga Agung";
+    ViewBag.dashboard = "Home";
+    ViewBag.dashboardSmall = "Dashboard Produksi";
+    Layout = "~/Views/Shared/layout_admin.cshtml";
+    ViewBag.pathParent = Url.Content("/").Substring(0, Url.Content("/").Length - 1);
+}
+
+
+
+<h2>Dashboard Produksi</h2>
+
+<input type="hidden" id="urlPath" name="urlPath" value="@ViewBag.pathParent" />
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-flat">
+            <div class="panel-body">
+
+
+
+                <div class="col-xs-12">
+                    <div class="col-lg-9 col-md-9 col-xs-12 pull-left" style="text-align:center">
+                        <h1 id="judul" class="dark bold" style="font-weight:bold;">Review Produksi JT SMM Tanggal 20211204</h1>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12 pull-right" style="text-align:right">
+                        Tanggal :
+                        <input type="text" id="txt_tanggal">
+                        <input type="button" class="btn btn-primary " value="Load" onclick="loadALlChart()">
+                    </div>
+                </div>
+
+                <div class="row tile_count col-md-12 col-xs-12">
+
+                    <div class="top_tiles shadow">
+                        <div class=" col-lg-3 col-md-6 col-xs-12  ">
+                            <div class="tile-stats" style="background:#17A2B8">
+                                <div class="icon"><i class="fa fa-dashboard"></i></div>
+                                <div class="count text-white" style="color:#FFFFFF" id="dv_prod">0</div>
+                                <h3 style="color:#FFFFFF"><i class="fa fa-cog fa-spin"></i> Total Produksi</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="top_tiles">
+                        <div class="animated flipInY col-lg-3 col-md-6 col-xs-12   ">
+                            <div class="tile-stats" style="background:#28A745">
+                                <div class="icon"><i class="fa fa-random"></i></div>
+                                <div class="count text-white" style="color:#FFFFFF" id="dv_ritase">0</div>
+                                <h3 style="color:#FFFFFF"><i class="fa fa-cog fa-spin"></i> Total Ritase</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="top_tiles">
+                        <div class="animated flipInY col-lg-3 col-md-6 col-xs-12    ">
+                            <div class="tile-stats" style="background:#FFC107">
+                                <div class="icon"><i class="fa fa-truck"></i></div>
+                                <div class="count text-white" style="color:#FFFFFF" id="dv_unit">0</div>
+                                <h3 style="color:#FFFFFF"><i class="fa fa-cog fa-spin"></i> Total Unit</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="top_tiles">
+                        <div class="animated flipInY col-lg-3 col-md-6 col-xs-12 ">
+                            <div class="tile-stats" style="background:#DC3545">
+                                <div class="icon"><i class="fa fa-line-chart"></i></div>
+                                <div class="count text-white" style="color:#FFFFFF" id="dv_avg">0</div>
+                                <h3 style="color:#FFFFFF"><i class="fa fa-cog fa-spin"></i> Average Load</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                @* <div class="row tile_count">
+                        <div class="col-xs-12">
+
+
+                        </div>
+                        <div class="col-xs-12">
+
+
+
+
+                        </div>
+                    </div>*@
+
+
+                <div class="row tile_count">
+                    @*<div class="col-md-6 col-xs-12 " >
+                          <div class="x_panel fixed_height_400 " >
+                            <div class="x_title blue">
+                              <h2 style="bold">Hourly Production JT SMM</h2>
+                              <ul class="nav navbar-right panel_toolbox ">
+                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                                <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                </li>
+                              </ul>
+                              <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+
+                               <div id="dv_produksiperjam" style="height:430px;"  class="col-md-12 col-xs-12">
+
+                               </div>
+
+                            </div>
+                          </div>
+                        </div>*@
+
+
+                    @*<div class="col-md-6 col-xs-12">
+                          <div class=" tile fixed_height_400">
+                            <div class="x_title">
+                              <h2>Hourly Ritase JT SMM</h2>
+                              <ul class="nav navbar-right panel_toolbox">
+                                <li><a class="collapse-link"
+                                data-toggle="collapse" href="#dvid_ritaseperjam" role="button" aria-expanded="false" aria-controls="dvid_ritaseperjam"
+                                ><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                                <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                </li>
+                              </ul>
+                              <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content" id="dvid_ritaseperjam">
+
+                               <div id="dv_ritaseperjam" style="height:430px" class="col-xs-12">
+
+                               </div>
+
+                            </div>
+                          </div>
+                        </div>*@
+
+
+                    <div class="col-md-6 col-xs-12 ">
+                        <div class="card col-xs-12 border " style="background:#2156c6;border-radius: 5px;margin-top:3px">
+                            <div class="x_title text-white" style="color:#FFFFF">
+                                <h2 style="font-weight:bold;color:#FFFFFF">Hourly Production JT SMM</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li>
+                                        <a class="collapse-link"
+                                           data-toggle="collapse" href="#dvid_produksiperjam" role="button" aria-expanded="false" aria-controls="dvid_produksiperjam"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix" style="background:#2156c6"></div>
+                            </div>
+
+                            <div class="card-body" style="overflow-y: auto;">
+                                <div class="x_content" id="dvid_produksiperjam">
+
+                                    <div id="dv_produksiperjam" style="height:300px;" class="col-xs-12">
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-xs-12 ">
+                        <div class="card col-xs-12 " style="background:#2156c6;border-radius: 5px;margin-top:3px">
+                            <div class="x_title text-white" style="color:#FFFFF">
+                                <h2 style="font-weight:bold;color:#FFFFFF;">Hourly Ritase JT SMM</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li>
+                                        <a class="collapse-link"
+                                           data-toggle="collapse" href="#dvid_ritaseperjam" role="button" aria-expanded="false" aria-controls="dvid_ritaseperjam"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix" style="background:#2156c6"></div>
+                            </div>
+
+                            <div class="card-body" style="overflow-y: auto;">
+                                <div class="x_content" id="dv_idritaseperjam">
+
+                                    <div id="dv_ritaseperjam" style="height:300px;" class="col-xs-12">
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row tile_count">
+
+
+                    @*<div class="col-md-4 col-xs-12">
+                            <div class="x_panel tile fixed_height_400">
+                              <div class="x_title">
+                                <h2>Tonnage by Pit Name</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                  </li>
+                                  <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                  </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                              </div>
+                              <div class="x_content">
+
+                                  <div id="dv_perpit" style="height:400px" class="col-md-12">
+
+                                  </div>
+
+                              </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="col-md-4 col-xs-12">
+                            <div class="x_panel tile fixed_height_400">
+                              <div class="x_title">
+                                <h2>Tonnage by Material</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                  </li>
+                                  <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                  </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                              </div>
+                              <div class="x_content">
+
+                                   <div id="dv_perdestination" style="height:400px" class="col-md-12">
+
+                                   </div>
+
+                              </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="col-md-4 col-xs-12">
+                            <div class="x_panel tile fixed_height_400">
+                              <div class="x_title">
+                                <h2>Tonnage By Destination</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                  </li>
+                                  <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                  </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                              </div>
+                              <div class="x_content">
+
+                                  <div id="dv_permaterial" style="height:400px" class="col-md-12">
+
+                                  </div>
+
+                              </div>
+                            </div>
+
+
+                        </div>*@
+
+                    <div class="col-md-4 col-xs-12 ">
+                        <div class="card col-xs-12 " style="background:#77ACF1;border-radius: 5px;margin-top:3px">
+                            <div class="x_title text-white" style="color:#FFFFF">
+                                <h2 style="font-weight:bold;color:#FFFFFF;">Tonnage by Pit Name</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li>
+                                        <a class="collapse-link"
+                                           data-toggle="collapse" href="#dvid_perpit" role="button" aria-expanded="false" aria-controls="dvid_perpit"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix" style="background:#77ACF1"></div>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="x_content" id="dvid_perpit">
+
+                                    <div id="dv_perpit" style="height:300px" class="col-xs-12">
+
+                                    </div>
+
+                                    <div id="dv_tblperpit" class="vertical-center-row col-xs-11">
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4 col-xs-12 ">
+                        <div class="card col-xs-12 " style="background:#77ACF1;border-radius: 5px;margin-top:3px">
+                            <div class="x_title text-white" style="color:#FFFFF">
+                                <h2 style="font-weight:bold;color:#FFFFFF;">Tonnage by Material</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li>
+                                        <a class="collapse-link"
+                                           data-toggle="collapse" href="#dvid_permaterial" role="button" aria-expanded="false" aria-controls="dvid_permaterial"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix" style="background:#77ACF1"></div>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="x_content" id="dvid_permaterial">
+
+                                    <div id="dv_permaterial" style="height:300px" class="col-xs-12">
+
+                                    </div>
+
+                                    <div id="dv_tblpermaterial" class="vertical-center-row col-xs-11">
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-xs-12 ">
+                        <div class="card col-xs-12 " style="background:#77ACF1;border-radius: 5px;margin-top:3px">
+                            <div class="x_title text-white" style="color:#FFFFF">
+                                <h2 style="font-weight:bold;color:#FFFFFF;">Tonnage By Destination</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li>
+                                        <a class="collapse-link"
+                                           data-toggle="collapse" href="#dvid_perdestination" role="button" aria-expanded="false" aria-controls="dvid_perdestination"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix" style="background:#77ACF1"></div>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="x_content" id="dvid_perdestination">
+
+                                    <div id="dv_perdestination" style="height:300px" class="col-xs-12">
+
+                                    </div>
+
+                                    <div id="dv_tblperdestination" class="vertical-center-row col-xs-11">
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div id="dv_add"></div>
+
+
+
+
+<script type="text/javascript" src="@ViewBag.pathParent/JS/Dashboard/Monthly.js"></script>

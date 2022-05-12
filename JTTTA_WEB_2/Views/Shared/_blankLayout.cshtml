@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+    @{
+        ViewBag.pathParent = Url.Content("~").Substring(0, Url.Content("~").Length - 1);
+    }
+    <!-- Global stylesheets -->
+    @*
+        <link href='@ViewBag.pathParent/ContectLayout/css/roboto.css' rel='stylesheet' type='text/css'>*@
+    <link href="@ViewBag.pathParent/ContectLayout/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
+    <link href="@ViewBag.pathParent/ContectLayout/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="@ViewBag.pathParent/ContectLayout/css/core.css" rel="stylesheet" type="text/css">
+    <link href="@ViewBag.pathParent/ContectLayout/css/components.css" rel="stylesheet" type="text/css">
+    <link href="@ViewBag.pathParent/ContectLayout/css/colors.css" rel="stylesheet" type="text/css">
+
+    <link href="@ViewBag.pathParent/kendo/css/kendo.common.min.css" rel="stylesheet" type="text/css" />
+    <link href="@ViewBag.pathParent/kendo/css/kendo.metro.css" rel="stylesheet" type="text/css" />
+    <!-- /global stylesheets -->
+
+    <script type="text/javascript" src="@ViewBag.pathParent/Scripts/JQUERY/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="@ViewBag.pathParent/kendo/js/kendo.all.min.js"></script>
+    <script type="text/javascript" src="@ViewBag.pathParent/kendo/js/kendo.aspnetmvc.min.js"></script>
+
+    <!-- Core JS files -->
+    <script type="text/javascript" src="@ViewBag.pathParent/ContectLayout/js/plugins/loaders/pace.min.js"></script>
+    <script type="text/javascript" src="@ViewBag.pathParent/ContectLayout/js/core/libraries/bootstrap.min.js"></script>
+    <script type="text/javascript" src="@ViewBag.pathParent/ContectLayout/js/plugins/loaders/blockui.min.js"></script>
+    <!-- /core JS files -->
+    <!-- Theme JS files -->
+    <script type="text/javascript" src="@ViewBag.pathParent/ContectLayout/js/plugins/visualization/d3/d3.min.js"></script>
+    <script type="text/javascript" src="@ViewBag.pathParent/ContectLayout/js/plugins/visualization/d3/d3_tooltip.js"></script>
+    <script type="text/javascript" src="@ViewBag.pathParent/ContectLayout/js/plugins/forms/styling/switchery.min.js"></script>
+    <script type="text/javascript" src="@ViewBag.pathParent/ContectLayout/js/plugins/forms/styling/uniform.min.js"></script>
+    <script type="text/javascript" src="@ViewBag.pathParent/ContectLayout/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
+    <script type="text/javascript" src="@ViewBag.pathParent/ContectLayout/js/plugins/ui/moment/moment.min.js"></script>
+    <script type="text/javascript" src="@ViewBag.pathParent/ContectLayout/js/plugins/pickers/daterangepicker.js"></script>
+    <!-- /theme JS files -->
+</head>
+<body>
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </div>*@
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        @*<footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>*@
+    </div>
+
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)*@
+</body>
+</html>

@@ -1,0 +1,54 @@
+﻿
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/layout_admin.cshtml";
+}
+
+<h2>Index</h2>
+
+
+<h2>Dashboard Produksi JT 1.8 < SMM ></h2>
+
+<input type="hidden" id="urlPath" name="urlPath" value="@ViewBag.pathParent" />
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-flat">
+            <div class="panel-body">
+                <div class="row tile_count">
+
+                    <div class="col-md-6 col-xs-12 ">
+
+                        <div class="card col-xs-12 border " style="background:#2156c6;border-radius: 5px;margin-top:3px">
+                            <div class="x_title text-white" style="color:#FFFFF">
+                                <h2 style="font-weight:bold;color:#FFFFFF">Hourly Production JT SMM</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li>
+                                        <a class="collapse-link"
+                                           data-toggle="collapse" href="#dvid_produksiperjam" role="button" aria-expanded="false" aria-controls="dvid_produksiperjam"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix" style="background:#2156c6"></div>
+                            </div>
+
+                            <div class="card-body" style="overflow-y: auto;">
+                                <div class="x_content" id="dvid_produksiperjam" style="min-width:700px">
+
+                                    <div id="dv_produksiperjam" style="height:300px;" class="col-xs-12">
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

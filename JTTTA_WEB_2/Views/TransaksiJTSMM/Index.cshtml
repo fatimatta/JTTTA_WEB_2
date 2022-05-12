@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "Tuah Turangga Agung";
+    ViewBag.dashboard = "Home";
+    ViewBag.dashboardSmall = "Transaksi JT SMM";
+    Layout = "~/Views/Shared/layout_admin.cshtml";
+    ViewBag.pathParent = Url.Content("~").Substring(0, Url.Content("~").Length - 1);
+}
+
+<style>
+    #gridData > table {
+        table-layout: fixed;
+    }
+
+    .k-list-scroller {
+        height: 170px !important;
+        overflow-y: scroll !important;
+    }
+</style>
+<h2>Index</h2>
+
+<input type="hidden" id="urlPath" name="urlPath" value="@ViewBag.pathParent" />
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-md-12" style="margin-top:10px">
+            <div class="row">
+                <div class="form-group row col-sm-6" style="padding-bottom:5px">
+                    Pilih Tanggal Transaksi :
+                    <input type="text" id="txt_tglparam" name="txt_tglparam">
+                    <input type="button" id="btn_search" name="btn_search" value="Search" onclick="btn_search_onclick()" />
+                </div>
+                <div class="form-group row col-sm-6 pull-right" style="padding-bottom: 5px;  text-align:right">
+                    <input type="text" id="txt_type" name="txt_type"> :
+                    <input type="text" id="txt_value" name="txt_value">
+                    <input type="button" value="Ubah Data" onclick="cekdata();">
+                </div>
+            </div>
+            <div id="gridData">
+
+            </div>
+            <div class="col-md-12">
+
+
+            </div>
+            <div class="row">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="dv_add"></div>
+
+
+<script type="text/javascript" src="@ViewBag.pathParent/Js/TransaksiJTSMM/index.js"></script>
+<script type="text/javascript" src="@ViewBag.pathParent/Kendo/jszip.js"></script>
+<script type="text/javascript" src="@ViewBag.pathParent/Kendo/jszip.min.js"></script>

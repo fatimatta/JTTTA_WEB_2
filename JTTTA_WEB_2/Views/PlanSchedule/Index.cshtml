@@ -1,0 +1,323 @@
+﻿@{
+    ViewBag.Title = "Tuah Turangga Agung";
+    ViewBag.dashboard = "Home";
+    ViewBag.dashboardSmall = "Planning Schedule";
+    Layout = "~/Views/Shared/layout_admin.cshtml";
+    ViewBag.pathParent = Url.Content("~").Substring(0, Url.Content("~").Length - 1);
+}
+
+<input type="hidden" id="urlPath" name="urlPath" value="@ViewBag.pathParent" />
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    @*<link rel="stylesheet" href="styles/kendo.common.min.css" />
+        <link rel="stylesheet" href="styles/kendo.default.min.css" />
+        <link rel="stylesheet" href="styles/kendo.default.mobile.min.css" />*@
+
+    @*<script src="js/jquery.min.js"></script>
+        <script src="js/kendo.all.min.js"></script>
+        <script src="js/kendo.timezones.min.js"></script>*@
+    <script type="text/javascript" src="@ViewBag.pathParent/JS/PlanSchedule/Index.js"></script>
+    <script type="text/javascript" src="@ViewBag.pathParent/Kendo/jszip.js"></script>
+    <script type="text/javascript" src="@ViewBag.pathParent/Kendo/jszip.min.js"></script>
+</head>
+
+<body>
+    <div id="example">
+        <div id="scheduler"></div>
+    </div>
+
+    @*<script id="event-template" type="text/x-kendo-template">
+        <div class="movie-template">
+            <p>
+                #: kendo.toString(PLAN_START_TIME, "hh:mm") # - #: kendo.toString(PLAN_END_TIME, "hh:mm") #
+            </p>
+            <h3>#: PLAN_BLOCK #</h3>
+            <p>#: PLAN_STRIP #</p>
+        </div>
+    </script>*@
+
+    <script id="event-template" type="text/x-kendo-template">
+        <div class="movie-template">
+          <p>
+              #: kendo.toString(start, "hh:mm") # - #: kendo.toString(end, "hh:mm") #
+          </p>
+          <h3>#: title #</h3>
+          <p>#: description #</p>
+        </div>
+    </script>
+
+    <script id="customEditorTemplate" type="text/x-kendo-template">
+        <div>
+            <div class="k-edit-label"><label for="start">Jam Awal</label></div>
+            <div data-container-for="start" class="k-edit-field">
+                <input
+                    id="txt_start"
+                    type="text"
+                    data-role="datetimepicker"
+                    data-interval="15"
+                    data-type="date"
+                    data-bind="value:start,invisible:isAllDay"
+                    name="start" />
+                <input type="text" data-type="date" data-role="datetimepicker" data-bind="value:start,visible:isAllDay" name="start" />
+                <span data-bind="text: startTimezone"></span>
+                <span data-for="start" class="k-invalid-msg" style="display: none;"></span>
+            </div>
+
+            <div class="k-edit-label"><label for="end">Jam Akhir</label></div>
+            <div data-container-for="end" class="k-edit-field">
+                <input id="txt_end" type="text" data-type="date" data-role="datetimepicker" data-bind="value:end,invisible:isAllDay" name="end" data-datecompare-msg="End date should be greater than or equal to the start date" />
+                <input id="txt_end" type="text" data-type="date" data-role="datetimepicker" data-bind="value:end,visible:isAllDay" name="end" data-datecompare-msg="End date should be greater than or equal to the start date" />
+                <span data-bind="text: endTimezone"></span>
+                <span data-bind="text: startTimezone, invisible: endTimezone"></span>
+                <span data-for="end" class="k-invalid-msg" style="display: none;"></span>
+            </div>
+
+            <div class="k-edit-label"><label for="description">Lokasi</label></div>
+            <div class="k-edit-field">
+                <input type="number" name="txt_seam" id="custom" class="k-textbox" placeholder="seam"></input>
+                <input type="number" name="txt_block" id="custom" class="k-textbox" placeholder="block"></input>
+                <input type="number" name="txt_elevasi" id="custom" class="k-textbox" placeholder="elevasi"></input>
+                <input type="number" name="txt_strip" id="custom" class="k-textbox" placeholder="strip"></input>
+            </div>
+
+            <div class="k-edit-label"><label for="description">Inventory</label></div>
+            <div class="k-edit-field">
+                <input type="number" name="txt_inven" id="custom" class="k-textbox"></input>
+            </div>
+
+            <div class="k-edit-label"><label for="ownerId">Material</label></div>
+            <div data-container-for="material" class="k-edit-field">
+                <input id="txt_mat" />
+            </div>
+
+            <div class="k-edit-label"><label>Destinasi</label></div>
+            <div data-container-for="destinasi" class="k-edit-field">
+                <input id="txt_dest" />
+            </div>
+
+            <div class="row">
+                <div class="col-md-11">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="text-center">
+                                    TM
+                                </th>
+                                <th class="text-center">
+                                    IM
+                                </th>
+                                <th class="text-center">
+                                    ASH
+                                </th>
+                                <th class="text-center">
+                                    VM
+                                </th>
+                                <th class="text-center">
+                                    FC
+                                </th>
+                                <th class="text-center">
+                                    TS
+                                </th>
+                                <th class="text-center">
+                                    CVA
+                                </th>
+                                <th class="text-center">
+                                    CVD
+                                </th>
+                                <th class="text-center">
+                                    RD
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="number" id='txt_tm' class="form-control" />
+                                </td>
+                                <td data-name="im">
+                                    <input type="number" id='txt_im' class="form-control" />
+                                </td>
+                                <td>
+                                    <input type="number" id='txt_ash' class="form-control" />
+                                </td>
+                                <td>
+                                    <input type="number" id='txt_vm' class="form-control" />
+                                </td>
+                                <td>
+                                    <input type="number" id='txt_fc' class="form-control" />
+                                </td>
+                                <td>
+                                    <input type="number" id='txt_ts' class="form-control" />
+                                </td>
+                                <td>
+                                    <input type="number" id='txt_cva' class="form-control" />
+                                </td>
+                                <td>
+                                    <input type="number" id='txt_cvd' class="form-control" />
+                                </td>
+                                <td>
+                                    <input type="number" id='txt_rd' class="form-control" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-11">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="text-center">
+                                    HGI
+                                </th>
+                                <th class="text-center">
+                                    CSN
+                                </th>
+                                <th class="text-center">
+                                    IS
+                                </th>
+                                <th class="text-center">
+                                    MC
+                                </th>
+                                <th class="text-center">
+                                    MD
+                                </th>
+                                <th class="text-center">
+                                    ML
+                                </th>
+                                <th class="text-center">
+                                    FF
+                                </th>
+                                <th class="text-center">
+                                    SO
+                                </th>
+                                <th class="text-center">
+                                    PR
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="number" id='txt_hgi' class="form-control" />
+                                </td>
+                                <td>
+                                    <input type="number" id='txt_csn' class="form-control" />
+                                </td>
+                                <td>
+                                    <input type="number" id='txt_is' class="form-control" />
+                                </td>
+                                <td>
+                                    <input type="number" id='txt_mc' class="form-control" />
+                                </td>
+                                <td>
+                                    <input type="number" id='txt_md' class="form-control" />
+                                </td>
+                                <td>
+                                    <input type="number" id='txt_ml' class="form-control" />
+                                </td>
+                                <td>
+                                    <input type="number" id='txt_ff' class="form-control" />
+                                </td>
+                                <td>
+                                    <input type="number" id='txt_so' class="form-control" />
+                                </td>
+                                <td>
+                                    <input type="number" id='txt_pr' class="form-control" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <style>
+        .k-edit-form-container .k-edit-buttons {
+            position: initial;
+        }
+
+        div.k-window-content {
+            overflow: unset;
+        }
+
+        #txt_rd {
+            padding: 6px 9px;
+        }
+
+        #txt_pr {
+            padding: 6px 9px;
+        }
+
+        .form-control {
+            /*height: 40px;
+            width: 100%;*/
+            /*padding: 0;*/
+        }
+
+        /*#customEditorTemplate {
+            width: 1500px;
+        }*/
+        /*.k-widget k-window {
+            width: 900px;
+            height: 50px;
+        }*/
+
+        #custom {
+            width: 70px;
+        }
+
+        .k-edit-form-container {
+            /*width: 3000px;*/
+            height: 500px;
+        }
+
+        #team-schedule {
+            background: url('../content/web/scheduler/team-schedule.png') transparent no-repeat;
+            height: 115px;
+            position: relative;
+        }
+
+        #people {
+            background: url('../content/web/scheduler/scheduler-people.png') no-repeat;
+            width: 345px;
+            height: 115px;
+            position: absolute;
+            right: 0;
+        }
+
+        #alex {
+            position: absolute;
+            left: 4px;
+            top: 81px;
+        }
+
+        #bob {
+            position: absolute;
+            left: 119px;
+            top: 81px;
+        }
+
+        #charlie {
+            position: absolute;
+            left: 234px;
+            top: 81px;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            /* display: none; <- Crashes Chrome on hover */
+            -webkit-appearance: none;
+            margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+        }
+    </style>
+</body>
+</html>
+
+<div id="dv_add"></div>

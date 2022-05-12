@@ -1,0 +1,899 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_JTTTA_WEBModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="TBL_M_AKSES">
+    <Key>
+      <PropertyRef Name="AKSES_RAW_ID" />
+    </Key>
+    <Property Name="AKSES_RAW_ID" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="AKSES_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'DB_JTTTA_WEB.dbo.TBL_M_CONFIGURATION' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="TBL_M_CONFIGURATION">
+          <Property Name="CONF_COMPANY" Type="varchar" MaxLength="200" />
+          <Property Name="CONF_SITE" Type="varchar" MaxLength="200" />
+          <Property Name="CONF_TIMBANGAN" Type="varchar" MaxLength="200" />
+          <Property Name="CONF_LOKASI_KAB" Type="varchar" MaxLength="200" />
+          <Property Name="CONF_LOKASI_PROV" Type="varchar" MaxLength="200" />
+        </EntityType>-->
+  <EntityType Name="TBL_R_COAL_NUMBER">
+    <Key>
+      <PropertyRef Name="CN_NUMBER" />
+    </Key>
+    <Property Name="CN_NUMBER" Type="int" Nullable="false" />
+    <Property Name="CN_NRP" Type="varchar" MaxLength="50" />
+    <Property Name="CN_NAME" Type="varchar" MaxLength="100" />
+    <Property Name="CN_KONTRAKTOR" Type="varchar" MaxLength="100" />
+    <Property Name="CN_AKTIF" Type="varchar" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_R_CONDITION">
+    <Key>
+      <PropertyRef Name="COND_CODE" />
+    </Key>
+    <Property Name="COND_CODE" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="COND_NAME" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_R_DESTINATION">
+    <Key>
+      <PropertyRef Name="DEST_CODE" />
+    </Key>
+    <Property Name="DEST_CODE" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="DEST_NAME" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_R_JT">
+    <Key>
+      <PropertyRef Name="JT_KODE" />
+    </Key>
+    <Property Name="JT_KODE" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="JT_INSTANCE" Type="varchar(max)" Nullable="false" />
+    <Property Name="JT_AKTIF" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="JT_LAST_EXECUTION" Type="datetime" />
+    <Property Name="JT_LAST_STATUS" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="TBL_R_MATERIAL">
+    <Key>
+      <PropertyRef Name="MATERIAL_CODE" />
+    </Key>
+    <Property Name="MATERIAL_CODE" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="MATERIAL_NAME" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_R_MENU">
+    <Key>
+      <PropertyRef Name="Primer" />
+    </Key>
+    <Property Name="Primer" Type="bigint" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Menu" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Menu_link" Type="int" />
+    <Property Name="Link" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Urutan" Type="int" />
+    <Property Name="Deskripsi" Type="varchar" MaxLength="250" />
+    <Property Name="style_class" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_JTTTA_WEB.dbo.TBL_R_MENU_LOGIN' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TBL_R_MENU_LOGIN">
+    <Key>
+      <PropertyRef Name="Menu_primer" />
+      <PropertyRef Name="User_level" />
+    </Key>
+    <Property Name="Menu_primer" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="User_level" Type="varchar" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_R_PIT">
+    <Key>
+      <PropertyRef Name="PIT_CODE" />
+    </Key>
+    <Property Name="PIT_CODE" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="PIT_NAME" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_JTTTA_WEB.dbo.TBL_R_PLANNING' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TBL_R_PLANNING">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tanggal" Type="nchar" MaxLength="10" />
+    <Property Name="Shift" Type="nchar" MaxLength="10" />
+    <Property Name="Seam" Type="nchar" MaxLength="10" />
+    <Property Name="Block" Type="nchar" MaxLength="10" />
+    <Property Name="Strip" Type="nchar" MaxLength="10" />
+    <Property Name="Elevasi" Type="nchar" MaxLength="10" />
+    <Property Name="Material" Type="nchar" MaxLength="10" />
+    <Property Name="Rom" Type="nchar" MaxLength="10" />
+    <Property Name="Inventory" Type="nchar" MaxLength="10" />
+    <Property Name="Ash" Type="nchar" MaxLength="10" />
+    <Property Name="Tm" Type="nchar" MaxLength="10" />
+    <Property Name="Im" Type="nchar" MaxLength="10" />
+    <Property Name="Vm" Type="nchar" MaxLength="10" />
+    <Property Name="Fc" Type="nchar" MaxLength="10" />
+    <Property Name="Ts" Type="nchar" MaxLength="10" />
+    <Property Name="Cva" Type="nchar" MaxLength="10" />
+    <Property Name="Cvd" Type="nchar" MaxLength="10" />
+    <Property Name="Rd" Type="nchar" MaxLength="10" />
+    <Property Name="Hgi" Type="nchar" MaxLength="10" />
+    <Property Name="Csn" Type="nchar" MaxLength="10" />
+    <Property Name="Is" Type="nchar" MaxLength="10" />
+    <Property Name="Mc" Type="nchar" MaxLength="10" />
+    <Property Name="Md" Type="nchar" MaxLength="10" />
+    <Property Name="Ml" Type="nchar" MaxLength="10" />
+    <Property Name="Ff" Type="nchar" MaxLength="10" />
+    <Property Name="So" Type="nchar" MaxLength="10" />
+    <Property Name="Pr" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_JTTTA_WEB.dbo.TBL_R_REPORT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TBL_R_REPORT">
+    <Key>
+      <PropertyRef Name="ReportID" />
+      <PropertyRef Name="Report_Server" />
+      <PropertyRef Name="Report_path" />
+    </Key>
+    <Property Name="ReportID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Report_Server" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Report_path" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Report_Alias" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="TBL_R_SHIFT">
+    <Key>
+      <PropertyRef Name="SHIFT_CODE" />
+    </Key>
+    <Property Name="SHIFT_CODE" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="SHIFT_NAME" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="SHIFT_AKTIF" Type="varchar" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_R_UNIT">
+    <Key>
+      <PropertyRef Name="UNIT_NO" />
+    </Key>
+    <Property Name="UNIT_NO" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="UNIT_EGI" Type="varchar" MaxLength="10" />
+    <Property Name="UNIT_KONTRAKTOR" Type="varchar" MaxLength="11" />
+    <Property Name="UNIT_AKTIF" Type="varchar" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_R_USER">
+    <Key>
+      <PropertyRef Name="USER_RAW_ID" />
+    </Key>
+    <Property Name="USER_RAW_ID" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="USER_NAME" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="USER_COMPANY" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="USER_AKSES" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="USER_USERNAME" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="USER_PASSWORD" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_T_GTRACK_HIS">
+    <Key>
+      <PropertyRef Name="PK_PositionLogID" />
+    </Key>
+    <Property Name="PK_PositionLogID" Type="int" Nullable="false" />
+    <Property Name="FK_UnitID" Type="varchar" MaxLength="50" />
+    <Property Name="Plate_No" Type="varchar" MaxLength="10" />
+    <Property Name="PositionDateTime" Type="datetime" />
+    <Property Name="GPSDateTime" Type="datetime" />
+    <Property Name="Longitude" Type="decimal" Precision="18" Scale="7" />
+    <Property Name="Latitude" Type="decimal" Precision="18" Scale="7" />
+    <Property Name="Speed" Type="int" />
+    <Property Name="Direction" Type="int" />
+    <Property Name="Altitude" Type="int" />
+    <Property Name="NumberOfSatelite" Type="int" />
+    <Property Name="ReportID" Type="int" />
+    <Property Name="Mileage" Type="int" />
+    <Property Name="AccState" Type="varchar" MaxLength="10" />
+    <Property Name="InputValue" Type="varchar" MaxLength="30" />
+    <Property Name="OutputValue" Type="varchar" MaxLength="30" />
+    <Property Name="AnalogInput9" Type="varchar" MaxLength="30" />
+    <Property Name="AnalogInput10" Type="varchar" MaxLength="30" />
+    <Property Name="LastRFID" Type="varchar" MaxLength="30" />
+    <Property Name="Location" Type="varchar" MaxLength="100" />
+    <Property Name="Zone" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="TBL_T_SOURCE">
+    <Key>
+      <PropertyRef Name="SRC_RAW_ID" />
+    </Key>
+    <Property Name="SRC_RAW_ID" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="SRC_TANGGAL" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="SRC_PIT" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="SRC_BLOCK" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="SRC_ELEVASI" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="SRC_SEAM" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="SRC_CONDITION" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="SRC_SHIFT" Type="varchar" MaxLength="5" />
+    <Property Name="SRC_PLAN_PROD" Type="int" />
+  </EntityType>
+  <EntityType Name="TBL_T_TARE">
+    <Key>
+      <PropertyRef Name="TARE_RAWID" />
+    </Key>
+    <Property Name="TARE_RAWID" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="TARE_NOUNIT" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="TARE_DATETIME" Type="datetime" Nullable="false" />
+    <Property Name="TARE_VALUE" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_T_TRANSAKSI">
+    <Key>
+      <PropertyRef Name="TRANS_RAW_ID" />
+    </Key>
+    <Property Name="TRANS_RAW_ID" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="TRANS_DOCKET_NO" Type="int" Nullable="false" />
+    <Property Name="TRANS_COAL_NUMBER" Type="int" Nullable="false" />
+    <Property Name="TRANS_PIT" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="TRANS_BLOCK" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="TRANS_ELEVASI" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="TRANS_SEAM" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="TRANS_RAW" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="TRANS_EXCAVATOR" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="TRANS_DESTINATION" Type="varchar" MaxLength="20" />
+    <Property Name="TRANS_CONDITION" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="TRANS_NO_UNIT" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="TRANS_GROSS" Type="int" Nullable="false" />
+    <Property Name="TRANS_TARE" Type="int" Nullable="false" />
+    <Property Name="TRANS_NETTO" Type="int" Nullable="false" />
+    <Property Name="TRANS_JT_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TRANS_STARTTIMBANG" Type="datetime" />
+    <Property Name="TRANS_DATETIME" Type="datetime" Nullable="false" />
+    <Property Name="TRANS_UPDATE_AT" Type="datetime" Nullable="false" />
+    <Property Name="TRANS_OPERATOR" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TRANS_ISDELETED" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="TRANS_SOURCE" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="TBL_T_TRANSAKSI_TEMP">
+    <Key>
+      <PropertyRef Name="TRANS_RAW_ID" />
+    </Key>
+    <Property Name="TRANS_RAW_ID" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="TRANS_DOCKET_NO" Type="int" Nullable="false" />
+    <Property Name="TRANS_COAL_NUMBER" Type="int" Nullable="false" />
+    <Property Name="TRANS_PIT" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="TRANS_BLOCK" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="TRANS_ELEVASI" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="TRANS_SEAM" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="TRANS_RAW" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="TRANS_EXCAVATOR" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="TRANS_DESTINATION" Type="varchar" MaxLength="20" />
+    <Property Name="TRANS_CONDITION" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="TRANS_NO_UNIT" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="TRANS_GROSS" Type="int" Nullable="false" />
+    <Property Name="TRANS_TARE" Type="int" Nullable="false" />
+    <Property Name="TRANS_NETTO" Type="int" Nullable="false" />
+    <Property Name="TRANS_JT_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TRANS_STARTTIMBANG" Type="datetime" />
+    <Property Name="TRANS_DATETIME" Type="datetime" Nullable="false" />
+    <Property Name="TRANS_UPDATE_AT" Type="datetime" Nullable="false" />
+    <Property Name="TRANS_OPERATOR" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TRANS_ISDELETED" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="TRANS_SOURCE" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_JTTTA_WEB.dbo.VW_R_MENU_LOGIN' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VW_R_MENU_LOGIN">
+    <Key>
+      <PropertyRef Name="Menu_primer" />
+      <PropertyRef Name="User_level" />
+    </Key>
+    <Property Name="Menu_primer" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="User_level" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="Id" Type="int" />
+    <Property Name="Menu" Type="nvarchar" MaxLength="50" />
+    <Property Name="Menu_link" Type="int" />
+    <Property Name="Link" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Urutan" Type="int" />
+    <Property Name="Deskripsi" Type="varchar" MaxLength="250" />
+    <Property Name="style_class" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_JTTTA_WEB.dbo.VW_R_SHIFT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VW_R_SHIFT">
+    <Key>
+      <PropertyRef Name="SHIFT_CODE" />
+      <PropertyRef Name="SHIFT_NAME" />
+    </Key>
+    <Property Name="SHIFT_CODE" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="SHIFT_NAME" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_JTTTA_WEB.dbo.VW_R_USER' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VW_R_USER">
+    <Key>
+      <PropertyRef Name="USER_RAW_ID" />
+      <PropertyRef Name="USER_NAME" />
+      <PropertyRef Name="USER_COMPANY" />
+      <PropertyRef Name="USER_AKSES" />
+      <PropertyRef Name="USER_USERNAME" />
+      <PropertyRef Name="USER_PASSWORD" />
+    </Key>
+    <Property Name="USER_RAW_ID" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="USER_NAME" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="USER_COMPANY" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="USER_AKSES" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="AKSES_NAME" Type="varchar" MaxLength="50" />
+    <Property Name="USER_USERNAME" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="USER_PASSWORD" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_JTTTA_WEB.dbo.VW_T_MAX_TARE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VW_T_MAX_TARE">
+    <Key>
+      <PropertyRef Name="TARE_RAWID" />
+      <PropertyRef Name="TARE_NOUNIT" />
+      <PropertyRef Name="TARE_DATETIME" />
+      <PropertyRef Name="TARE_VALUE" />
+    </Key>
+    <Property Name="NUMBER" Type="bigint" />
+    <Property Name="TARE_RAWID" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="TARE_NOUNIT" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="TARE_DATETIME" Type="datetime" Nullable="false" />
+    <Property Name="TARE_VALUE" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_JTTTA_WEB.dbo.VW_T_REVIEW_TARE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VW_T_REVIEW_TARE">
+    <Key>
+      <PropertyRef Name="UNIT_NO" />
+      <PropertyRef Name="TARE_TODAY" />
+    </Key>
+    <Property Name="UNIT_NO" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="UNIT_EGI" Type="varchar" MaxLength="10" />
+    <Property Name="UNIT_KONTRAKTOR" Type="varchar" MaxLength="11" />
+    <Property Name="TARE_TODAY" Type="int" Nullable="false" />
+    <Property Name="LAST_TARE_VALUE" Type="int" />
+    <Property Name="LAST_TARE" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_JTTTA_WEB.dbo.VW_T_SOURCE_AKTIF' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VW_T_SOURCE_AKTIF">
+    <Key>
+      <PropertyRef Name="SRC_RAW_ID" />
+      <PropertyRef Name="SRC_TANGGAL" />
+      <PropertyRef Name="SRC_PIT" />
+      <PropertyRef Name="SRC_BLOCK" />
+      <PropertyRef Name="SRC_ELEVASI" />
+      <PropertyRef Name="SRC_SEAM" />
+      <PropertyRef Name="SRC_CONDITION" />
+      <PropertyRef Name="SRC_CODE" />
+    </Key>
+    <Property Name="SRC_RAW_ID" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="SRC_TANGGAL" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="SRC_PIT" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="SRC_BLOCK" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="SRC_ELEVASI" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="SRC_SEAM" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="SRC_CONDITION" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="SRC_SHIFT" Type="varchar" MaxLength="5" />
+    <Property Name="SRC_PLAN_PROD" Type="int" />
+    <Property Name="SRC_CODE" Type="varchar" MaxLength="48" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_JTTTA_WEB.dbo.VW_T_TARE_ACTIVE_TODAY' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VW_T_TARE_ACTIVE_TODAY">
+    <Key>
+      <PropertyRef Name="TARE_RAWID" />
+      <PropertyRef Name="TARE_NOUNIT" />
+      <PropertyRef Name="TARE_DATETIME" />
+      <PropertyRef Name="TARE_VALUE" />
+    </Key>
+    <Property Name="TARE_RAWID" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="TARE_NOUNIT" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="TARE_DATETIME" Type="datetime" Nullable="false" />
+    <Property Name="TARE_VALUE" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_JTTTA_WEB.dbo.VW_T_TRANSAKSI' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VW_T_TRANSAKSI">
+    <Key>
+      <PropertyRef Name="TRANS_RAW_ID" />
+      <PropertyRef Name="TRANS_SHIFT" />
+      <PropertyRef Name="TRANS_DOCKET_NO" />
+      <PropertyRef Name="TRANS_COAL_NUMBER" />
+      <PropertyRef Name="TRANS_PIT" />
+      <PropertyRef Name="TRANS_BLOCK" />
+      <PropertyRef Name="TRANS_ELEVASI" />
+      <PropertyRef Name="TRANS_SEAM" />
+      <PropertyRef Name="TRANS_RAW" />
+      <PropertyRef Name="TRANS_EXCAVATOR" />
+      <PropertyRef Name="TRANS_CONDITION" />
+      <PropertyRef Name="TRANS_NO_UNIT" />
+      <PropertyRef Name="TRANS_GROSS" />
+      <PropertyRef Name="TRANS_TARE" />
+      <PropertyRef Name="TRANS_NETTO" />
+      <PropertyRef Name="TRANS_JT_NAME" />
+      <PropertyRef Name="TRANS_DATETIME" />
+      <PropertyRef Name="TRANS_UPDATE_AT" />
+      <PropertyRef Name="TRANS_OPERATOR" />
+    </Key>
+    <Property Name="TRANS_RAW_ID" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="TRANS_TGL_PRODUKSI" Type="varchar" MaxLength="30" />
+    <Property Name="TRANS_SHIFT" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="TRANS_DOCKET_NO" Type="int" Nullable="false" />
+    <Property Name="TRANS_COAL_NUMBER" Type="int" Nullable="false" />
+    <Property Name="TRANS_PIT" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="PIT_NAME" Type="varchar" MaxLength="100" />
+    <Property Name="TRANS_BLOCK" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="TRANS_ELEVASI" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="TRANS_SEAM" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="TRANS_RAW" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="MATERIAL_NAME" Type="varchar" MaxLength="30" />
+    <Property Name="TRANS_EXCAVATOR" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="TRANS_DESTINATION" Type="varchar" MaxLength="20" />
+    <Property Name="DEST_NAME" Type="varchar" MaxLength="20" />
+    <Property Name="TRANS_CONDITION" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="COND_NAME" Type="varchar" MaxLength="30" />
+    <Property Name="TRANS_NO_UNIT" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="TRANS_GROSS" Type="int" Nullable="false" />
+    <Property Name="TRANS_TARE" Type="int" Nullable="false" />
+    <Property Name="TRANS_NETTO" Type="int" Nullable="false" />
+    <Property Name="TRANS_JT_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TRANS_DATETIME" Type="datetime" Nullable="false" />
+    <Property Name="TRANS_UPDATE_AT" Type="datetime" Nullable="false" />
+    <Property Name="TRANS_OPERATOR" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TRANS_STARTTIMBANG" Type="datetime" />
+    <Property Name="TRANS_SOURCE" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_JTTTA_WEB.dbo.VW_T_TRANSAKSI_SLIP' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VW_T_TRANSAKSI_SLIP">
+    <Key>
+      <PropertyRef Name="TRANS_RAW_ID" />
+      <PropertyRef Name="TRANS_SHIFT" />
+      <PropertyRef Name="TRANS_DOCKET_NO" />
+      <PropertyRef Name="TRANS_COAL_NUMBER" />
+      <PropertyRef Name="TRANS_PIT" />
+      <PropertyRef Name="TRANS_BLOCK" />
+      <PropertyRef Name="TRANS_ELEVASI" />
+      <PropertyRef Name="TRANS_SEAM" />
+      <PropertyRef Name="SRC_CODE" />
+      <PropertyRef Name="TRANS_RAW" />
+      <PropertyRef Name="TRANS_EXCAVATOR" />
+      <PropertyRef Name="TRANS_CONDITION" />
+      <PropertyRef Name="TRANS_NO_UNIT" />
+      <PropertyRef Name="TRANS_GROSS" />
+      <PropertyRef Name="TRANS_TARE" />
+      <PropertyRef Name="TRANS_NETTO" />
+      <PropertyRef Name="TRANS_JT_NAME" />
+      <PropertyRef Name="TRANS_DATETIME" />
+      <PropertyRef Name="TRANS_UPDATE_AT" />
+      <PropertyRef Name="TRANS_OPERATOR" />
+    </Key>
+    <Property Name="TRANS_RAW_ID" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="TRANS_TGL_PRODUKSI" Type="varchar" MaxLength="30" />
+    <Property Name="TRANS_SHIFT" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="TRANS_DOCKET_NO" Type="int" Nullable="false" />
+    <Property Name="TRANS_COAL_NUMBER" Type="int" Nullable="false" />
+    <Property Name="TRANS_PIT" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="PIT_NAME" Type="varchar" MaxLength="100" />
+    <Property Name="TRANS_BLOCK" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="TRANS_ELEVASI" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="TRANS_SEAM" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="SRC_CODE" Type="varchar" MaxLength="48" Nullable="false" />
+    <Property Name="TRANS_RAW" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="MATERIAL_NAME" Type="varchar" MaxLength="30" />
+    <Property Name="TRANS_EXCAVATOR" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="TRANS_DESTINATION" Type="varchar" MaxLength="20" />
+    <Property Name="TRANS_CONDITION" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="COND_NAME" Type="varchar" MaxLength="30" />
+    <Property Name="TRANS_NO_UNIT" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="UNIT_KONTRAKTOR" Type="varchar" MaxLength="11" />
+    <Property Name="TRANS_GROSS" Type="int" Nullable="false" />
+    <Property Name="TRANS_TARE" Type="int" Nullable="false" />
+    <Property Name="TRANS_NETTO" Type="int" Nullable="false" />
+    <Property Name="TRANS_JT_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TRANS_DATETIME" Type="datetime" Nullable="false" />
+    <Property Name="TRANS_UPDATE_AT" Type="datetime" Nullable="false" />
+    <Property Name="TRANS_OPERATOR" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TRANS_STARTTIMBANG" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_JTTTA_WEB.dbo.VW_TRANS_JTTTA' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VW_TRANS_JTTTA">
+    <Key>
+      <PropertyRef Name="TRANS_RAW_ID" />
+      <PropertyRef Name="TRANS_SHIFT" />
+      <PropertyRef Name="TRANS_DOCKET_NO" />
+      <PropertyRef Name="TRANS_COAL_NUMBER" />
+      <PropertyRef Name="TRANS_PIT" />
+      <PropertyRef Name="TRANS_BLOCK" />
+      <PropertyRef Name="TRANS_ELEVASI" />
+      <PropertyRef Name="TRANS_SEAM" />
+      <PropertyRef Name="TRANS_RAW" />
+      <PropertyRef Name="TRANS_EXCAVATOR" />
+      <PropertyRef Name="TRANS_CONDITION" />
+      <PropertyRef Name="TRANS_NO_UNIT" />
+      <PropertyRef Name="TRANS_GROSS" />
+      <PropertyRef Name="TRANS_TARE" />
+      <PropertyRef Name="TRANS_NETTO" />
+      <PropertyRef Name="TRANS_JT_NAME" />
+      <PropertyRef Name="TRANS_DATETIME" />
+      <PropertyRef Name="TRANS_UPDATE_AT" />
+      <PropertyRef Name="TRANS_OPERATOR" />
+    </Key>
+    <Property Name="TRANS_RAW_ID" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="TRANS_TGL_PRODUKSI" Type="varchar" MaxLength="30" />
+    <Property Name="TRANS_SHIFT" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="TRANS_DOCKET_NO" Type="int" Nullable="false" />
+    <Property Name="TRANS_COAL_NUMBER" Type="int" Nullable="false" />
+    <Property Name="TRANS_PIT" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="PIT_NAME" Type="varchar" MaxLength="100" />
+    <Property Name="TRANS_BLOCK" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="TRANS_ELEVASI" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="TRANS_SEAM" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="TRANS_RAW" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="MATERIAL_NAME" Type="varchar" MaxLength="30" />
+    <Property Name="TRANS_EXCAVATOR" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="TRANS_DESTINATION" Type="varchar" MaxLength="20" />
+    <Property Name="DEST_NAME" Type="varchar" MaxLength="20" />
+    <Property Name="TRANS_CONDITION" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="COND_NAME" Type="varchar" MaxLength="30" />
+    <Property Name="TRANS_NO_UNIT" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="TRANS_GROSS" Type="int" Nullable="false" />
+    <Property Name="TRANS_TARE" Type="int" Nullable="false" />
+    <Property Name="TRANS_NETTO" Type="int" Nullable="false" />
+    <Property Name="TRANS_JT_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TRANS_DATETIME" Type="datetime" Nullable="false" />
+    <Property Name="TRANS_UPDATE_AT" Type="datetime" Nullable="false" />
+    <Property Name="TRANS_OPERATOR" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TRANS_STARTTIMBANG" Type="datetime" />
+    <Property Name="TRANS_SOURCE" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_JTTTA_WEB.dbo.VW_UPDATE_DATA_STAT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VW_UPDATE_DATA_STAT">
+    <Key>
+      <PropertyRef Name="JT_KODE" />
+      <PropertyRef Name="JT_INSTANCE" />
+      <PropertyRef Name="JT_AKTIF" />
+      <PropertyRef Name="SCHEDULE_STAT" />
+      <PropertyRef Name="DATA_STAT" />
+    </Key>
+    <Property Name="JT_KODE" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="JT_INSTANCE" Type="varchar(max)" Nullable="false" />
+    <Property Name="JT_AKTIF" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="JT_LAST_EXECUTION" Type="datetime" />
+    <Property Name="SCHEDULE_STAT" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="JT_LAST_STATUS" Type="varchar(max)" />
+    <Property Name="MAX_DATETIME" Type="datetime" />
+    <Property Name="DATA_STAT" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <Function Name="CUFN_CEK_USER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+    <Parameter Name="USER_PASSWORD" Type="varchar" Mode="In" />
+    <Parameter Name="USER_USERNAME" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CUFN_COMPARE_GPS_JT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TANGGAL" Type="varchar" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="NO_UNIT" Type="varchar" MaxLength="10" />
+          <Property Name="DUMPING_START" Type="datetime" />
+          <Property Name="DUMPING_STOP" Type="datetime" />
+          <Property Name="DUMPING_COORDINATE" Type="varchar" MaxLength="200" />
+          <Property Name="DUMPING_LAT" Type="float" />
+          <Property Name="DUMPING_LONG" Type="float" />
+          <Property Name="ZONE" Type="varchar" MaxLength="200" />
+          <Property Name="JAM_TIMBANG" Type="datetime" />
+          <Property Name="MUATAN" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="CUFN_GET_AVG_TIMBANG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NO_UNIT" Type="varchar" Mode="In" />
+    <Parameter Name="TGL" Type="datetime" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="TRANS_NO_UNIT" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="GROSS" Type="int" />
+          <Property Name="TARE" Type="int" />
+          <Property Name="NETTO" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="cufn_getslip" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TRANS_RAW_ID" Type="varchar" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="TRANS_RAW_ID" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="TRANS_TGL_PRODUKSI" Type="varchar" MaxLength="30" />
+          <Property Name="TRANS_SHIFT" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="TRANS_DOCKET_NO" Type="int" Nullable="false" />
+          <Property Name="TRANS_COAL_NUMBER" Type="int" Nullable="false" />
+          <Property Name="TRANS_PIT" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="PIT_NAME" Type="varchar" MaxLength="100" />
+          <Property Name="TRANS_BLOCK" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="TRANS_ELEVASI" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="TRANS_SEAM" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="SRC_CODE" Type="varchar" MaxLength="48" Nullable="false" />
+          <Property Name="TRANS_RAW" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="MATERIAL_NAME" Type="varchar" MaxLength="30" />
+          <Property Name="TRANS_EXCAVATOR" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="TRANS_DESTINATION" Type="varchar" MaxLength="20" />
+          <Property Name="TRANS_CONDITION" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="COND_NAME" Type="varchar" MaxLength="30" />
+          <Property Name="TRANS_NO_UNIT" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="UNIT_KONTRAKTOR" Type="varchar" MaxLength="11" />
+          <Property Name="TRANS_GROSS" Type="int" Nullable="false" />
+          <Property Name="TRANS_TARE" Type="int" Nullable="false" />
+          <Property Name="TRANS_NETTO" Type="int" Nullable="false" />
+          <Property Name="TRANS_JT_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TRANS_DATETIME" Type="datetime" Nullable="false" />
+          <Property Name="TRANS_UPDATE_AT" Type="datetime" Nullable="false" />
+          <Property Name="TRANS_OPERATOR" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TRANS_STARTTIMBANG" Type="datetime" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="CUSP_COMPARE_GPS_JT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TANGGAL" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CUSP_INSERT_TRANS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CUSP_MERGE_TRANSAKSI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="cusp_pagingtable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tablename" Type="varchar" Mode="In" />
+    <Parameter Name="filter" Type="varchar(max)" Mode="In" />
+    <Parameter Name="sort" Type="varchar(max)" Mode="In" />
+    <Parameter Name="page_size" Type="int" Mode="In" />
+    <Parameter Name="page_index" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CUSP_REPLIKASI_DATA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CUSP_UPDATE_TRANSAKSI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TRANS_RAW_ID" Type="varchar" Mode="In" />
+    <Parameter Name="TRANS_COAL_NUMBER" Type="int" Mode="In" />
+    <Parameter Name="TRANS_PIT" Type="varchar" Mode="In" />
+    <Parameter Name="TRANS_BLOCK" Type="varchar" Mode="In" />
+    <Parameter Name="TRANS_ELEVASI" Type="varchar" Mode="In" />
+    <Parameter Name="TRANS_SEAM" Type="varchar" Mode="In" />
+    <Parameter Name="TRANS_RAW" Type="varchar" Mode="In" />
+    <Parameter Name="TRANS_EXCAVATOR" Type="varchar" Mode="In" />
+    <Parameter Name="TRANS_DESTINATION" Type="varchar" Mode="In" />
+    <Parameter Name="TRANS_CONDITION" Type="varchar" Mode="In" />
+    <Parameter Name="TRANS_NO_UNIT" Type="varchar" Mode="In" />
+    <Parameter Name="TRANS_DATETIME" Type="datetime" Mode="In" />
+    <Parameter Name="TRANS_JT_NAME" Type="varchar" Mode="In" />
+    <Parameter Name="TRANS_OPERATOR" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="DB_JTTTA_WEBModel1StoreContainer">
+    <EntitySet Name="TBL_M_AKSES" EntityType="Self.TBL_M_AKSES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_R_COAL_NUMBER" EntityType="Self.TBL_R_COAL_NUMBER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_R_CONDITION" EntityType="Self.TBL_R_CONDITION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_R_DESTINATION" EntityType="Self.TBL_R_DESTINATION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_R_JT" EntityType="Self.TBL_R_JT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_R_MATERIAL" EntityType="Self.TBL_R_MATERIAL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_R_MENU" EntityType="Self.TBL_R_MENU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_R_PIT" EntityType="Self.TBL_R_PIT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_R_SHIFT" EntityType="Self.TBL_R_SHIFT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_R_UNIT" EntityType="Self.TBL_R_UNIT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_R_USER" EntityType="Self.TBL_R_USER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_T_GTRACK_HIS" EntityType="Self.TBL_T_GTRACK_HIS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_T_SOURCE" EntityType="Self.TBL_T_SOURCE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_T_TARE" EntityType="Self.TBL_T_TARE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_T_TRANSAKSI" EntityType="Self.TBL_T_TRANSAKSI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_T_TRANSAKSI_TEMP" EntityType="Self.TBL_T_TRANSAKSI_TEMP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_R_MENU_LOGIN" EntityType="Self.TBL_R_MENU_LOGIN" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TBL_R_MENU_LOGIN].[Menu_primer] AS [Menu_primer], 
+    [TBL_R_MENU_LOGIN].[User_level] AS [User_level]
+    FROM [dbo].[TBL_R_MENU_LOGIN] AS [TBL_R_MENU_LOGIN]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TBL_R_PLANNING" EntityType="Self.TBL_R_PLANNING" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TBL_R_PLANNING].[Id] AS [Id], 
+    [TBL_R_PLANNING].[Tanggal] AS [Tanggal], 
+    [TBL_R_PLANNING].[Shift] AS [Shift], 
+    [TBL_R_PLANNING].[Seam] AS [Seam], 
+    [TBL_R_PLANNING].[Block] AS [Block], 
+    [TBL_R_PLANNING].[Strip] AS [Strip], 
+    [TBL_R_PLANNING].[Elevasi] AS [Elevasi], 
+    [TBL_R_PLANNING].[Material] AS [Material], 
+    [TBL_R_PLANNING].[Rom] AS [Rom], 
+    [TBL_R_PLANNING].[Inventory] AS [Inventory], 
+    [TBL_R_PLANNING].[Ash] AS [Ash], 
+    [TBL_R_PLANNING].[Tm] AS [Tm], 
+    [TBL_R_PLANNING].[Im] AS [Im], 
+    [TBL_R_PLANNING].[Vm] AS [Vm], 
+    [TBL_R_PLANNING].[Fc] AS [Fc], 
+    [TBL_R_PLANNING].[Ts] AS [Ts], 
+    [TBL_R_PLANNING].[Cva] AS [Cva], 
+    [TBL_R_PLANNING].[Cvd] AS [Cvd], 
+    [TBL_R_PLANNING].[Rd] AS [Rd], 
+    [TBL_R_PLANNING].[Hgi] AS [Hgi], 
+    [TBL_R_PLANNING].[Csn] AS [Csn], 
+    [TBL_R_PLANNING].[Is] AS [Is], 
+    [TBL_R_PLANNING].[Mc] AS [Mc], 
+    [TBL_R_PLANNING].[Md] AS [Md], 
+    [TBL_R_PLANNING].[Ml] AS [Ml], 
+    [TBL_R_PLANNING].[Ff] AS [Ff], 
+    [TBL_R_PLANNING].[So] AS [So], 
+    [TBL_R_PLANNING].[Pr] AS [Pr]
+    FROM [dbo].[TBL_R_PLANNING] AS [TBL_R_PLANNING]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TBL_R_REPORT" EntityType="Self.TBL_R_REPORT" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TBL_R_REPORT].[ReportID] AS [ReportID], 
+    [TBL_R_REPORT].[Report_Server] AS [Report_Server], 
+    [TBL_R_REPORT].[Report_path] AS [Report_path], 
+    [TBL_R_REPORT].[Report_Alias] AS [Report_Alias]
+    FROM [dbo].[TBL_R_REPORT] AS [TBL_R_REPORT]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_R_MENU_LOGIN" EntityType="Self.VW_R_MENU_LOGIN" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_R_MENU_LOGIN].[Menu_primer] AS [Menu_primer], 
+    [VW_R_MENU_LOGIN].[User_level] AS [User_level], 
+    [VW_R_MENU_LOGIN].[Id] AS [Id], 
+    [VW_R_MENU_LOGIN].[Menu] AS [Menu], 
+    [VW_R_MENU_LOGIN].[Menu_link] AS [Menu_link], 
+    [VW_R_MENU_LOGIN].[Link] AS [Link], 
+    [VW_R_MENU_LOGIN].[Urutan] AS [Urutan], 
+    [VW_R_MENU_LOGIN].[Deskripsi] AS [Deskripsi], 
+    [VW_R_MENU_LOGIN].[style_class] AS [style_class]
+    FROM [dbo].[VW_R_MENU_LOGIN] AS [VW_R_MENU_LOGIN]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_R_SHIFT" EntityType="Self.VW_R_SHIFT" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_R_SHIFT].[SHIFT_CODE] AS [SHIFT_CODE], 
+    [VW_R_SHIFT].[SHIFT_NAME] AS [SHIFT_NAME]
+    FROM [dbo].[VW_R_SHIFT] AS [VW_R_SHIFT]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_R_USER" EntityType="Self.VW_R_USER" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_R_USER].[USER_RAW_ID] AS [USER_RAW_ID], 
+    [VW_R_USER].[USER_NAME] AS [USER_NAME], 
+    [VW_R_USER].[USER_COMPANY] AS [USER_COMPANY], 
+    [VW_R_USER].[USER_AKSES] AS [USER_AKSES], 
+    [VW_R_USER].[AKSES_NAME] AS [AKSES_NAME], 
+    [VW_R_USER].[USER_USERNAME] AS [USER_USERNAME], 
+    [VW_R_USER].[USER_PASSWORD] AS [USER_PASSWORD]
+    FROM [dbo].[VW_R_USER] AS [VW_R_USER]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_T_MAX_TARE" EntityType="Self.VW_T_MAX_TARE" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_T_MAX_TARE].[NUMBER] AS [NUMBER], 
+    [VW_T_MAX_TARE].[TARE_RAWID] AS [TARE_RAWID], 
+    [VW_T_MAX_TARE].[TARE_NOUNIT] AS [TARE_NOUNIT], 
+    [VW_T_MAX_TARE].[TARE_DATETIME] AS [TARE_DATETIME], 
+    [VW_T_MAX_TARE].[TARE_VALUE] AS [TARE_VALUE]
+    FROM [dbo].[VW_T_MAX_TARE] AS [VW_T_MAX_TARE]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_T_REVIEW_TARE" EntityType="Self.VW_T_REVIEW_TARE" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_T_REVIEW_TARE].[UNIT_NO] AS [UNIT_NO], 
+    [VW_T_REVIEW_TARE].[UNIT_EGI] AS [UNIT_EGI], 
+    [VW_T_REVIEW_TARE].[UNIT_KONTRAKTOR] AS [UNIT_KONTRAKTOR], 
+    [VW_T_REVIEW_TARE].[TARE_TODAY] AS [TARE_TODAY], 
+    [VW_T_REVIEW_TARE].[LAST_TARE_VALUE] AS [LAST_TARE_VALUE], 
+    [VW_T_REVIEW_TARE].[LAST_TARE] AS [LAST_TARE]
+    FROM [dbo].[VW_T_REVIEW_TARE] AS [VW_T_REVIEW_TARE]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_T_SOURCE_AKTIF" EntityType="Self.VW_T_SOURCE_AKTIF" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_T_SOURCE_AKTIF].[SRC_RAW_ID] AS [SRC_RAW_ID], 
+    [VW_T_SOURCE_AKTIF].[SRC_TANGGAL] AS [SRC_TANGGAL], 
+    [VW_T_SOURCE_AKTIF].[SRC_PIT] AS [SRC_PIT], 
+    [VW_T_SOURCE_AKTIF].[SRC_BLOCK] AS [SRC_BLOCK], 
+    [VW_T_SOURCE_AKTIF].[SRC_ELEVASI] AS [SRC_ELEVASI], 
+    [VW_T_SOURCE_AKTIF].[SRC_SEAM] AS [SRC_SEAM], 
+    [VW_T_SOURCE_AKTIF].[SRC_CONDITION] AS [SRC_CONDITION], 
+    [VW_T_SOURCE_AKTIF].[SRC_SHIFT] AS [SRC_SHIFT], 
+    [VW_T_SOURCE_AKTIF].[SRC_PLAN_PROD] AS [SRC_PLAN_PROD], 
+    [VW_T_SOURCE_AKTIF].[SRC_CODE] AS [SRC_CODE]
+    FROM [dbo].[VW_T_SOURCE_AKTIF] AS [VW_T_SOURCE_AKTIF]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_T_TARE_ACTIVE_TODAY" EntityType="Self.VW_T_TARE_ACTIVE_TODAY" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_T_TARE_ACTIVE_TODAY].[TARE_RAWID] AS [TARE_RAWID], 
+    [VW_T_TARE_ACTIVE_TODAY].[TARE_NOUNIT] AS [TARE_NOUNIT], 
+    [VW_T_TARE_ACTIVE_TODAY].[TARE_DATETIME] AS [TARE_DATETIME], 
+    [VW_T_TARE_ACTIVE_TODAY].[TARE_VALUE] AS [TARE_VALUE]
+    FROM [dbo].[VW_T_TARE_ACTIVE_TODAY] AS [VW_T_TARE_ACTIVE_TODAY]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_T_TRANSAKSI" EntityType="Self.VW_T_TRANSAKSI" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_T_TRANSAKSI].[TRANS_RAW_ID] AS [TRANS_RAW_ID], 
+    [VW_T_TRANSAKSI].[TRANS_TGL_PRODUKSI] AS [TRANS_TGL_PRODUKSI], 
+    [VW_T_TRANSAKSI].[TRANS_SHIFT] AS [TRANS_SHIFT], 
+    [VW_T_TRANSAKSI].[TRANS_DOCKET_NO] AS [TRANS_DOCKET_NO], 
+    [VW_T_TRANSAKSI].[TRANS_COAL_NUMBER] AS [TRANS_COAL_NUMBER], 
+    [VW_T_TRANSAKSI].[TRANS_PIT] AS [TRANS_PIT], 
+    [VW_T_TRANSAKSI].[PIT_NAME] AS [PIT_NAME], 
+    [VW_T_TRANSAKSI].[TRANS_BLOCK] AS [TRANS_BLOCK], 
+    [VW_T_TRANSAKSI].[TRANS_ELEVASI] AS [TRANS_ELEVASI], 
+    [VW_T_TRANSAKSI].[TRANS_SEAM] AS [TRANS_SEAM], 
+    [VW_T_TRANSAKSI].[TRANS_RAW] AS [TRANS_RAW], 
+    [VW_T_TRANSAKSI].[MATERIAL_NAME] AS [MATERIAL_NAME], 
+    [VW_T_TRANSAKSI].[TRANS_EXCAVATOR] AS [TRANS_EXCAVATOR], 
+    [VW_T_TRANSAKSI].[TRANS_DESTINATION] AS [TRANS_DESTINATION], 
+    [VW_T_TRANSAKSI].[DEST_NAME] AS [DEST_NAME], 
+    [VW_T_TRANSAKSI].[TRANS_CONDITION] AS [TRANS_CONDITION], 
+    [VW_T_TRANSAKSI].[COND_NAME] AS [COND_NAME], 
+    [VW_T_TRANSAKSI].[TRANS_NO_UNIT] AS [TRANS_NO_UNIT], 
+    [VW_T_TRANSAKSI].[TRANS_GROSS] AS [TRANS_GROSS], 
+    [VW_T_TRANSAKSI].[TRANS_TARE] AS [TRANS_TARE], 
+    [VW_T_TRANSAKSI].[TRANS_NETTO] AS [TRANS_NETTO], 
+    [VW_T_TRANSAKSI].[TRANS_JT_NAME] AS [TRANS_JT_NAME], 
+    [VW_T_TRANSAKSI].[TRANS_DATETIME] AS [TRANS_DATETIME], 
+    [VW_T_TRANSAKSI].[TRANS_UPDATE_AT] AS [TRANS_UPDATE_AT], 
+    [VW_T_TRANSAKSI].[TRANS_OPERATOR] AS [TRANS_OPERATOR], 
+    [VW_T_TRANSAKSI].[TRANS_STARTTIMBANG] AS [TRANS_STARTTIMBANG], 
+    [VW_T_TRANSAKSI].[TRANS_SOURCE] AS [TRANS_SOURCE]
+    FROM [dbo].[VW_T_TRANSAKSI] AS [VW_T_TRANSAKSI]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_T_TRANSAKSI_SLIP" EntityType="Self.VW_T_TRANSAKSI_SLIP" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_T_TRANSAKSI_SLIP].[TRANS_RAW_ID] AS [TRANS_RAW_ID], 
+    [VW_T_TRANSAKSI_SLIP].[TRANS_TGL_PRODUKSI] AS [TRANS_TGL_PRODUKSI], 
+    [VW_T_TRANSAKSI_SLIP].[TRANS_SHIFT] AS [TRANS_SHIFT], 
+    [VW_T_TRANSAKSI_SLIP].[TRANS_DOCKET_NO] AS [TRANS_DOCKET_NO], 
+    [VW_T_TRANSAKSI_SLIP].[TRANS_COAL_NUMBER] AS [TRANS_COAL_NUMBER], 
+    [VW_T_TRANSAKSI_SLIP].[TRANS_PIT] AS [TRANS_PIT], 
+    [VW_T_TRANSAKSI_SLIP].[PIT_NAME] AS [PIT_NAME], 
+    [VW_T_TRANSAKSI_SLIP].[TRANS_BLOCK] AS [TRANS_BLOCK], 
+    [VW_T_TRANSAKSI_SLIP].[TRANS_ELEVASI] AS [TRANS_ELEVASI], 
+    [VW_T_TRANSAKSI_SLIP].[TRANS_SEAM] AS [TRANS_SEAM], 
+    [VW_T_TRANSAKSI_SLIP].[SRC_CODE] AS [SRC_CODE], 
+    [VW_T_TRANSAKSI_SLIP].[TRANS_RAW] AS [TRANS_RAW], 
+    [VW_T_TRANSAKSI_SLIP].[MATERIAL_NAME] AS [MATERIAL_NAME], 
+    [VW_T_TRANSAKSI_SLIP].[TRANS_EXCAVATOR] AS [TRANS_EXCAVATOR], 
+    [VW_T_TRANSAKSI_SLIP].[TRANS_DESTINATION] AS [TRANS_DESTINATION], 
+    [VW_T_TRANSAKSI_SLIP].[TRANS_CONDITION] AS [TRANS_CONDITION], 
+    [VW_T_TRANSAKSI_SLIP].[COND_NAME] AS [COND_NAME], 
+    [VW_T_TRANSAKSI_SLIP].[TRANS_NO_UNIT] AS [TRANS_NO_UNIT], 
+    [VW_T_TRANSAKSI_SLIP].[UNIT_KONTRAKTOR] AS [UNIT_KONTRAKTOR], 
+    [VW_T_TRANSAKSI_SLIP].[TRANS_GROSS] AS [TRANS_GROSS], 
+    [VW_T_TRANSAKSI_SLIP].[TRANS_TARE] AS [TRANS_TARE], 
+    [VW_T_TRANSAKSI_SLIP].[TRANS_NETTO] AS [TRANS_NETTO], 
+    [VW_T_TRANSAKSI_SLIP].[TRANS_JT_NAME] AS [TRANS_JT_NAME], 
+    [VW_T_TRANSAKSI_SLIP].[TRANS_DATETIME] AS [TRANS_DATETIME], 
+    [VW_T_TRANSAKSI_SLIP].[TRANS_UPDATE_AT] AS [TRANS_UPDATE_AT], 
+    [VW_T_TRANSAKSI_SLIP].[TRANS_OPERATOR] AS [TRANS_OPERATOR], 
+    [VW_T_TRANSAKSI_SLIP].[TRANS_STARTTIMBANG] AS [TRANS_STARTTIMBANG]
+    FROM [dbo].[VW_T_TRANSAKSI_SLIP] AS [VW_T_TRANSAKSI_SLIP]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_TRANS_JTTTA" EntityType="Self.VW_TRANS_JTTTA" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_TRANS_JTTTA].[TRANS_RAW_ID] AS [TRANS_RAW_ID], 
+    [VW_TRANS_JTTTA].[TRANS_TGL_PRODUKSI] AS [TRANS_TGL_PRODUKSI], 
+    [VW_TRANS_JTTTA].[TRANS_SHIFT] AS [TRANS_SHIFT], 
+    [VW_TRANS_JTTTA].[TRANS_DOCKET_NO] AS [TRANS_DOCKET_NO], 
+    [VW_TRANS_JTTTA].[TRANS_COAL_NUMBER] AS [TRANS_COAL_NUMBER], 
+    [VW_TRANS_JTTTA].[TRANS_PIT] AS [TRANS_PIT], 
+    [VW_TRANS_JTTTA].[PIT_NAME] AS [PIT_NAME], 
+    [VW_TRANS_JTTTA].[TRANS_BLOCK] AS [TRANS_BLOCK], 
+    [VW_TRANS_JTTTA].[TRANS_ELEVASI] AS [TRANS_ELEVASI], 
+    [VW_TRANS_JTTTA].[TRANS_SEAM] AS [TRANS_SEAM], 
+    [VW_TRANS_JTTTA].[TRANS_RAW] AS [TRANS_RAW], 
+    [VW_TRANS_JTTTA].[MATERIAL_NAME] AS [MATERIAL_NAME], 
+    [VW_TRANS_JTTTA].[TRANS_EXCAVATOR] AS [TRANS_EXCAVATOR], 
+    [VW_TRANS_JTTTA].[TRANS_DESTINATION] AS [TRANS_DESTINATION], 
+    [VW_TRANS_JTTTA].[DEST_NAME] AS [DEST_NAME], 
+    [VW_TRANS_JTTTA].[TRANS_CONDITION] AS [TRANS_CONDITION], 
+    [VW_TRANS_JTTTA].[COND_NAME] AS [COND_NAME], 
+    [VW_TRANS_JTTTA].[TRANS_NO_UNIT] AS [TRANS_NO_UNIT], 
+    [VW_TRANS_JTTTA].[TRANS_GROSS] AS [TRANS_GROSS], 
+    [VW_TRANS_JTTTA].[TRANS_TARE] AS [TRANS_TARE], 
+    [VW_TRANS_JTTTA].[TRANS_NETTO] AS [TRANS_NETTO], 
+    [VW_TRANS_JTTTA].[TRANS_JT_NAME] AS [TRANS_JT_NAME], 
+    [VW_TRANS_JTTTA].[TRANS_DATETIME] AS [TRANS_DATETIME], 
+    [VW_TRANS_JTTTA].[TRANS_UPDATE_AT] AS [TRANS_UPDATE_AT], 
+    [VW_TRANS_JTTTA].[TRANS_OPERATOR] AS [TRANS_OPERATOR], 
+    [VW_TRANS_JTTTA].[TRANS_STARTTIMBANG] AS [TRANS_STARTTIMBANG], 
+    [VW_TRANS_JTTTA].[TRANS_SOURCE] AS [TRANS_SOURCE]
+    FROM [dbo].[VW_TRANS_JTTTA] AS [VW_TRANS_JTTTA]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_UPDATE_DATA_STAT" EntityType="Self.VW_UPDATE_DATA_STAT" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_UPDATE_DATA_STAT].[JT_KODE] AS [JT_KODE], 
+    [VW_UPDATE_DATA_STAT].[JT_INSTANCE] AS [JT_INSTANCE], 
+    [VW_UPDATE_DATA_STAT].[JT_AKTIF] AS [JT_AKTIF], 
+    [VW_UPDATE_DATA_STAT].[JT_LAST_EXECUTION] AS [JT_LAST_EXECUTION], 
+    [VW_UPDATE_DATA_STAT].[SCHEDULE_STAT] AS [SCHEDULE_STAT], 
+    [VW_UPDATE_DATA_STAT].[JT_LAST_STATUS] AS [JT_LAST_STATUS], 
+    [VW_UPDATE_DATA_STAT].[MAX_DATETIME] AS [MAX_DATETIME], 
+    [VW_UPDATE_DATA_STAT].[DATA_STAT] AS [DATA_STAT]
+    FROM [dbo].[VW_UPDATE_DATA_STAT] AS [VW_UPDATE_DATA_STAT]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

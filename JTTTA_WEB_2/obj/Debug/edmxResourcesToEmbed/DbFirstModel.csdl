@@ -1,0 +1,604 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_JTTTA_WEBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <ComplexType Name="CUFN_COMPARE_GPS_JT_Result">
+    <Property Name="NO_UNIT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="DUMPING_START" Type="DateTime" />
+    <Property Name="DUMPING_STOP" Type="DateTime" />
+    <Property Name="DUMPING_COORDINATE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="DUMPING_LAT" Type="Double" />
+    <Property Name="DUMPING_LONG" Type="Double" />
+    <Property Name="ZONE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="JAM_TIMBANG" Type="DateTime" />
+    <Property Name="MUATAN" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="CUFN_GET_AVG_TIMBANG_Result">
+    <Property Name="TRANS_NO_UNIT" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="GROSS" Type="Int32" />
+    <Property Name="TARE" Type="Int32" />
+    <Property Name="NETTO" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="cufn_getslip_Result">
+    <Property Name="TRANS_RAW_ID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_TGL_PRODUKSI" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="TRANS_SHIFT" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_DOCKET_NO" Type="Int32" Nullable="false" />
+    <Property Name="TRANS_COAL_NUMBER" Type="Int32" Nullable="false" />
+    <Property Name="TRANS_PIT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PIT_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TRANS_BLOCK" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_ELEVASI" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_SEAM" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SRC_CODE" Type="String" MaxLength="48" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_RAW" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MATERIAL_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="TRANS_EXCAVATOR" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_DESTINATION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TRANS_CONDITION" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="COND_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="TRANS_NO_UNIT" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UNIT_KONTRAKTOR" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="TRANS_GROSS" Type="Int32" Nullable="false" />
+    <Property Name="TRANS_TARE" Type="Int32" Nullable="false" />
+    <Property Name="TRANS_NETTO" Type="Int32" Nullable="false" />
+    <Property Name="TRANS_JT_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_DATETIME" Type="DateTime" Nullable="false" />
+    <Property Name="TRANS_UPDATE_AT" Type="DateTime" Nullable="false" />
+    <Property Name="TRANS_OPERATOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_STARTTIMBANG" Type="DateTime" />
+  </ComplexType>
+  <EntityType Name="TBL_M_AKSES">
+    <Key>
+      <PropertyRef Name="AKSES_RAW_ID" />
+    </Key>
+    <Property Name="AKSES_RAW_ID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AKSES_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_R_COAL_NUMBER">
+    <Key>
+      <PropertyRef Name="CN_NUMBER" />
+    </Key>
+    <Property Name="CN_NUMBER" Type="Int32" Nullable="false" />
+    <Property Name="CN_NRP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CN_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CN_KONTRAKTOR" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CN_AKTIF" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_R_CONDITION">
+    <Key>
+      <PropertyRef Name="COND_CODE" />
+    </Key>
+    <Property Name="COND_CODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="COND_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_R_DESTINATION">
+    <Key>
+      <PropertyRef Name="DEST_CODE" />
+    </Key>
+    <Property Name="DEST_CODE" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DEST_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_R_JT">
+    <Key>
+      <PropertyRef Name="JT_KODE" />
+    </Key>
+    <Property Name="JT_KODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="JT_INSTANCE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="JT_AKTIF" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="JT_LAST_EXECUTION" Type="DateTime" Precision="3" />
+    <Property Name="JT_LAST_STATUS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TBL_R_MATERIAL">
+    <Key>
+      <PropertyRef Name="MATERIAL_CODE" />
+    </Key>
+    <Property Name="MATERIAL_CODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MATERIAL_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_R_MENU">
+    <Key>
+      <PropertyRef Name="Primer" />
+    </Key>
+    <Property Name="Primer" Type="Int64" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Menu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Menu_link" Type="Int32" />
+    <Property Name="Link" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Urutan" Type="Int32" />
+    <Property Name="Deskripsi" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="style_class" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TBL_R_PIT">
+    <Key>
+      <PropertyRef Name="PIT_CODE" />
+    </Key>
+    <Property Name="PIT_CODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PIT_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_R_SHIFT">
+    <Key>
+      <PropertyRef Name="SHIFT_CODE" />
+    </Key>
+    <Property Name="SHIFT_CODE" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SHIFT_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SHIFT_AKTIF" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_R_UNIT">
+    <Key>
+      <PropertyRef Name="UNIT_NO" />
+    </Key>
+    <Property Name="UNIT_NO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UNIT_EGI" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="UNIT_KONTRAKTOR" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="UNIT_AKTIF" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_R_USER">
+    <Key>
+      <PropertyRef Name="USER_RAW_ID" />
+    </Key>
+    <Property Name="USER_RAW_ID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="USER_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="USER_COMPANY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="USER_AKSES" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="USER_USERNAME" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="USER_PASSWORD" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_T_GTRACK_HIS">
+    <Key>
+      <PropertyRef Name="PK_PositionLogID" />
+    </Key>
+    <Property Name="PK_PositionLogID" Type="Int32" Nullable="false" />
+    <Property Name="FK_UnitID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Plate_No" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="PositionDateTime" Type="DateTime" Precision="3" />
+    <Property Name="GPSDateTime" Type="DateTime" Precision="3" />
+    <Property Name="Longitude" Type="Decimal" Precision="18" Scale="7" />
+    <Property Name="Latitude" Type="Decimal" Precision="18" Scale="7" />
+    <Property Name="Speed" Type="Int32" />
+    <Property Name="Direction" Type="Int32" />
+    <Property Name="Altitude" Type="Int32" />
+    <Property Name="NumberOfSatelite" Type="Int32" />
+    <Property Name="ReportID" Type="Int32" />
+    <Property Name="Mileage" Type="Int32" />
+    <Property Name="AccState" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="InputValue" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="OutputValue" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="AnalogInput9" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="AnalogInput10" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="LastRFID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Location" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Zone" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TBL_T_SOURCE">
+    <Key>
+      <PropertyRef Name="SRC_RAW_ID" />
+    </Key>
+    <Property Name="SRC_RAW_ID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SRC_TANGGAL" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SRC_PIT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SRC_BLOCK" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SRC_ELEVASI" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SRC_SEAM" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SRC_CONDITION" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SRC_SHIFT" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="SRC_PLAN_PROD" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TBL_T_TARE">
+    <Key>
+      <PropertyRef Name="TARE_RAWID" />
+    </Key>
+    <Property Name="TARE_RAWID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TARE_NOUNIT" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TARE_DATETIME" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TARE_VALUE" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_T_TRANSAKSI">
+    <Key>
+      <PropertyRef Name="TRANS_RAW_ID" />
+    </Key>
+    <Property Name="TRANS_RAW_ID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_DOCKET_NO" Type="Int32" Nullable="false" />
+    <Property Name="TRANS_COAL_NUMBER" Type="Int32" Nullable="false" />
+    <Property Name="TRANS_PIT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_BLOCK" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_ELEVASI" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_SEAM" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_RAW" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_EXCAVATOR" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_DESTINATION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TRANS_CONDITION" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_NO_UNIT" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_GROSS" Type="Int32" Nullable="false" />
+    <Property Name="TRANS_TARE" Type="Int32" Nullable="false" />
+    <Property Name="TRANS_NETTO" Type="Int32" Nullable="false" />
+    <Property Name="TRANS_JT_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_STARTTIMBANG" Type="DateTime" Precision="3" />
+    <Property Name="TRANS_DATETIME" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TRANS_UPDATE_AT" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TRANS_OPERATOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_ISDELETED" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_SOURCE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TBL_T_TRANSAKSI_TEMP">
+    <Key>
+      <PropertyRef Name="TRANS_RAW_ID" />
+    </Key>
+    <Property Name="TRANS_RAW_ID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_DOCKET_NO" Type="Int32" Nullable="false" />
+    <Property Name="TRANS_COAL_NUMBER" Type="Int32" Nullable="false" />
+    <Property Name="TRANS_PIT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_BLOCK" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_ELEVASI" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_SEAM" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_RAW" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_EXCAVATOR" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_DESTINATION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TRANS_CONDITION" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_NO_UNIT" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_GROSS" Type="Int32" Nullable="false" />
+    <Property Name="TRANS_TARE" Type="Int32" Nullable="false" />
+    <Property Name="TRANS_NETTO" Type="Int32" Nullable="false" />
+    <Property Name="TRANS_JT_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_STARTTIMBANG" Type="DateTime" Precision="3" />
+    <Property Name="TRANS_DATETIME" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TRANS_UPDATE_AT" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TRANS_OPERATOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_ISDELETED" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_SOURCE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TBL_R_MENU_LOGIN">
+    <Key>
+      <PropertyRef Name="Menu_primer" />
+      <PropertyRef Name="User_level" />
+    </Key>
+    <Property Name="Menu_primer" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="User_level" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_R_REPORT">
+    <Key>
+      <PropertyRef Name="ReportID" />
+      <PropertyRef Name="Report_Server" />
+      <PropertyRef Name="Report_path" />
+    </Key>
+    <Property Name="ReportID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Report_Server" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Report_path" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Report_Alias" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="VW_R_MENU_LOGIN">
+    <Key>
+      <PropertyRef Name="Menu_primer" />
+      <PropertyRef Name="User_level" />
+    </Key>
+    <Property Name="Menu_primer" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="User_level" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Id" Type="Int32" />
+    <Property Name="Menu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Menu_link" Type="Int32" />
+    <Property Name="Link" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Urutan" Type="Int32" />
+    <Property Name="Deskripsi" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="style_class" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="VW_R_SHIFT">
+    <Key>
+      <PropertyRef Name="SHIFT_CODE" />
+      <PropertyRef Name="SHIFT_NAME" />
+    </Key>
+    <Property Name="SHIFT_CODE" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SHIFT_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VW_R_USER">
+    <Key>
+      <PropertyRef Name="USER_RAW_ID" />
+      <PropertyRef Name="USER_NAME" />
+      <PropertyRef Name="USER_COMPANY" />
+      <PropertyRef Name="USER_AKSES" />
+      <PropertyRef Name="USER_USERNAME" />
+      <PropertyRef Name="USER_PASSWORD" />
+    </Key>
+    <Property Name="USER_RAW_ID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="USER_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="USER_COMPANY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="USER_AKSES" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AKSES_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="USER_USERNAME" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="USER_PASSWORD" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VW_T_MAX_TARE">
+    <Key>
+      <PropertyRef Name="TARE_RAWID" />
+      <PropertyRef Name="TARE_NOUNIT" />
+      <PropertyRef Name="TARE_DATETIME" />
+      <PropertyRef Name="TARE_VALUE" />
+    </Key>
+    <Property Name="NUMBER" Type="Int64" />
+    <Property Name="TARE_RAWID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TARE_NOUNIT" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TARE_DATETIME" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TARE_VALUE" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VW_T_REVIEW_TARE">
+    <Key>
+      <PropertyRef Name="UNIT_NO" />
+      <PropertyRef Name="TARE_TODAY" />
+    </Key>
+    <Property Name="UNIT_NO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UNIT_EGI" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="UNIT_KONTRAKTOR" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="TARE_TODAY" Type="Int32" Nullable="false" />
+    <Property Name="LAST_TARE_VALUE" Type="Int32" />
+    <Property Name="LAST_TARE" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="VW_T_SOURCE_AKTIF">
+    <Key>
+      <PropertyRef Name="SRC_RAW_ID" />
+      <PropertyRef Name="SRC_TANGGAL" />
+      <PropertyRef Name="SRC_PIT" />
+      <PropertyRef Name="SRC_BLOCK" />
+      <PropertyRef Name="SRC_ELEVASI" />
+      <PropertyRef Name="SRC_SEAM" />
+      <PropertyRef Name="SRC_CONDITION" />
+      <PropertyRef Name="SRC_CODE" />
+    </Key>
+    <Property Name="SRC_RAW_ID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SRC_TANGGAL" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SRC_PIT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SRC_BLOCK" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SRC_ELEVASI" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SRC_SEAM" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SRC_CONDITION" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SRC_SHIFT" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="SRC_PLAN_PROD" Type="Int32" />
+    <Property Name="SRC_CODE" Type="String" MaxLength="48" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VW_T_TARE_ACTIVE_TODAY">
+    <Key>
+      <PropertyRef Name="TARE_RAWID" />
+      <PropertyRef Name="TARE_NOUNIT" />
+      <PropertyRef Name="TARE_DATETIME" />
+      <PropertyRef Name="TARE_VALUE" />
+    </Key>
+    <Property Name="TARE_RAWID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TARE_NOUNIT" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TARE_DATETIME" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TARE_VALUE" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VW_T_TRANSAKSI">
+    <Key>
+      <PropertyRef Name="TRANS_RAW_ID" />
+      <PropertyRef Name="TRANS_SHIFT" />
+      <PropertyRef Name="TRANS_DOCKET_NO" />
+      <PropertyRef Name="TRANS_COAL_NUMBER" />
+      <PropertyRef Name="TRANS_PIT" />
+      <PropertyRef Name="TRANS_BLOCK" />
+      <PropertyRef Name="TRANS_ELEVASI" />
+      <PropertyRef Name="TRANS_SEAM" />
+      <PropertyRef Name="TRANS_RAW" />
+      <PropertyRef Name="TRANS_EXCAVATOR" />
+      <PropertyRef Name="TRANS_CONDITION" />
+      <PropertyRef Name="TRANS_NO_UNIT" />
+      <PropertyRef Name="TRANS_GROSS" />
+      <PropertyRef Name="TRANS_TARE" />
+      <PropertyRef Name="TRANS_NETTO" />
+      <PropertyRef Name="TRANS_JT_NAME" />
+      <PropertyRef Name="TRANS_DATETIME" />
+      <PropertyRef Name="TRANS_UPDATE_AT" />
+      <PropertyRef Name="TRANS_OPERATOR" />
+    </Key>
+    <Property Name="TRANS_RAW_ID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_TGL_PRODUKSI" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="TRANS_SHIFT" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_DOCKET_NO" Type="Int32" Nullable="false" />
+    <Property Name="TRANS_COAL_NUMBER" Type="Int32" Nullable="false" />
+    <Property Name="TRANS_PIT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PIT_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TRANS_BLOCK" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_ELEVASI" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_SEAM" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_RAW" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MATERIAL_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="TRANS_EXCAVATOR" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_DESTINATION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DEST_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TRANS_CONDITION" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="COND_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="TRANS_NO_UNIT" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_GROSS" Type="Int32" Nullable="false" />
+    <Property Name="TRANS_TARE" Type="Int32" Nullable="false" />
+    <Property Name="TRANS_NETTO" Type="Int32" Nullable="false" />
+    <Property Name="TRANS_JT_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_DATETIME" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TRANS_UPDATE_AT" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TRANS_OPERATOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_STARTTIMBANG" Type="DateTime" Precision="3" />
+    <Property Name="TRANS_SOURCE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="VW_T_TRANSAKSI_SLIP">
+    <Key>
+      <PropertyRef Name="TRANS_RAW_ID" />
+      <PropertyRef Name="TRANS_SHIFT" />
+      <PropertyRef Name="TRANS_DOCKET_NO" />
+      <PropertyRef Name="TRANS_COAL_NUMBER" />
+      <PropertyRef Name="TRANS_PIT" />
+      <PropertyRef Name="TRANS_BLOCK" />
+      <PropertyRef Name="TRANS_ELEVASI" />
+      <PropertyRef Name="TRANS_SEAM" />
+      <PropertyRef Name="SRC_CODE" />
+      <PropertyRef Name="TRANS_RAW" />
+      <PropertyRef Name="TRANS_EXCAVATOR" />
+      <PropertyRef Name="TRANS_CONDITION" />
+      <PropertyRef Name="TRANS_NO_UNIT" />
+      <PropertyRef Name="TRANS_GROSS" />
+      <PropertyRef Name="TRANS_TARE" />
+      <PropertyRef Name="TRANS_NETTO" />
+      <PropertyRef Name="TRANS_JT_NAME" />
+      <PropertyRef Name="TRANS_DATETIME" />
+      <PropertyRef Name="TRANS_UPDATE_AT" />
+      <PropertyRef Name="TRANS_OPERATOR" />
+    </Key>
+    <Property Name="TRANS_RAW_ID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_TGL_PRODUKSI" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="TRANS_SHIFT" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_DOCKET_NO" Type="Int32" Nullable="false" />
+    <Property Name="TRANS_COAL_NUMBER" Type="Int32" Nullable="false" />
+    <Property Name="TRANS_PIT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PIT_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TRANS_BLOCK" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_ELEVASI" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_SEAM" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SRC_CODE" Type="String" MaxLength="48" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_RAW" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MATERIAL_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="TRANS_EXCAVATOR" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_DESTINATION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TRANS_CONDITION" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="COND_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="TRANS_NO_UNIT" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UNIT_KONTRAKTOR" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="TRANS_GROSS" Type="Int32" Nullable="false" />
+    <Property Name="TRANS_TARE" Type="Int32" Nullable="false" />
+    <Property Name="TRANS_NETTO" Type="Int32" Nullable="false" />
+    <Property Name="TRANS_JT_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_DATETIME" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TRANS_UPDATE_AT" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TRANS_OPERATOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_STARTTIMBANG" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="VW_TRANS_JTTTA">
+    <Key>
+      <PropertyRef Name="TRANS_RAW_ID" />
+      <PropertyRef Name="TRANS_SHIFT" />
+      <PropertyRef Name="TRANS_DOCKET_NO" />
+      <PropertyRef Name="TRANS_COAL_NUMBER" />
+      <PropertyRef Name="TRANS_PIT" />
+      <PropertyRef Name="TRANS_BLOCK" />
+      <PropertyRef Name="TRANS_ELEVASI" />
+      <PropertyRef Name="TRANS_SEAM" />
+      <PropertyRef Name="TRANS_RAW" />
+      <PropertyRef Name="TRANS_EXCAVATOR" />
+      <PropertyRef Name="TRANS_CONDITION" />
+      <PropertyRef Name="TRANS_NO_UNIT" />
+      <PropertyRef Name="TRANS_GROSS" />
+      <PropertyRef Name="TRANS_TARE" />
+      <PropertyRef Name="TRANS_NETTO" />
+      <PropertyRef Name="TRANS_JT_NAME" />
+      <PropertyRef Name="TRANS_DATETIME" />
+      <PropertyRef Name="TRANS_UPDATE_AT" />
+      <PropertyRef Name="TRANS_OPERATOR" />
+    </Key>
+    <Property Name="TRANS_RAW_ID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_TGL_PRODUKSI" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="TRANS_SHIFT" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_DOCKET_NO" Type="Int32" Nullable="false" />
+    <Property Name="TRANS_COAL_NUMBER" Type="Int32" Nullable="false" />
+    <Property Name="TRANS_PIT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PIT_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TRANS_BLOCK" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_ELEVASI" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_SEAM" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_RAW" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MATERIAL_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="TRANS_EXCAVATOR" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_DESTINATION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DEST_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TRANS_CONDITION" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="COND_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="TRANS_NO_UNIT" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_GROSS" Type="Int32" Nullable="false" />
+    <Property Name="TRANS_TARE" Type="Int32" Nullable="false" />
+    <Property Name="TRANS_NETTO" Type="Int32" Nullable="false" />
+    <Property Name="TRANS_JT_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_DATETIME" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TRANS_UPDATE_AT" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TRANS_OPERATOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANS_STARTTIMBANG" Type="DateTime" Precision="3" />
+    <Property Name="TRANS_SOURCE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="VW_UPDATE_DATA_STAT">
+    <Key>
+      <PropertyRef Name="JT_KODE" />
+      <PropertyRef Name="JT_INSTANCE" />
+      <PropertyRef Name="JT_AKTIF" />
+      <PropertyRef Name="SCHEDULE_STAT" />
+      <PropertyRef Name="DATA_STAT" />
+    </Key>
+    <Property Name="JT_KODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="JT_INSTANCE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="JT_AKTIF" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="JT_LAST_EXECUTION" Type="DateTime" Precision="3" />
+    <Property Name="SCHEDULE_STAT" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="JT_LAST_STATUS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="MAX_DATETIME" Type="DateTime" Precision="3" />
+    <Property Name="DATA_STAT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="DB_JTTTA_WEBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TBL_M_AKSES" EntityType="Self.TBL_M_AKSES" />
+    <EntitySet Name="TBL_R_COAL_NUMBER" EntityType="Self.TBL_R_COAL_NUMBER" />
+    <EntitySet Name="TBL_R_CONDITION" EntityType="Self.TBL_R_CONDITION" />
+    <EntitySet Name="TBL_R_DESTINATION" EntityType="Self.TBL_R_DESTINATION" />
+    <EntitySet Name="TBL_R_JT" EntityType="Self.TBL_R_JT" />
+    <EntitySet Name="TBL_R_MATERIAL" EntityType="Self.TBL_R_MATERIAL" />
+    <EntitySet Name="TBL_R_MENU" EntityType="Self.TBL_R_MENU" />
+    <EntitySet Name="TBL_R_PIT" EntityType="Self.TBL_R_PIT" />
+    <EntitySet Name="TBL_R_SHIFT" EntityType="Self.TBL_R_SHIFT" />
+    <EntitySet Name="TBL_R_UNIT" EntityType="Self.TBL_R_UNIT" />
+    <EntitySet Name="TBL_R_USER" EntityType="Self.TBL_R_USER" />
+    <EntitySet Name="TBL_T_GTRACK_HIS" EntityType="Self.TBL_T_GTRACK_HIS" />
+    <EntitySet Name="TBL_T_SOURCE" EntityType="Self.TBL_T_SOURCE" />
+    <EntitySet Name="TBL_T_TARE" EntityType="Self.TBL_T_TARE" />
+    <EntitySet Name="TBL_T_TRANSAKSI" EntityType="Self.TBL_T_TRANSAKSI" />
+    <EntitySet Name="TBL_T_TRANSAKSI_TEMP" EntityType="Self.TBL_T_TRANSAKSI_TEMP" />
+    <EntitySet Name="TBL_R_MENU_LOGIN" EntityType="Self.TBL_R_MENU_LOGIN" />
+    <EntitySet Name="TBL_R_REPORT" EntityType="Self.TBL_R_REPORT" />
+    <EntitySet Name="VW_R_MENU_LOGIN" EntityType="Self.VW_R_MENU_LOGIN" />
+    <EntitySet Name="VW_R_SHIFT" EntityType="Self.VW_R_SHIFT" />
+    <EntitySet Name="VW_R_USER" EntityType="Self.VW_R_USER" />
+    <EntitySet Name="VW_T_MAX_TARE" EntityType="Self.VW_T_MAX_TARE" />
+    <EntitySet Name="VW_T_REVIEW_TARE" EntityType="Self.VW_T_REVIEW_TARE" />
+    <EntitySet Name="VW_T_SOURCE_AKTIF" EntityType="Self.VW_T_SOURCE_AKTIF" />
+    <EntitySet Name="VW_T_TARE_ACTIVE_TODAY" EntityType="Self.VW_T_TARE_ACTIVE_TODAY" />
+    <EntitySet Name="VW_T_TRANSAKSI" EntityType="Self.VW_T_TRANSAKSI" />
+    <EntitySet Name="VW_T_TRANSAKSI_SLIP" EntityType="Self.VW_T_TRANSAKSI_SLIP" />
+    <EntitySet Name="VW_TRANS_JTTTA" EntityType="Self.VW_TRANS_JTTTA" />
+    <EntitySet Name="VW_UPDATE_DATA_STAT" EntityType="Self.VW_UPDATE_DATA_STAT" />
+    <FunctionImport Name="CUFN_COMPARE_GPS_JT" IsComposable="true" ReturnType="Collection(DB_JTTTA_WEBModel.CUFN_COMPARE_GPS_JT_Result)">
+      <Parameter Name="TANGGAL" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CUFN_GET_AVG_TIMBANG" IsComposable="true" ReturnType="Collection(DB_JTTTA_WEBModel.CUFN_GET_AVG_TIMBANG_Result)">
+      <Parameter Name="NO_UNIT" Mode="In" Type="String" />
+      <Parameter Name="TGL" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="cufn_getslip" IsComposable="true" ReturnType="Collection(DB_JTTTA_WEBModel.cufn_getslip_Result)">
+      <Parameter Name="TRANS_RAW_ID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CUSP_COMPARE_GPS_JT">
+      <Parameter Name="TANGGAL" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CUSP_INSERT_TRANS" />
+    <FunctionImport Name="CUSP_MERGE_TRANSAKSI" />
+    <FunctionImport Name="cusp_pagingtable">
+      <Parameter Name="tablename" Mode="In" Type="String" />
+      <Parameter Name="filter" Mode="In" Type="String" />
+      <Parameter Name="sort" Mode="In" Type="String" />
+      <Parameter Name="page_size" Mode="In" Type="Int32" />
+      <Parameter Name="page_index" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CUSP_REPLIKASI_DATA" />
+    <FunctionImport Name="CUSP_UPDATE_TRANSAKSI">
+      <Parameter Name="TRANS_RAW_ID" Mode="In" Type="String" />
+      <Parameter Name="TRANS_COAL_NUMBER" Mode="In" Type="Int32" />
+      <Parameter Name="TRANS_PIT" Mode="In" Type="String" />
+      <Parameter Name="TRANS_BLOCK" Mode="In" Type="String" />
+      <Parameter Name="TRANS_ELEVASI" Mode="In" Type="String" />
+      <Parameter Name="TRANS_SEAM" Mode="In" Type="String" />
+      <Parameter Name="TRANS_RAW" Mode="In" Type="String" />
+      <Parameter Name="TRANS_EXCAVATOR" Mode="In" Type="String" />
+      <Parameter Name="TRANS_DESTINATION" Mode="In" Type="String" />
+      <Parameter Name="TRANS_CONDITION" Mode="In" Type="String" />
+      <Parameter Name="TRANS_NO_UNIT" Mode="In" Type="String" />
+      <Parameter Name="TRANS_DATETIME" Mode="In" Type="DateTime" />
+      <Parameter Name="TRANS_JT_NAME" Mode="In" Type="String" />
+      <Parameter Name="TRANS_OPERATOR" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>

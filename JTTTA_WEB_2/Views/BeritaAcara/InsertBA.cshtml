@@ -1,0 +1,217 @@
+﻿@{
+    ViewBag.Title = "Tuah Turangga Agung";
+    ViewBag.dashboard = "Home";
+    ViewBag.dashboardSmall = "Input Plan";
+    Layout = "~/Views/Shared/_blankLayout.cshtml";
+    ViewBag.pathParent = Url.Content("~").Substring(0, Url.Content("~").Length - 1);
+}
+
+<style>
+    .k-list-scroller {
+        height: 170px !important;
+        overflow-y: scroll !important;
+    }
+
+    .k-dropdown, .k-datepicker {
+        width: 9.2em;
+    }
+
+    .k-dropdown-wrap, .k-picker-wrap {
+        border-radius: 3px;
+        height: 36px;
+    }
+
+        .k-picker-wrap .k-input {
+            height: 32px;
+            width: 100%;
+        }
+
+    .k-dropdown .k-input {
+        padding-top: 7px;
+    }
+
+    .k-picker-wrap .k-icon {
+        margin-top: 7px;
+    }
+</style>
+
+<input type="hidden" id="urlPath" name="urlPath" value="@ViewBag.pathParent" />
+@*<input type="hidden" id="noMasuk" name="urlPath" value="@(Request.QueryString["noMasuk"])" />*@
+
+<div class="row" style="margin-top:20px">
+    <div class="col-lg-12">
+        <div class="panel panel-flat">
+            <div class="panel-body">
+                <h6><b>MANAGE BA INVENTORY-QUALITY</b></h6>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="col-md-3">
+                            <small id="passwordHelpInline" class="text-muted">
+                                TANGGAL
+                            </small><br />
+                            <input type="text" id="txt_tgl" class="form-control mx-md-6"><br />
+                        </div>
+                        <div class="col-md-3">
+                            <small id="passwordHelpInline" class="text-muted">
+                                ROM
+                            </small><br />
+                            <input type="text" id="txt_rom" class="form-control mx-md-6"><br />
+                        </div>
+                    </div>
+                    <br />
+                </div>
+                <br />
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="col-md-3">
+                            <small id="passwordHelpInline" class="text-muted">
+                                MATERIAL
+                            </small><br />
+                            <input type="text" id="txt_material" class="form-control mx-md-6"><br />
+                        </div>
+                        <div class="col-md-3">
+                            <small id="passwordHelpInline" class="text-muted">
+                                INVENTORY
+                            </small><br />
+                            <input type="text" id="txt_inventory" class="form-control mx-md-6"><br />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-2">
+                            <small>
+                                TM
+                            </small><br />
+                            <input type="number" id="txt_tm" class="form-control mx-md-6"><br />
+                        </div>
+                        <div class="col-md-2">
+                            <small>
+                                IM
+                            </small><br />
+                            <input type="number" id="txt_im" class="form-control mx-md-6"><br />
+                        </div>
+                        <div class="col-md-2">
+                            <small>
+                                ASH
+                            </small><br />
+                            <input type="number" id="txt_ash" class="form-control mx-md-6"><br />
+                        </div>
+                        <div class="col-md-2">
+                            <small>
+                                VM
+                            </small><br />
+                            <input type="number" id="txt_vm" class="form-control mx-md-6"><br />
+                        </div>
+                        <div class="col-md-2">
+                            <small>
+                                FC
+                            </small><br />
+                            <input type="number" id="txt_fc" class="form-control mx-md-6"><br />
+                        </div>
+                        <div class="col-md-2">
+                            <small>
+                                TS
+                            </small><br />
+                            <input type="number" id="txt_ts" class="form-control mx-md-6"><br />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-2">
+                            <small>
+                                CVA
+                            </small><br />
+                            <input type="number" id="txt_cva" class="form-control mx-md-6"><br />
+                        </div>
+                        <div class="col-md-2">
+                            <small>
+                                CVD
+                            </small><br />
+                            <input type="number" id="txt_cvd" class="form-control mx-md-6"><br />
+                        </div>
+                        <div class="col-md-2">
+                            <small>
+                                RD
+                            </small><br />
+                            <input type="number" id="txt_rd" class="form-control mx-md-6"><br />
+                        </div>
+                        <div class="col-md-2">
+                            <small>
+                                HGI
+                            </small><br />
+                            <input type="number" id="txt_hgi" class="form-control mx-md-6"><br />
+                        </div>
+                        <div class="col-md-2">
+                            <small>
+                                CSN
+                            </small><br />
+                            <input type="number" id="txt_csn" class="form-control mx-md-6"><br />
+                        </div>
+                        <div class="col-md-2">
+                            <small>
+                                IS
+                            </small><br />
+                            <input type="number" id="txt_is" class="form-control mx-md-6"><br />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-2">
+                            <small>
+                                MC
+                            </small><br />
+                            <input type="number" id="txt_mc" class="form-control mx-md-6"><br />
+                        </div>
+                        <div class="col-md-2">
+                            <small>
+                                MD
+                            </small><br />
+                            <input type="number" id="txt_md" class="form-control mx-md-6"><br />
+                        </div>
+                        <div class="col-md-2">
+                            <small>
+                                ML
+                            </small><br />
+                            <input type="number" id="txt_ml" class="form-control mx-md-6"><br />
+                        </div>
+                        <div class="col-md-2">
+                            <small>
+                                FF
+                            </small><br />
+                            <input type="number" id="txt_ff" class="form-control mx-md-6"><br />
+                        </div>
+                        <div class="col-md-2">
+                            <small>
+                                SO
+                            </small><br />
+                            <input type="number" id="txt_so" class="form-control mx-md-6"><br />
+                        </div>
+                        <div class="col-md-2">
+                            <small>
+                                PR
+                            </small><br />
+                            <input type="number" id="txt_pr" class="form-control mx-md-6"><br />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12" style="text-align:center">
+                        <button id="btn_submit" type="button" class="btn btn-primary" onclick="btn_submit_onclick()">Submit</button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <button id="btn_close" type="button" class="btn btn-warning" onclick="btn_close_onclick()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="@ViewBag.pathParent/JS/BeritaAcara/InsertBA.js"></script>

@@ -1,0 +1,500 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB_JTTTA_WEBModelStoreContainer" CdmEntityContainer="DB_JTTTA_WEBEntities">
+    <EntitySetMapping Name="TBL_M_AKSES">
+      <EntityTypeMapping TypeName="DB_JTTTA_WEBModel.TBL_M_AKSES">
+        <MappingFragment StoreEntitySet="TBL_M_AKSES">
+          <ScalarProperty Name="AKSES_RAW_ID" ColumnName="AKSES_RAW_ID" />
+          <ScalarProperty Name="AKSES_NAME" ColumnName="AKSES_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_R_COAL_NUMBER">
+      <EntityTypeMapping TypeName="DB_JTTTA_WEBModel.TBL_R_COAL_NUMBER">
+        <MappingFragment StoreEntitySet="TBL_R_COAL_NUMBER">
+          <ScalarProperty Name="CN_NUMBER" ColumnName="CN_NUMBER" />
+          <ScalarProperty Name="CN_NRP" ColumnName="CN_NRP" />
+          <ScalarProperty Name="CN_NAME" ColumnName="CN_NAME" />
+          <ScalarProperty Name="CN_KONTRAKTOR" ColumnName="CN_KONTRAKTOR" />
+          <ScalarProperty Name="CN_AKTIF" ColumnName="CN_AKTIF" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_R_CONDITION">
+      <EntityTypeMapping TypeName="DB_JTTTA_WEBModel.TBL_R_CONDITION">
+        <MappingFragment StoreEntitySet="TBL_R_CONDITION">
+          <ScalarProperty Name="COND_CODE" ColumnName="COND_CODE" />
+          <ScalarProperty Name="COND_NAME" ColumnName="COND_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_R_DESTINATION">
+      <EntityTypeMapping TypeName="DB_JTTTA_WEBModel.TBL_R_DESTINATION">
+        <MappingFragment StoreEntitySet="TBL_R_DESTINATION">
+          <ScalarProperty Name="DEST_CODE" ColumnName="DEST_CODE" />
+          <ScalarProperty Name="DEST_NAME" ColumnName="DEST_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_R_JT">
+      <EntityTypeMapping TypeName="DB_JTTTA_WEBModel.TBL_R_JT">
+        <MappingFragment StoreEntitySet="TBL_R_JT">
+          <ScalarProperty Name="JT_KODE" ColumnName="JT_KODE" />
+          <ScalarProperty Name="JT_INSTANCE" ColumnName="JT_INSTANCE" />
+          <ScalarProperty Name="JT_AKTIF" ColumnName="JT_AKTIF" />
+          <ScalarProperty Name="JT_LAST_EXECUTION" ColumnName="JT_LAST_EXECUTION" />
+          <ScalarProperty Name="JT_LAST_STATUS" ColumnName="JT_LAST_STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_R_MATERIAL">
+      <EntityTypeMapping TypeName="DB_JTTTA_WEBModel.TBL_R_MATERIAL">
+        <MappingFragment StoreEntitySet="TBL_R_MATERIAL">
+          <ScalarProperty Name="MATERIAL_CODE" ColumnName="MATERIAL_CODE" />
+          <ScalarProperty Name="MATERIAL_NAME" ColumnName="MATERIAL_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_R_MENU">
+      <EntityTypeMapping TypeName="DB_JTTTA_WEBModel.TBL_R_MENU">
+        <MappingFragment StoreEntitySet="TBL_R_MENU">
+          <ScalarProperty Name="Primer" ColumnName="Primer" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Menu" ColumnName="Menu" />
+          <ScalarProperty Name="Menu_link" ColumnName="Menu_link" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="Urutan" ColumnName="Urutan" />
+          <ScalarProperty Name="Deskripsi" ColumnName="Deskripsi" />
+          <ScalarProperty Name="style_class" ColumnName="style_class" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_R_PIT">
+      <EntityTypeMapping TypeName="DB_JTTTA_WEBModel.TBL_R_PIT">
+        <MappingFragment StoreEntitySet="TBL_R_PIT">
+          <ScalarProperty Name="PIT_CODE" ColumnName="PIT_CODE" />
+          <ScalarProperty Name="PIT_NAME" ColumnName="PIT_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_R_SHIFT">
+      <EntityTypeMapping TypeName="DB_JTTTA_WEBModel.TBL_R_SHIFT">
+        <MappingFragment StoreEntitySet="TBL_R_SHIFT">
+          <ScalarProperty Name="SHIFT_CODE" ColumnName="SHIFT_CODE" />
+          <ScalarProperty Name="SHIFT_NAME" ColumnName="SHIFT_NAME" />
+          <ScalarProperty Name="SHIFT_AKTIF" ColumnName="SHIFT_AKTIF" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_R_UNIT">
+      <EntityTypeMapping TypeName="DB_JTTTA_WEBModel.TBL_R_UNIT">
+        <MappingFragment StoreEntitySet="TBL_R_UNIT">
+          <ScalarProperty Name="UNIT_NO" ColumnName="UNIT_NO" />
+          <ScalarProperty Name="UNIT_EGI" ColumnName="UNIT_EGI" />
+          <ScalarProperty Name="UNIT_KONTRAKTOR" ColumnName="UNIT_KONTRAKTOR" />
+          <ScalarProperty Name="UNIT_AKTIF" ColumnName="UNIT_AKTIF" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_R_USER">
+      <EntityTypeMapping TypeName="DB_JTTTA_WEBModel.TBL_R_USER">
+        <MappingFragment StoreEntitySet="TBL_R_USER">
+          <ScalarProperty Name="USER_RAW_ID" ColumnName="USER_RAW_ID" />
+          <ScalarProperty Name="USER_NAME" ColumnName="USER_NAME" />
+          <ScalarProperty Name="USER_COMPANY" ColumnName="USER_COMPANY" />
+          <ScalarProperty Name="USER_AKSES" ColumnName="USER_AKSES" />
+          <ScalarProperty Name="USER_USERNAME" ColumnName="USER_USERNAME" />
+          <ScalarProperty Name="USER_PASSWORD" ColumnName="USER_PASSWORD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_T_GTRACK_HIS">
+      <EntityTypeMapping TypeName="DB_JTTTA_WEBModel.TBL_T_GTRACK_HIS">
+        <MappingFragment StoreEntitySet="TBL_T_GTRACK_HIS">
+          <ScalarProperty Name="PK_PositionLogID" ColumnName="PK_PositionLogID" />
+          <ScalarProperty Name="FK_UnitID" ColumnName="FK_UnitID" />
+          <ScalarProperty Name="Plate_No" ColumnName="Plate_No" />
+          <ScalarProperty Name="PositionDateTime" ColumnName="PositionDateTime" />
+          <ScalarProperty Name="GPSDateTime" ColumnName="GPSDateTime" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Speed" ColumnName="Speed" />
+          <ScalarProperty Name="Direction" ColumnName="Direction" />
+          <ScalarProperty Name="Altitude" ColumnName="Altitude" />
+          <ScalarProperty Name="NumberOfSatelite" ColumnName="NumberOfSatelite" />
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="Mileage" ColumnName="Mileage" />
+          <ScalarProperty Name="AccState" ColumnName="AccState" />
+          <ScalarProperty Name="InputValue" ColumnName="InputValue" />
+          <ScalarProperty Name="OutputValue" ColumnName="OutputValue" />
+          <ScalarProperty Name="AnalogInput9" ColumnName="AnalogInput9" />
+          <ScalarProperty Name="AnalogInput10" ColumnName="AnalogInput10" />
+          <ScalarProperty Name="LastRFID" ColumnName="LastRFID" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Zone" ColumnName="Zone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_T_SOURCE">
+      <EntityTypeMapping TypeName="DB_JTTTA_WEBModel.TBL_T_SOURCE">
+        <MappingFragment StoreEntitySet="TBL_T_SOURCE">
+          <ScalarProperty Name="SRC_RAW_ID" ColumnName="SRC_RAW_ID" />
+          <ScalarProperty Name="SRC_TANGGAL" ColumnName="SRC_TANGGAL" />
+          <ScalarProperty Name="SRC_PIT" ColumnName="SRC_PIT" />
+          <ScalarProperty Name="SRC_BLOCK" ColumnName="SRC_BLOCK" />
+          <ScalarProperty Name="SRC_ELEVASI" ColumnName="SRC_ELEVASI" />
+          <ScalarProperty Name="SRC_SEAM" ColumnName="SRC_SEAM" />
+          <ScalarProperty Name="SRC_CONDITION" ColumnName="SRC_CONDITION" />
+          <ScalarProperty Name="SRC_SHIFT" ColumnName="SRC_SHIFT" />
+          <ScalarProperty Name="SRC_PLAN_PROD" ColumnName="SRC_PLAN_PROD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_T_TARE">
+      <EntityTypeMapping TypeName="DB_JTTTA_WEBModel.TBL_T_TARE">
+        <MappingFragment StoreEntitySet="TBL_T_TARE">
+          <ScalarProperty Name="TARE_RAWID" ColumnName="TARE_RAWID" />
+          <ScalarProperty Name="TARE_NOUNIT" ColumnName="TARE_NOUNIT" />
+          <ScalarProperty Name="TARE_DATETIME" ColumnName="TARE_DATETIME" />
+          <ScalarProperty Name="TARE_VALUE" ColumnName="TARE_VALUE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_T_TRANSAKSI">
+      <EntityTypeMapping TypeName="DB_JTTTA_WEBModel.TBL_T_TRANSAKSI">
+        <MappingFragment StoreEntitySet="TBL_T_TRANSAKSI">
+          <ScalarProperty Name="TRANS_RAW_ID" ColumnName="TRANS_RAW_ID" />
+          <ScalarProperty Name="TRANS_DOCKET_NO" ColumnName="TRANS_DOCKET_NO" />
+          <ScalarProperty Name="TRANS_COAL_NUMBER" ColumnName="TRANS_COAL_NUMBER" />
+          <ScalarProperty Name="TRANS_PIT" ColumnName="TRANS_PIT" />
+          <ScalarProperty Name="TRANS_BLOCK" ColumnName="TRANS_BLOCK" />
+          <ScalarProperty Name="TRANS_ELEVASI" ColumnName="TRANS_ELEVASI" />
+          <ScalarProperty Name="TRANS_SEAM" ColumnName="TRANS_SEAM" />
+          <ScalarProperty Name="TRANS_RAW" ColumnName="TRANS_RAW" />
+          <ScalarProperty Name="TRANS_EXCAVATOR" ColumnName="TRANS_EXCAVATOR" />
+          <ScalarProperty Name="TRANS_DESTINATION" ColumnName="TRANS_DESTINATION" />
+          <ScalarProperty Name="TRANS_CONDITION" ColumnName="TRANS_CONDITION" />
+          <ScalarProperty Name="TRANS_NO_UNIT" ColumnName="TRANS_NO_UNIT" />
+          <ScalarProperty Name="TRANS_GROSS" ColumnName="TRANS_GROSS" />
+          <ScalarProperty Name="TRANS_TARE" ColumnName="TRANS_TARE" />
+          <ScalarProperty Name="TRANS_NETTO" ColumnName="TRANS_NETTO" />
+          <ScalarProperty Name="TRANS_JT_NAME" ColumnName="TRANS_JT_NAME" />
+          <ScalarProperty Name="TRANS_STARTTIMBANG" ColumnName="TRANS_STARTTIMBANG" />
+          <ScalarProperty Name="TRANS_DATETIME" ColumnName="TRANS_DATETIME" />
+          <ScalarProperty Name="TRANS_UPDATE_AT" ColumnName="TRANS_UPDATE_AT" />
+          <ScalarProperty Name="TRANS_OPERATOR" ColumnName="TRANS_OPERATOR" />
+          <ScalarProperty Name="TRANS_ISDELETED" ColumnName="TRANS_ISDELETED" />
+          <ScalarProperty Name="TRANS_SOURCE" ColumnName="TRANS_SOURCE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_T_TRANSAKSI_TEMP">
+      <EntityTypeMapping TypeName="DB_JTTTA_WEBModel.TBL_T_TRANSAKSI_TEMP">
+        <MappingFragment StoreEntitySet="TBL_T_TRANSAKSI_TEMP">
+          <ScalarProperty Name="TRANS_RAW_ID" ColumnName="TRANS_RAW_ID" />
+          <ScalarProperty Name="TRANS_DOCKET_NO" ColumnName="TRANS_DOCKET_NO" />
+          <ScalarProperty Name="TRANS_COAL_NUMBER" ColumnName="TRANS_COAL_NUMBER" />
+          <ScalarProperty Name="TRANS_PIT" ColumnName="TRANS_PIT" />
+          <ScalarProperty Name="TRANS_BLOCK" ColumnName="TRANS_BLOCK" />
+          <ScalarProperty Name="TRANS_ELEVASI" ColumnName="TRANS_ELEVASI" />
+          <ScalarProperty Name="TRANS_SEAM" ColumnName="TRANS_SEAM" />
+          <ScalarProperty Name="TRANS_RAW" ColumnName="TRANS_RAW" />
+          <ScalarProperty Name="TRANS_EXCAVATOR" ColumnName="TRANS_EXCAVATOR" />
+          <ScalarProperty Name="TRANS_DESTINATION" ColumnName="TRANS_DESTINATION" />
+          <ScalarProperty Name="TRANS_CONDITION" ColumnName="TRANS_CONDITION" />
+          <ScalarProperty Name="TRANS_NO_UNIT" ColumnName="TRANS_NO_UNIT" />
+          <ScalarProperty Name="TRANS_GROSS" ColumnName="TRANS_GROSS" />
+          <ScalarProperty Name="TRANS_TARE" ColumnName="TRANS_TARE" />
+          <ScalarProperty Name="TRANS_NETTO" ColumnName="TRANS_NETTO" />
+          <ScalarProperty Name="TRANS_JT_NAME" ColumnName="TRANS_JT_NAME" />
+          <ScalarProperty Name="TRANS_STARTTIMBANG" ColumnName="TRANS_STARTTIMBANG" />
+          <ScalarProperty Name="TRANS_DATETIME" ColumnName="TRANS_DATETIME" />
+          <ScalarProperty Name="TRANS_UPDATE_AT" ColumnName="TRANS_UPDATE_AT" />
+          <ScalarProperty Name="TRANS_OPERATOR" ColumnName="TRANS_OPERATOR" />
+          <ScalarProperty Name="TRANS_ISDELETED" ColumnName="TRANS_ISDELETED" />
+          <ScalarProperty Name="TRANS_SOURCE" ColumnName="TRANS_SOURCE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_R_MENU_LOGIN">
+      <EntityTypeMapping TypeName="DB_JTTTA_WEBModel.TBL_R_MENU_LOGIN">
+        <MappingFragment StoreEntitySet="TBL_R_MENU_LOGIN">
+          <ScalarProperty Name="Menu_primer" ColumnName="Menu_primer" />
+          <ScalarProperty Name="User_level" ColumnName="User_level" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_R_REPORT">
+      <EntityTypeMapping TypeName="DB_JTTTA_WEBModel.TBL_R_REPORT">
+        <MappingFragment StoreEntitySet="TBL_R_REPORT">
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="Report_Server" ColumnName="Report_Server" />
+          <ScalarProperty Name="Report_path" ColumnName="Report_path" />
+          <ScalarProperty Name="Report_Alias" ColumnName="Report_Alias" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_R_MENU_LOGIN">
+      <EntityTypeMapping TypeName="DB_JTTTA_WEBModel.VW_R_MENU_LOGIN">
+        <MappingFragment StoreEntitySet="VW_R_MENU_LOGIN">
+          <ScalarProperty Name="Menu_primer" ColumnName="Menu_primer" />
+          <ScalarProperty Name="User_level" ColumnName="User_level" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Menu" ColumnName="Menu" />
+          <ScalarProperty Name="Menu_link" ColumnName="Menu_link" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="Urutan" ColumnName="Urutan" />
+          <ScalarProperty Name="Deskripsi" ColumnName="Deskripsi" />
+          <ScalarProperty Name="style_class" ColumnName="style_class" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_R_SHIFT">
+      <EntityTypeMapping TypeName="DB_JTTTA_WEBModel.VW_R_SHIFT">
+        <MappingFragment StoreEntitySet="VW_R_SHIFT">
+          <ScalarProperty Name="SHIFT_CODE" ColumnName="SHIFT_CODE" />
+          <ScalarProperty Name="SHIFT_NAME" ColumnName="SHIFT_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_R_USER">
+      <EntityTypeMapping TypeName="DB_JTTTA_WEBModel.VW_R_USER">
+        <MappingFragment StoreEntitySet="VW_R_USER">
+          <ScalarProperty Name="USER_RAW_ID" ColumnName="USER_RAW_ID" />
+          <ScalarProperty Name="USER_NAME" ColumnName="USER_NAME" />
+          <ScalarProperty Name="USER_COMPANY" ColumnName="USER_COMPANY" />
+          <ScalarProperty Name="USER_AKSES" ColumnName="USER_AKSES" />
+          <ScalarProperty Name="AKSES_NAME" ColumnName="AKSES_NAME" />
+          <ScalarProperty Name="USER_USERNAME" ColumnName="USER_USERNAME" />
+          <ScalarProperty Name="USER_PASSWORD" ColumnName="USER_PASSWORD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_T_MAX_TARE">
+      <EntityTypeMapping TypeName="DB_JTTTA_WEBModel.VW_T_MAX_TARE">
+        <MappingFragment StoreEntitySet="VW_T_MAX_TARE">
+          <ScalarProperty Name="NUMBER" ColumnName="NUMBER" />
+          <ScalarProperty Name="TARE_RAWID" ColumnName="TARE_RAWID" />
+          <ScalarProperty Name="TARE_NOUNIT" ColumnName="TARE_NOUNIT" />
+          <ScalarProperty Name="TARE_DATETIME" ColumnName="TARE_DATETIME" />
+          <ScalarProperty Name="TARE_VALUE" ColumnName="TARE_VALUE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_T_REVIEW_TARE">
+      <EntityTypeMapping TypeName="DB_JTTTA_WEBModel.VW_T_REVIEW_TARE">
+        <MappingFragment StoreEntitySet="VW_T_REVIEW_TARE">
+          <ScalarProperty Name="UNIT_NO" ColumnName="UNIT_NO" />
+          <ScalarProperty Name="UNIT_EGI" ColumnName="UNIT_EGI" />
+          <ScalarProperty Name="UNIT_KONTRAKTOR" ColumnName="UNIT_KONTRAKTOR" />
+          <ScalarProperty Name="TARE_TODAY" ColumnName="TARE_TODAY" />
+          <ScalarProperty Name="LAST_TARE_VALUE" ColumnName="LAST_TARE_VALUE" />
+          <ScalarProperty Name="LAST_TARE" ColumnName="LAST_TARE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_T_SOURCE_AKTIF">
+      <EntityTypeMapping TypeName="DB_JTTTA_WEBModel.VW_T_SOURCE_AKTIF">
+        <MappingFragment StoreEntitySet="VW_T_SOURCE_AKTIF">
+          <ScalarProperty Name="SRC_RAW_ID" ColumnName="SRC_RAW_ID" />
+          <ScalarProperty Name="SRC_TANGGAL" ColumnName="SRC_TANGGAL" />
+          <ScalarProperty Name="SRC_PIT" ColumnName="SRC_PIT" />
+          <ScalarProperty Name="SRC_BLOCK" ColumnName="SRC_BLOCK" />
+          <ScalarProperty Name="SRC_ELEVASI" ColumnName="SRC_ELEVASI" />
+          <ScalarProperty Name="SRC_SEAM" ColumnName="SRC_SEAM" />
+          <ScalarProperty Name="SRC_CONDITION" ColumnName="SRC_CONDITION" />
+          <ScalarProperty Name="SRC_SHIFT" ColumnName="SRC_SHIFT" />
+          <ScalarProperty Name="SRC_PLAN_PROD" ColumnName="SRC_PLAN_PROD" />
+          <ScalarProperty Name="SRC_CODE" ColumnName="SRC_CODE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_T_TARE_ACTIVE_TODAY">
+      <EntityTypeMapping TypeName="DB_JTTTA_WEBModel.VW_T_TARE_ACTIVE_TODAY">
+        <MappingFragment StoreEntitySet="VW_T_TARE_ACTIVE_TODAY">
+          <ScalarProperty Name="TARE_RAWID" ColumnName="TARE_RAWID" />
+          <ScalarProperty Name="TARE_NOUNIT" ColumnName="TARE_NOUNIT" />
+          <ScalarProperty Name="TARE_DATETIME" ColumnName="TARE_DATETIME" />
+          <ScalarProperty Name="TARE_VALUE" ColumnName="TARE_VALUE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_T_TRANSAKSI">
+      <EntityTypeMapping TypeName="DB_JTTTA_WEBModel.VW_T_TRANSAKSI">
+        <MappingFragment StoreEntitySet="VW_T_TRANSAKSI">
+          <ScalarProperty Name="TRANS_RAW_ID" ColumnName="TRANS_RAW_ID" />
+          <ScalarProperty Name="TRANS_TGL_PRODUKSI" ColumnName="TRANS_TGL_PRODUKSI" />
+          <ScalarProperty Name="TRANS_SHIFT" ColumnName="TRANS_SHIFT" />
+          <ScalarProperty Name="TRANS_DOCKET_NO" ColumnName="TRANS_DOCKET_NO" />
+          <ScalarProperty Name="TRANS_COAL_NUMBER" ColumnName="TRANS_COAL_NUMBER" />
+          <ScalarProperty Name="TRANS_PIT" ColumnName="TRANS_PIT" />
+          <ScalarProperty Name="PIT_NAME" ColumnName="PIT_NAME" />
+          <ScalarProperty Name="TRANS_BLOCK" ColumnName="TRANS_BLOCK" />
+          <ScalarProperty Name="TRANS_ELEVASI" ColumnName="TRANS_ELEVASI" />
+          <ScalarProperty Name="TRANS_SEAM" ColumnName="TRANS_SEAM" />
+          <ScalarProperty Name="TRANS_RAW" ColumnName="TRANS_RAW" />
+          <ScalarProperty Name="MATERIAL_NAME" ColumnName="MATERIAL_NAME" />
+          <ScalarProperty Name="TRANS_EXCAVATOR" ColumnName="TRANS_EXCAVATOR" />
+          <ScalarProperty Name="TRANS_DESTINATION" ColumnName="TRANS_DESTINATION" />
+          <ScalarProperty Name="DEST_NAME" ColumnName="DEST_NAME" />
+          <ScalarProperty Name="TRANS_CONDITION" ColumnName="TRANS_CONDITION" />
+          <ScalarProperty Name="COND_NAME" ColumnName="COND_NAME" />
+          <ScalarProperty Name="TRANS_NO_UNIT" ColumnName="TRANS_NO_UNIT" />
+          <ScalarProperty Name="TRANS_GROSS" ColumnName="TRANS_GROSS" />
+          <ScalarProperty Name="TRANS_TARE" ColumnName="TRANS_TARE" />
+          <ScalarProperty Name="TRANS_NETTO" ColumnName="TRANS_NETTO" />
+          <ScalarProperty Name="TRANS_JT_NAME" ColumnName="TRANS_JT_NAME" />
+          <ScalarProperty Name="TRANS_DATETIME" ColumnName="TRANS_DATETIME" />
+          <ScalarProperty Name="TRANS_UPDATE_AT" ColumnName="TRANS_UPDATE_AT" />
+          <ScalarProperty Name="TRANS_OPERATOR" ColumnName="TRANS_OPERATOR" />
+          <ScalarProperty Name="TRANS_STARTTIMBANG" ColumnName="TRANS_STARTTIMBANG" />
+          <ScalarProperty Name="TRANS_SOURCE" ColumnName="TRANS_SOURCE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_T_TRANSAKSI_SLIP">
+      <EntityTypeMapping TypeName="DB_JTTTA_WEBModel.VW_T_TRANSAKSI_SLIP">
+        <MappingFragment StoreEntitySet="VW_T_TRANSAKSI_SLIP">
+          <ScalarProperty Name="TRANS_RAW_ID" ColumnName="TRANS_RAW_ID" />
+          <ScalarProperty Name="TRANS_TGL_PRODUKSI" ColumnName="TRANS_TGL_PRODUKSI" />
+          <ScalarProperty Name="TRANS_SHIFT" ColumnName="TRANS_SHIFT" />
+          <ScalarProperty Name="TRANS_DOCKET_NO" ColumnName="TRANS_DOCKET_NO" />
+          <ScalarProperty Name="TRANS_COAL_NUMBER" ColumnName="TRANS_COAL_NUMBER" />
+          <ScalarProperty Name="TRANS_PIT" ColumnName="TRANS_PIT" />
+          <ScalarProperty Name="PIT_NAME" ColumnName="PIT_NAME" />
+          <ScalarProperty Name="TRANS_BLOCK" ColumnName="TRANS_BLOCK" />
+          <ScalarProperty Name="TRANS_ELEVASI" ColumnName="TRANS_ELEVASI" />
+          <ScalarProperty Name="TRANS_SEAM" ColumnName="TRANS_SEAM" />
+          <ScalarProperty Name="SRC_CODE" ColumnName="SRC_CODE" />
+          <ScalarProperty Name="TRANS_RAW" ColumnName="TRANS_RAW" />
+          <ScalarProperty Name="MATERIAL_NAME" ColumnName="MATERIAL_NAME" />
+          <ScalarProperty Name="TRANS_EXCAVATOR" ColumnName="TRANS_EXCAVATOR" />
+          <ScalarProperty Name="TRANS_DESTINATION" ColumnName="TRANS_DESTINATION" />
+          <ScalarProperty Name="TRANS_CONDITION" ColumnName="TRANS_CONDITION" />
+          <ScalarProperty Name="COND_NAME" ColumnName="COND_NAME" />
+          <ScalarProperty Name="TRANS_NO_UNIT" ColumnName="TRANS_NO_UNIT" />
+          <ScalarProperty Name="UNIT_KONTRAKTOR" ColumnName="UNIT_KONTRAKTOR" />
+          <ScalarProperty Name="TRANS_GROSS" ColumnName="TRANS_GROSS" />
+          <ScalarProperty Name="TRANS_TARE" ColumnName="TRANS_TARE" />
+          <ScalarProperty Name="TRANS_NETTO" ColumnName="TRANS_NETTO" />
+          <ScalarProperty Name="TRANS_JT_NAME" ColumnName="TRANS_JT_NAME" />
+          <ScalarProperty Name="TRANS_DATETIME" ColumnName="TRANS_DATETIME" />
+          <ScalarProperty Name="TRANS_UPDATE_AT" ColumnName="TRANS_UPDATE_AT" />
+          <ScalarProperty Name="TRANS_OPERATOR" ColumnName="TRANS_OPERATOR" />
+          <ScalarProperty Name="TRANS_STARTTIMBANG" ColumnName="TRANS_STARTTIMBANG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_TRANS_JTTTA">
+      <EntityTypeMapping TypeName="DB_JTTTA_WEBModel.VW_TRANS_JTTTA">
+        <MappingFragment StoreEntitySet="VW_TRANS_JTTTA">
+          <ScalarProperty Name="TRANS_RAW_ID" ColumnName="TRANS_RAW_ID" />
+          <ScalarProperty Name="TRANS_TGL_PRODUKSI" ColumnName="TRANS_TGL_PRODUKSI" />
+          <ScalarProperty Name="TRANS_SHIFT" ColumnName="TRANS_SHIFT" />
+          <ScalarProperty Name="TRANS_DOCKET_NO" ColumnName="TRANS_DOCKET_NO" />
+          <ScalarProperty Name="TRANS_COAL_NUMBER" ColumnName="TRANS_COAL_NUMBER" />
+          <ScalarProperty Name="TRANS_PIT" ColumnName="TRANS_PIT" />
+          <ScalarProperty Name="PIT_NAME" ColumnName="PIT_NAME" />
+          <ScalarProperty Name="TRANS_BLOCK" ColumnName="TRANS_BLOCK" />
+          <ScalarProperty Name="TRANS_ELEVASI" ColumnName="TRANS_ELEVASI" />
+          <ScalarProperty Name="TRANS_SEAM" ColumnName="TRANS_SEAM" />
+          <ScalarProperty Name="TRANS_RAW" ColumnName="TRANS_RAW" />
+          <ScalarProperty Name="MATERIAL_NAME" ColumnName="MATERIAL_NAME" />
+          <ScalarProperty Name="TRANS_EXCAVATOR" ColumnName="TRANS_EXCAVATOR" />
+          <ScalarProperty Name="TRANS_DESTINATION" ColumnName="TRANS_DESTINATION" />
+          <ScalarProperty Name="DEST_NAME" ColumnName="DEST_NAME" />
+          <ScalarProperty Name="TRANS_CONDITION" ColumnName="TRANS_CONDITION" />
+          <ScalarProperty Name="COND_NAME" ColumnName="COND_NAME" />
+          <ScalarProperty Name="TRANS_NO_UNIT" ColumnName="TRANS_NO_UNIT" />
+          <ScalarProperty Name="TRANS_GROSS" ColumnName="TRANS_GROSS" />
+          <ScalarProperty Name="TRANS_TARE" ColumnName="TRANS_TARE" />
+          <ScalarProperty Name="TRANS_NETTO" ColumnName="TRANS_NETTO" />
+          <ScalarProperty Name="TRANS_JT_NAME" ColumnName="TRANS_JT_NAME" />
+          <ScalarProperty Name="TRANS_DATETIME" ColumnName="TRANS_DATETIME" />
+          <ScalarProperty Name="TRANS_UPDATE_AT" ColumnName="TRANS_UPDATE_AT" />
+          <ScalarProperty Name="TRANS_OPERATOR" ColumnName="TRANS_OPERATOR" />
+          <ScalarProperty Name="TRANS_STARTTIMBANG" ColumnName="TRANS_STARTTIMBANG" />
+          <ScalarProperty Name="TRANS_SOURCE" ColumnName="TRANS_SOURCE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_UPDATE_DATA_STAT">
+      <EntityTypeMapping TypeName="DB_JTTTA_WEBModel.VW_UPDATE_DATA_STAT">
+        <MappingFragment StoreEntitySet="VW_UPDATE_DATA_STAT">
+          <ScalarProperty Name="JT_KODE" ColumnName="JT_KODE" />
+          <ScalarProperty Name="JT_INSTANCE" ColumnName="JT_INSTANCE" />
+          <ScalarProperty Name="JT_AKTIF" ColumnName="JT_AKTIF" />
+          <ScalarProperty Name="JT_LAST_EXECUTION" ColumnName="JT_LAST_EXECUTION" />
+          <ScalarProperty Name="SCHEDULE_STAT" ColumnName="SCHEDULE_STAT" />
+          <ScalarProperty Name="JT_LAST_STATUS" ColumnName="JT_LAST_STATUS" />
+          <ScalarProperty Name="MAX_DATETIME" ColumnName="MAX_DATETIME" />
+          <ScalarProperty Name="DATA_STAT" ColumnName="DATA_STAT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionName="DB_JTTTA_WEBModel.Store.CUFN_COMPARE_GPS_JT" FunctionImportName="CUFN_COMPARE_GPS_JT">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_JTTTA_WEBModel.CUFN_COMPARE_GPS_JT_Result">
+          <ScalarProperty Name="NO_UNIT" ColumnName="NO_UNIT" />
+          <ScalarProperty Name="DUMPING_START" ColumnName="DUMPING_START" />
+          <ScalarProperty Name="DUMPING_STOP" ColumnName="DUMPING_STOP" />
+          <ScalarProperty Name="DUMPING_COORDINATE" ColumnName="DUMPING_COORDINATE" />
+          <ScalarProperty Name="DUMPING_LAT" ColumnName="DUMPING_LAT" />
+          <ScalarProperty Name="DUMPING_LONG" ColumnName="DUMPING_LONG" />
+          <ScalarProperty Name="ZONE" ColumnName="ZONE" />
+          <ScalarProperty Name="JAM_TIMBANG" ColumnName="JAM_TIMBANG" />
+          <ScalarProperty Name="MUATAN" ColumnName="MUATAN" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="DB_JTTTA_WEBModel.Store.CUFN_GET_AVG_TIMBANG" FunctionImportName="CUFN_GET_AVG_TIMBANG">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_JTTTA_WEBModel.CUFN_GET_AVG_TIMBANG_Result">
+          <ScalarProperty Name="TRANS_NO_UNIT" ColumnName="TRANS_NO_UNIT" />
+          <ScalarProperty Name="GROSS" ColumnName="GROSS" />
+          <ScalarProperty Name="TARE" ColumnName="TARE" />
+          <ScalarProperty Name="NETTO" ColumnName="NETTO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="DB_JTTTA_WEBModel.Store.cufn_getslip" FunctionImportName="cufn_getslip">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_JTTTA_WEBModel.cufn_getslip_Result">
+          <ScalarProperty Name="TRANS_RAW_ID" ColumnName="TRANS_RAW_ID" />
+          <ScalarProperty Name="TRANS_TGL_PRODUKSI" ColumnName="TRANS_TGL_PRODUKSI" />
+          <ScalarProperty Name="TRANS_SHIFT" ColumnName="TRANS_SHIFT" />
+          <ScalarProperty Name="TRANS_DOCKET_NO" ColumnName="TRANS_DOCKET_NO" />
+          <ScalarProperty Name="TRANS_COAL_NUMBER" ColumnName="TRANS_COAL_NUMBER" />
+          <ScalarProperty Name="TRANS_PIT" ColumnName="TRANS_PIT" />
+          <ScalarProperty Name="PIT_NAME" ColumnName="PIT_NAME" />
+          <ScalarProperty Name="TRANS_BLOCK" ColumnName="TRANS_BLOCK" />
+          <ScalarProperty Name="TRANS_ELEVASI" ColumnName="TRANS_ELEVASI" />
+          <ScalarProperty Name="TRANS_SEAM" ColumnName="TRANS_SEAM" />
+          <ScalarProperty Name="SRC_CODE" ColumnName="SRC_CODE" />
+          <ScalarProperty Name="TRANS_RAW" ColumnName="TRANS_RAW" />
+          <ScalarProperty Name="MATERIAL_NAME" ColumnName="MATERIAL_NAME" />
+          <ScalarProperty Name="TRANS_EXCAVATOR" ColumnName="TRANS_EXCAVATOR" />
+          <ScalarProperty Name="TRANS_DESTINATION" ColumnName="TRANS_DESTINATION" />
+          <ScalarProperty Name="TRANS_CONDITION" ColumnName="TRANS_CONDITION" />
+          <ScalarProperty Name="COND_NAME" ColumnName="COND_NAME" />
+          <ScalarProperty Name="TRANS_NO_UNIT" ColumnName="TRANS_NO_UNIT" />
+          <ScalarProperty Name="UNIT_KONTRAKTOR" ColumnName="UNIT_KONTRAKTOR" />
+          <ScalarProperty Name="TRANS_GROSS" ColumnName="TRANS_GROSS" />
+          <ScalarProperty Name="TRANS_TARE" ColumnName="TRANS_TARE" />
+          <ScalarProperty Name="TRANS_NETTO" ColumnName="TRANS_NETTO" />
+          <ScalarProperty Name="TRANS_JT_NAME" ColumnName="TRANS_JT_NAME" />
+          <ScalarProperty Name="TRANS_DATETIME" ColumnName="TRANS_DATETIME" />
+          <ScalarProperty Name="TRANS_UPDATE_AT" ColumnName="TRANS_UPDATE_AT" />
+          <ScalarProperty Name="TRANS_OPERATOR" ColumnName="TRANS_OPERATOR" />
+          <ScalarProperty Name="TRANS_STARTTIMBANG" ColumnName="TRANS_STARTTIMBANG" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CUSP_COMPARE_GPS_JT" FunctionName="DB_JTTTA_WEBModel.Store.CUSP_COMPARE_GPS_JT" />
+    <FunctionImportMapping FunctionImportName="CUSP_INSERT_TRANS" FunctionName="DB_JTTTA_WEBModel.Store.CUSP_INSERT_TRANS" />
+    <FunctionImportMapping FunctionImportName="CUSP_MERGE_TRANSAKSI" FunctionName="DB_JTTTA_WEBModel.Store.CUSP_MERGE_TRANSAKSI" />
+    <FunctionImportMapping FunctionImportName="cusp_pagingtable" FunctionName="DB_JTTTA_WEBModel.Store.cusp_pagingtable" />
+    <FunctionImportMapping FunctionImportName="CUSP_REPLIKASI_DATA" FunctionName="DB_JTTTA_WEBModel.Store.CUSP_REPLIKASI_DATA" />
+    <FunctionImportMapping FunctionImportName="CUSP_UPDATE_TRANSAKSI" FunctionName="DB_JTTTA_WEBModel.Store.CUSP_UPDATE_TRANSAKSI" />
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,373 @@
+﻿@{
+    ViewBag.Title = "Tuah Turangga Agung";
+    ViewBag.dashboard = "Home";
+    ViewBag.dashboardSmall = "Input Plan";
+    Layout = "~/Views/Shared/_blankLayout.cshtml";
+    ViewBag.pathParent = Url.Content("~").Substring(0, Url.Content("~").Length - 1);
+}
+
+<style>
+    .k-list-scroller {
+        height: 170px !important;
+        overflow-y: scroll !important;
+    }
+
+    /*.k-dropdown, .k-datepicker {
+        width: 12.2em;
+    }*/
+
+    .k-dropdown-wrap, .k-picker-wrap {
+        border-radius: 3px;
+        height: 36px;
+    }
+
+    .k-picker-wrap .k-input {
+        height: 32px;
+        width: 100%;
+    }
+
+    .k-dropdown .k-input {
+        padding-top: 7px;
+    }
+
+    .k-picker-wrap .k-icon {
+        margin-top: 7px;
+    }
+
+    /*.col-md-2, .col-md-3 {
+        padding-left: 0.5px;    
+        padding-right: 0.5px;
+    }
+
+    .col-md-2 {
+        width: 130px;
+    }
+
+    #custom1 {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    #custom2 {
+        margin-left: 1px;
+    }*/
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        /* display: none; <- Crashes Chrome on hover */
+        -webkit-appearance: none;
+        margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+    }
+</style>
+
+<input type="hidden" id="idData" name="Id" value="@(Request.QueryString["Id"])" />
+<input type="hidden" id="urlPath" name="urlPath" value="@ViewBag.pathParent" />
+@*<input type="hidden" id="noMasuk" name="urlPath" value="@(Request.QueryString["noMasuk"])" />*@
+
+<div class="row" style="margin-top:20px">
+    <div class="col-lg-12">
+        <div class="panel panel-flat">
+            <div class="panel-body">
+                <h6><b>MANAGEMENT SHIFTLY PLANNING</b></h6>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <small>
+                                TANGGAL
+                            </small><br />
+                            <input type="text" id="txt_tgl" class="form-control mx-md-6"><br />
+                        </div>
+                        <div class="col-md-6">
+                            <small>
+                                SEAM
+                            </small><br />
+                            <input type="text" id="txt_seam" class="form-control mx-md-6"><br />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <small>
+                                START TIME
+                            </small><br />
+                            <input type="text" id="txt_start" class="form-control mx-md-6"><br />
+                        </div>
+                        <div class="col-md-6">
+                            <small>
+                                BLOCK
+                            </small><br />
+                            <input type="text" id="txt_block" class="form-control mx-md-6"><br />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <small>
+                                START TIME
+                            </small><br />
+                            <input type="text" id="txt_start" class="form-control mx-md-6"><br />
+                        </div>
+                        <div class="col-md-6">
+                            <small>
+                                BLOCK
+                            </small><br />
+                            <input type="text" id="txt_block" class="form-control mx-md-6"><br />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <small>
+                                END TIME
+                            </small><br />
+                            <input type="text" id="txt_end" class="form-control mx-md-6"><br />
+                        </div>
+                        <div class="col-md-6">
+                            <small>
+                                BLOCK
+                            </small><br />
+                            <input type="text" id="txt_block" class="form-control mx-md-6"><br />
+                        </div>
+                    </div>
+                </div>
+                <br />
+
+                <div class="row">
+                    <div class="col-md-10">
+                        <div class="col-md-2">
+                            <small>
+                                TANGGAL
+                            </small><br />
+                            <input type="text" id="txt_tgl" class="form-control mx-md-6"><br />
+                        </div>
+                        <div class="col-md-3">
+                            <small>
+                                START TIME
+                            </small><br />
+                            <input type="text" id="txt_start" class="form-control mx-md-6"><br />
+                        </div>
+                        <div class="col-md-3">
+                            <small>
+                                END TIME
+                            </small><br />
+                            <input type="text" id="txt_end" class="form-control mx-md-6"><br />
+                        </div>
+                        @*<div class="col-md-3">
+                    <small>
+                        SHIFT
+                    </small><br />
+                    <input type="text" id="txt_shift" class="form-control mx-md-6"><br />
+                </div>*@
+                        <div class="col-md-2">
+                            <small>
+                                MATERIAL
+                            </small><br />
+                            <input type="text" id="txt_material" class="form-control mx-md-6"><br />
+                        </div>
+                        <div class="col-md-2">
+                            <small>
+                                ROM
+                            </small><br />
+                            <input type="text" id="txt_rom" class="form-control mx-md-6"><br />
+                        </div>
+                    </div>
+                    <br />
+                </div>
+                <br />
+
+                <div class="row">
+                    <div class="col-md-10">
+                        <div class="col-md-2">
+                            <small>
+                                SEAM
+                            </small><br />
+                            <input type="text" id="txt_seam" class="form-control mx-md-6"><br />
+                        </div>
+                        <div class="col-md-2" id="custom1">
+                            <small>
+                                BLOCK
+                            </small><br />
+                            <input type="text" id="txt_block" class="form-control mx-md-6"><br />
+                        </div>
+
+                        <div class="col-md-2" id="custom2">
+                            <small>
+                                STRIP
+                            </small><br />
+                            <input type="number" id="txt_strip" class="form-control mx-md-6"><br />
+                        </div>
+                        <div class="col-md-2" id="custom1">
+                            <small>
+                                ELEVASI
+                            </small><br />
+                            <input type="text" id="txt_elevasi" class="form-control mx-md-6"><br />
+                        </div>
+                        <div class="col-md-2" id="custom2">
+                            <small>
+                                INVENTORY
+                            </small><br />
+                            <input type="number" id="txt_inventory" class="form-control mx-md-6"><br />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-bordered table-hover table-sortable">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">
+                                        TM
+                                    </th>
+                                    <th class="text-center">
+                                        IM
+                                    </th>
+                                    <th class="text-center">
+                                        ASH
+                                    </th>
+                                    <th class="text-center">
+                                        VM
+                                    </th>
+                                    <th class="text-center">
+                                        FC
+                                    </th>
+                                    <th class="text-center">
+                                        TS
+                                    </th>
+                                    <th class="text-center">
+                                        CVA
+                                    </th>
+                                    <th class="text-center">
+                                        CVD
+                                    </th>
+                                    <th class="text-center">
+                                        RD
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <input type="number" id='txt_tm' class="form-control" />
+                                    </td>
+                                    <td data-name="im">
+                                        <input type="number" id='txt_im' class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="number" id='txt_ash' class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="number" id='txt_vm' class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="number" id='txt_fc' class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="number" id='txt_ts' class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="number" id='txt_cva' class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="number" id='txt_cvd' class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="number" id='txt_rd' class="form-control" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-bordered table-hover table-sortable">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">
+                                        HGI
+                                    </th>
+                                    <th class="text-center">
+                                        CSN
+                                    </th>
+                                    <th class="text-center">
+                                        IS
+                                    </th>
+                                    <th class="text-center">
+                                        MC
+                                    </th>
+                                    <th class="text-center">
+                                        MD
+                                    </th>
+                                    <th class="text-center">
+                                        ML
+                                    </th>
+                                    <th class="text-center">
+                                        FF
+                                    </th>
+                                    <th class="text-center">
+                                        SO
+                                    </th>
+                                    <th class="text-center">
+                                        PR
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <input type="number" id='txt_hgi' class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="number" id='txt_csn' class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="number" id='txt_is' class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="number" id='txt_mc' class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="number" id='txt_md' class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="number" id='txt_ml' class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="number" id='txt_ff' class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="number" id='txt_so' class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="number" id='txt_pr' class="form-control" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <br /><br />
+
+                <div class="row">
+                    <div class="col-md-12" style="text-align:center">
+                        <button id="btn_submit" type="button" class="btn btn-primary" onclick="btn_submit_onclick()">Submit</button>
+                        <button id="btn_update" type="button" class="btn btn-primary" onclick="btn_update_onclick()">Update</button>
+                        &nbsp;&nbsp;&nbsp;
+                        <button id="btn_close" type="button" class="btn btn-warning" onclick="btn_close_onclick()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="@ViewBag.pathParent/JS/Planning/InsertPlan.js"></script>
