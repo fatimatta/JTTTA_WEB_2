@@ -172,4 +172,56 @@
       <Column Name="PUNIT_ISACTIVE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
+  <Function Name="dbo.CUFN_CHECK_PLANNING" Method="CUFN_CHECK_PLANNING" IsComposable="true">
+    <Parameter Name="plan_tgl" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="shift" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="seam" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="block" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="elevasi" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="strip" Type="System.String" DbType="VarChar(10)" />
+    <ElementType Name="CUFN_CHECK_PLANNINGResult">
+      <Column Name="PLAN_ID" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="PLAN_TANGGAL" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PLAN_SHIFT" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PLAN_START_TIME" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PLAN_END_TIME" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PLAN_SEAM" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PLAN_BLOCK" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PLAN_STRIP" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PLAN_ELEVASI" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PLAN_MATERIAL" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PLAN_DEST" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PLAN_INVENTORY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PLAN_ASH" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PLAN_TM" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PLAN_IM" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_VM" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_FC" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_TS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_CVA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_CVD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_RD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_HGI" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_CSN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_IS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_MC" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_MD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_ML" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_FF" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_SO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PLAN_PR" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CUFN_CONTOH_CEKLOADER" Method="CUFN_CONTOH_CEKLOADER" IsComposable="true">
+    <Parameter Name="jam_awal" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="jam_akhir" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="loader" Type="System.String" DbType="VarChar(20)" />
+    <ElementType Name="CUFN_CONTOH_CEKLOADERResult">
+      <Column Name="PUNIT_RAW_ID" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="PUNIT_PLANNING_ID" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="PUNIT_LOADER" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="PUNIT_STARTDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="PUNIT_ENDDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
 </Database>

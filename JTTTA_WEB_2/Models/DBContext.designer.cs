@@ -166,10 +166,16 @@ namespace JTTTA_WEB_2.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CUFN_CEK_JMLLOADER", IsComposable=true)]
-		public System.Nullable<int> CUFN_CEK_JMLLOADER([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> jam_awal, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> jam_akhir, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(20)")] string loader)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CUFN_CHECK_PLANNING", IsComposable=true)]
+		public IQueryable<CUFN_CHECK_PLANNINGResult> CUFN_CHECK_PLANNING([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string plan_tgl, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string shift, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string seam, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string block, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string elevasi, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string strip)
 		{
-			return ((System.Nullable<int>)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), jam_awal, jam_akhir, loader).ReturnValue));
+			return this.CreateMethodCallQuery<CUFN_CHECK_PLANNINGResult>(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), plan_tgl, shift, seam, block, elevasi, strip);
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CUFN_CONTOH_CEKLOADER", IsComposable=true)]
+		public IQueryable<CUFN_CONTOH_CEKLOADERResult> CUFN_CONTOH_CEKLOADER([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> jam_awal, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> jam_akhir, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(20)")] string loader)
+		{
+			return this.CreateMethodCallQuery<CUFN_CONTOH_CEKLOADERResult>(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), jam_awal, jam_akhir, loader);
 		}
 	}
 	
@@ -3418,6 +3424,652 @@ namespace JTTTA_WEB_2.Models
 				if ((this._PUNIT_ISACTIVE != value))
 				{
 					this._PUNIT_ISACTIVE = value;
+				}
+			}
+		}
+	}
+	
+	public partial class CUFN_CHECK_PLANNINGResult
+	{
+		
+		private string _PLAN_ID;
+		
+		private string _PLAN_TANGGAL;
+		
+		private string _PLAN_SHIFT;
+		
+		private System.Nullable<System.DateTime> _PLAN_START_TIME;
+		
+		private System.Nullable<System.DateTime> _PLAN_END_TIME;
+		
+		private string _PLAN_SEAM;
+		
+		private string _PLAN_BLOCK;
+		
+		private string _PLAN_STRIP;
+		
+		private string _PLAN_ELEVASI;
+		
+		private string _PLAN_MATERIAL;
+		
+		private string _PLAN_DEST;
+		
+		private string _PLAN_INVENTORY;
+		
+		private int _PLAN_ASH;
+		
+		private int _PLAN_TM;
+		
+		private System.Nullable<int> _PLAN_IM;
+		
+		private System.Nullable<int> _PLAN_VM;
+		
+		private System.Nullable<int> _PLAN_FC;
+		
+		private System.Nullable<int> _PLAN_TS;
+		
+		private System.Nullable<int> _PLAN_CVA;
+		
+		private System.Nullable<int> _PLAN_CVD;
+		
+		private System.Nullable<int> _PLAN_RD;
+		
+		private System.Nullable<int> _PLAN_HGI;
+		
+		private System.Nullable<int> _PLAN_CSN;
+		
+		private System.Nullable<int> _PLAN_IS;
+		
+		private System.Nullable<int> _PLAN_MC;
+		
+		private System.Nullable<int> _PLAN_MD;
+		
+		private System.Nullable<int> _PLAN_ML;
+		
+		private System.Nullable<int> _PLAN_FF;
+		
+		private System.Nullable<int> _PLAN_SO;
+		
+		private System.Nullable<int> _PLAN_PR;
+		
+		public CUFN_CHECK_PLANNINGResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PLAN_ID", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
+		public string PLAN_ID
+		{
+			get
+			{
+				return this._PLAN_ID;
+			}
+			set
+			{
+				if ((this._PLAN_ID != value))
+				{
+					this._PLAN_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PLAN_TANGGAL", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string PLAN_TANGGAL
+		{
+			get
+			{
+				return this._PLAN_TANGGAL;
+			}
+			set
+			{
+				if ((this._PLAN_TANGGAL != value))
+				{
+					this._PLAN_TANGGAL = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PLAN_SHIFT", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string PLAN_SHIFT
+		{
+			get
+			{
+				return this._PLAN_SHIFT;
+			}
+			set
+			{
+				if ((this._PLAN_SHIFT != value))
+				{
+					this._PLAN_SHIFT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PLAN_START_TIME", DbType="DateTime")]
+		public System.Nullable<System.DateTime> PLAN_START_TIME
+		{
+			get
+			{
+				return this._PLAN_START_TIME;
+			}
+			set
+			{
+				if ((this._PLAN_START_TIME != value))
+				{
+					this._PLAN_START_TIME = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PLAN_END_TIME", DbType="DateTime")]
+		public System.Nullable<System.DateTime> PLAN_END_TIME
+		{
+			get
+			{
+				return this._PLAN_END_TIME;
+			}
+			set
+			{
+				if ((this._PLAN_END_TIME != value))
+				{
+					this._PLAN_END_TIME = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PLAN_SEAM", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string PLAN_SEAM
+		{
+			get
+			{
+				return this._PLAN_SEAM;
+			}
+			set
+			{
+				if ((this._PLAN_SEAM != value))
+				{
+					this._PLAN_SEAM = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PLAN_BLOCK", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string PLAN_BLOCK
+		{
+			get
+			{
+				return this._PLAN_BLOCK;
+			}
+			set
+			{
+				if ((this._PLAN_BLOCK != value))
+				{
+					this._PLAN_BLOCK = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PLAN_STRIP", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string PLAN_STRIP
+		{
+			get
+			{
+				return this._PLAN_STRIP;
+			}
+			set
+			{
+				if ((this._PLAN_STRIP != value))
+				{
+					this._PLAN_STRIP = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PLAN_ELEVASI", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string PLAN_ELEVASI
+		{
+			get
+			{
+				return this._PLAN_ELEVASI;
+			}
+			set
+			{
+				if ((this._PLAN_ELEVASI != value))
+				{
+					this._PLAN_ELEVASI = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PLAN_MATERIAL", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string PLAN_MATERIAL
+		{
+			get
+			{
+				return this._PLAN_MATERIAL;
+			}
+			set
+			{
+				if ((this._PLAN_MATERIAL != value))
+				{
+					this._PLAN_MATERIAL = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PLAN_DEST", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string PLAN_DEST
+		{
+			get
+			{
+				return this._PLAN_DEST;
+			}
+			set
+			{
+				if ((this._PLAN_DEST != value))
+				{
+					this._PLAN_DEST = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PLAN_INVENTORY", DbType="VarChar(50)")]
+		public string PLAN_INVENTORY
+		{
+			get
+			{
+				return this._PLAN_INVENTORY;
+			}
+			set
+			{
+				if ((this._PLAN_INVENTORY != value))
+				{
+					this._PLAN_INVENTORY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PLAN_ASH", DbType="Int NOT NULL")]
+		public int PLAN_ASH
+		{
+			get
+			{
+				return this._PLAN_ASH;
+			}
+			set
+			{
+				if ((this._PLAN_ASH != value))
+				{
+					this._PLAN_ASH = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PLAN_TM", DbType="Int NOT NULL")]
+		public int PLAN_TM
+		{
+			get
+			{
+				return this._PLAN_TM;
+			}
+			set
+			{
+				if ((this._PLAN_TM != value))
+				{
+					this._PLAN_TM = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PLAN_IM", DbType="Int")]
+		public System.Nullable<int> PLAN_IM
+		{
+			get
+			{
+				return this._PLAN_IM;
+			}
+			set
+			{
+				if ((this._PLAN_IM != value))
+				{
+					this._PLAN_IM = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PLAN_VM", DbType="Int")]
+		public System.Nullable<int> PLAN_VM
+		{
+			get
+			{
+				return this._PLAN_VM;
+			}
+			set
+			{
+				if ((this._PLAN_VM != value))
+				{
+					this._PLAN_VM = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PLAN_FC", DbType="Int")]
+		public System.Nullable<int> PLAN_FC
+		{
+			get
+			{
+				return this._PLAN_FC;
+			}
+			set
+			{
+				if ((this._PLAN_FC != value))
+				{
+					this._PLAN_FC = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PLAN_TS", DbType="Int")]
+		public System.Nullable<int> PLAN_TS
+		{
+			get
+			{
+				return this._PLAN_TS;
+			}
+			set
+			{
+				if ((this._PLAN_TS != value))
+				{
+					this._PLAN_TS = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PLAN_CVA", DbType="Int")]
+		public System.Nullable<int> PLAN_CVA
+		{
+			get
+			{
+				return this._PLAN_CVA;
+			}
+			set
+			{
+				if ((this._PLAN_CVA != value))
+				{
+					this._PLAN_CVA = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PLAN_CVD", DbType="Int")]
+		public System.Nullable<int> PLAN_CVD
+		{
+			get
+			{
+				return this._PLAN_CVD;
+			}
+			set
+			{
+				if ((this._PLAN_CVD != value))
+				{
+					this._PLAN_CVD = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PLAN_RD", DbType="Int")]
+		public System.Nullable<int> PLAN_RD
+		{
+			get
+			{
+				return this._PLAN_RD;
+			}
+			set
+			{
+				if ((this._PLAN_RD != value))
+				{
+					this._PLAN_RD = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PLAN_HGI", DbType="Int")]
+		public System.Nullable<int> PLAN_HGI
+		{
+			get
+			{
+				return this._PLAN_HGI;
+			}
+			set
+			{
+				if ((this._PLAN_HGI != value))
+				{
+					this._PLAN_HGI = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PLAN_CSN", DbType="Int")]
+		public System.Nullable<int> PLAN_CSN
+		{
+			get
+			{
+				return this._PLAN_CSN;
+			}
+			set
+			{
+				if ((this._PLAN_CSN != value))
+				{
+					this._PLAN_CSN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PLAN_IS", DbType="Int")]
+		public System.Nullable<int> PLAN_IS
+		{
+			get
+			{
+				return this._PLAN_IS;
+			}
+			set
+			{
+				if ((this._PLAN_IS != value))
+				{
+					this._PLAN_IS = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PLAN_MC", DbType="Int")]
+		public System.Nullable<int> PLAN_MC
+		{
+			get
+			{
+				return this._PLAN_MC;
+			}
+			set
+			{
+				if ((this._PLAN_MC != value))
+				{
+					this._PLAN_MC = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PLAN_MD", DbType="Int")]
+		public System.Nullable<int> PLAN_MD
+		{
+			get
+			{
+				return this._PLAN_MD;
+			}
+			set
+			{
+				if ((this._PLAN_MD != value))
+				{
+					this._PLAN_MD = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PLAN_ML", DbType="Int")]
+		public System.Nullable<int> PLAN_ML
+		{
+			get
+			{
+				return this._PLAN_ML;
+			}
+			set
+			{
+				if ((this._PLAN_ML != value))
+				{
+					this._PLAN_ML = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PLAN_FF", DbType="Int")]
+		public System.Nullable<int> PLAN_FF
+		{
+			get
+			{
+				return this._PLAN_FF;
+			}
+			set
+			{
+				if ((this._PLAN_FF != value))
+				{
+					this._PLAN_FF = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PLAN_SO", DbType="Int")]
+		public System.Nullable<int> PLAN_SO
+		{
+			get
+			{
+				return this._PLAN_SO;
+			}
+			set
+			{
+				if ((this._PLAN_SO != value))
+				{
+					this._PLAN_SO = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PLAN_PR", DbType="Int")]
+		public System.Nullable<int> PLAN_PR
+		{
+			get
+			{
+				return this._PLAN_PR;
+			}
+			set
+			{
+				if ((this._PLAN_PR != value))
+				{
+					this._PLAN_PR = value;
+				}
+			}
+		}
+	}
+	
+	public partial class CUFN_CONTOH_CEKLOADERResult
+	{
+		
+		private string _PUNIT_RAW_ID;
+		
+		private string _PUNIT_PLANNING_ID;
+		
+		private string _PUNIT_LOADER;
+		
+		private System.DateTime _PUNIT_STARTDATE;
+		
+		private System.DateTime _PUNIT_ENDDATE;
+		
+		public CUFN_CONTOH_CEKLOADERResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PUNIT_RAW_ID", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
+		public string PUNIT_RAW_ID
+		{
+			get
+			{
+				return this._PUNIT_RAW_ID;
+			}
+			set
+			{
+				if ((this._PUNIT_RAW_ID != value))
+				{
+					this._PUNIT_RAW_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PUNIT_PLANNING_ID", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
+		public string PUNIT_PLANNING_ID
+		{
+			get
+			{
+				return this._PUNIT_PLANNING_ID;
+			}
+			set
+			{
+				if ((this._PUNIT_PLANNING_ID != value))
+				{
+					this._PUNIT_PLANNING_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PUNIT_LOADER", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string PUNIT_LOADER
+		{
+			get
+			{
+				return this._PUNIT_LOADER;
+			}
+			set
+			{
+				if ((this._PUNIT_LOADER != value))
+				{
+					this._PUNIT_LOADER = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PUNIT_STARTDATE", DbType="DateTime NOT NULL")]
+		public System.DateTime PUNIT_STARTDATE
+		{
+			get
+			{
+				return this._PUNIT_STARTDATE;
+			}
+			set
+			{
+				if ((this._PUNIT_STARTDATE != value))
+				{
+					this._PUNIT_STARTDATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PUNIT_ENDDATE", DbType="DateTime NOT NULL")]
+		public System.DateTime PUNIT_ENDDATE
+		{
+			get
+			{
+				return this._PUNIT_ENDDATE;
+			}
+			set
+			{
+				if ((this._PUNIT_ENDDATE != value))
+				{
+					this._PUNIT_ENDDATE = value;
 				}
 			}
 		}

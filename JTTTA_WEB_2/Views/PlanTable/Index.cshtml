@@ -140,15 +140,12 @@
         <div data-container-for="tanggal" class="k-edit-field">
             <input id="txt_start"
                    type="text"
-                   @*data-role="datetimepicker"
+                   data-role="datetimepicker"
                    data-interval="15"
                    data-type="date"
-                   data-bind="value:start,invisible:isAllDay"                   
-                   onkeydown="return false;"*@
-                   name="date_start"
-                   required
-                   style="width:150px"
-                   />
+                   data-bind="value:end,invisible:isAllDay"
+                   name="date_end"
+                   required />
             <input id="time_start"
                    type="text"
                    data-role="datetimepicker"

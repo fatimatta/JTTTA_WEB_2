@@ -18,10 +18,24 @@ namespace JTTTA_WEB_2.Controllers
         }
 
         [HttpPost]
-        public ActionResult GetPlanData()
+        public ActionResult GetPlanData(string tgl_awal, string tgl_akhir)
         {
             try
-            {
+            {                
+                var getViewPlan = db.VW_R_INDEX_PLANNINGs.OrderByDescending(x => x.PLAN_TANGGAL).ThenByDescending(y => y.PLAN_SHIFT);
+
+                if (tgl_awal != "")
+                {
+                    //getViewPlan = db.VW_R_INDEX_PLANNINGs.Where(x => x.PLAN_TANGGAL >= tgl_awal && x.PLAN_TANGGAL <= tgl_akhir);
+                    var data = (from x in db.VW_R_INDEX_PLANNINGs.ToList() where (DateTime.Parse(x.PLAN_TANGGAL) >= DateTime.Parse(tgl_awal) && DateTime.Parse(x.PLAN_TANGGAL) <= DateTime.Parse(tgl_akhir)) select x);
+
+                    return Json(new { Total = data.Count(), Data = data });
+                }
+                else
+                {
+                    return Json(new { Total = getViewPlan.Count(), Data = getViewPlan });
+                }
+
                 #region unused
                 //List<TBL_R_PLANNING> result = new List<TBL_R_PLANNING>();
                 //TBL_R_PLANNING data = new TBL_R_PLANNING();
@@ -64,10 +78,7 @@ namespace JTTTA_WEB_2.Controllers
 
                 //    result.Add(data);
                 //}
-                #endregion
-                var getViewPlan = db.VW_R_INDEX_PLANNINGs.OrderByDescending(x => x.PLAN_TANGGAL).ThenByDescending(y => y.PLAN_SHIFT);
-
-                return Json(new { Total = getViewPlan.Count(), Data = getViewPlan });
+                #endregion                                
             }
             catch (Exception e)
             {
@@ -156,44 +167,64 @@ namespace JTTTA_WEB_2.Controllers
         {
             try
             {
-                TBL_R_PLANNING model = new TBL_R_PLANNING();
+                bool flag = true;
+                var message = "";
 
-                model.PLAN_ID = Guid.NewGuid().ToString();
-                model.PLAN_TANGGAL = input.PLAN_TANGGAL;
-                model.PLAN_SHIFT = input.PLAN_SHIFT;
+                //validasi planning dengan Tanggal, Shift, Lokasi
 
-                model.PLAN_START_TIME = input.PLAN_START_TIME;
-                model.PLAN_END_TIME = input.PLAN_END_TIME;
-                model.PLAN_SEAM = input.PLAN_SEAM;
-                model.PLAN_BLOCK = input.PLAN_BLOCK;
-                model.PLAN_STRIP = input.PLAN_STRIP;
-                model.PLAN_ELEVASI = input.PLAN_ELEVASI;
-                model.PLAN_MATERIAL = input.PLAN_MATERIAL;
-                model.PLAN_DEST = input.PLAN_DEST;
-                model.PLAN_INVENTORY = input.PLAN_INVENTORY;
-                model.PLAN_ASH = input.PLAN_ASH;
-                model.PLAN_TM = input.PLAN_TM;
-                model.PLAN_IM = input.PLAN_IM;
-                model.PLAN_VM = input.PLAN_VM;
-                model.PLAN_FC = input.PLAN_FC;
-                model.PLAN_TS = input.PLAN_TS;
-                model.PLAN_CVA = input.PLAN_CVA;
-                model.PLAN_CVD = input.PLAN_CVD;
-                model.PLAN_RD = input.PLAN_RD;
-                model.PLAN_HGI = input.PLAN_HGI;
-                model.PLAN_CSN = input.PLAN_CSN;
-                model.PLAN_IS = input.PLAN_IS;
-                model.PLAN_MC = input.PLAN_MC;
-                model.PLAN_MD = input.PLAN_MD;
-                model.PLAN_ML = input.PLAN_ML;
-                model.PLAN_FF = input.PLAN_FF;
-                model.PLAN_SO = input.PLAN_SO;
-                model.PLAN_PR = input.PLAN_PR;
+                var checkPlanning = db.CUFN_CHECK_PLANNING(input.PLAN_TANGGAL, input.PLAN_SHIFT, input.PLAN_SEAM, input.PLAN_BLOCK, input.PLAN_ELEVASI, input.PLAN_STRIP).ToList();
 
-                db.TBL_R_PLANNINGs.InsertOnSubmit(model);
-                db.SubmitChanges();
+                if (checkPlanning.Count > 0)
+                {
+                    flag = false;
+                    message = "Terdapat Planning yang Serupa";
+                }
 
-                return Json(new { status = true, remark = "Data Planning Berhasil Disimpan!" });
+                if (flag)
+                {
+                    TBL_R_PLANNING model = new TBL_R_PLANNING();
+
+                    model.PLAN_ID = Guid.NewGuid().ToString();
+                    model.PLAN_TANGGAL = input.PLAN_TANGGAL;
+                    model.PLAN_SHIFT = input.PLAN_SHIFT;
+
+                    model.PLAN_START_TIME = input.PLAN_START_TIME;
+                    model.PLAN_END_TIME = input.PLAN_END_TIME;
+                    model.PLAN_SEAM = input.PLAN_SEAM;
+                    model.PLAN_BLOCK = input.PLAN_BLOCK;
+                    model.PLAN_STRIP = input.PLAN_STRIP;
+                    model.PLAN_ELEVASI = input.PLAN_ELEVASI;
+                    model.PLAN_MATERIAL = input.PLAN_MATERIAL;
+                    model.PLAN_DEST = input.PLAN_DEST;
+                    model.PLAN_INVENTORY = input.PLAN_INVENTORY;
+                    model.PLAN_ASH = input.PLAN_ASH;
+                    model.PLAN_TM = input.PLAN_TM;
+                    model.PLAN_IM = input.PLAN_IM;
+                    model.PLAN_VM = input.PLAN_VM;
+                    model.PLAN_FC = input.PLAN_FC;
+                    model.PLAN_TS = input.PLAN_TS;
+                    model.PLAN_CVA = input.PLAN_CVA;
+                    model.PLAN_CVD = input.PLAN_CVD;
+                    model.PLAN_RD = input.PLAN_RD;
+                    model.PLAN_HGI = input.PLAN_HGI;
+                    model.PLAN_CSN = input.PLAN_CSN;
+                    model.PLAN_IS = input.PLAN_IS;
+                    model.PLAN_MC = input.PLAN_MC;
+                    model.PLAN_MD = input.PLAN_MD;
+                    model.PLAN_ML = input.PLAN_ML;
+                    model.PLAN_FF = input.PLAN_FF;
+                    model.PLAN_SO = input.PLAN_SO;
+                    model.PLAN_PR = input.PLAN_PR;
+
+                    db.TBL_R_PLANNINGs.InsertOnSubmit(model);
+                    db.SubmitChanges();
+
+                    return Json(new { status = true, remark = "Data Planning Berhasil Disimpan!" });
+                }
+                else
+                {
+                    return Json(new { status = false, remark = message });
+                }
             }
             catch (Exception ex)
             {

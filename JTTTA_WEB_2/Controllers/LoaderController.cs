@@ -47,7 +47,14 @@ namespace JTTTA_WEB_2.Controllers
         {
             try
             {
+                //var resultData = new TBL_R_LOADER();
                 var tbl = db.TBL_R_LOADERs.Where(x => x.PUNIT_RAW_ID.Equals(idLoader)).FirstOrDefault();
+
+                //resultData.PUNIT_RAW_ID = tbl.PUNIT_RAW_ID;
+                //resultData.PUNIT_LOADER = tbl.PUNIT_LOADER;
+                //resultData.PUNIT_STARTDATE = tbl.PUNIT_STARTDATE;
+                //resultData.PUNIT_PLANNING_ID = tbl.PUNIT_PLANNING_ID;
+                //resultData.PUNIT_ENDDATE = tbl.PUNIT_ENDDATE;
 
                 return Json(new { status = true, Data = tbl });
             }
@@ -63,25 +70,31 @@ namespace JTTTA_WEB_2.Controllers
             try
             {
                 bool flag = true;
-                //validation
 
                 var message = "";
 
-                //validasi pemilihan tanggal loader
-
-
-
                 //validasi jam beririsan
-                var getLoader = db.TBL_R_LOADERs.Where(x => x.PUNIT_PLANNING_ID == input.PUNIT_PLANNING_ID && x.PUNIT_LOADER.ToUpper() == input.PUNIT_LOADER.ToUpper());
+                var checkLoader = db.CUFN_CONTOH_CEKLOADER(input.PUNIT_STARTDATE, input.PUNIT_ENDDATE, input.PUNIT_LOADER).ToList();
 
-                foreach (var item in getLoader)
+                if (checkLoader.Count > 0)
                 {
-                    if ((input.PUNIT_STARTDATE <= item.PUNIT_STARTDATE || input.PUNIT_STARTDATE >= item.PUNIT_STARTDATE) && ((input.PUNIT_ENDDATE <= item.PUNIT_ENDDATE || input.PUNIT_ENDDATE >= item.PUNIT_ENDDATE)))
-                    {
-                        flag = false;
-                        message = "Terdapat Loader Sedang Beroperasi";
-                    } 
+                    flag = false;
+                    message = "Terdapat Loader Sedang Beroperasi";
                 }
+
+                #region unused
+
+                //var getLoader = db.TBL_R_LOADERs.Where(x => x.PUNIT_PLANNING_ID == input.PUNIT_PLANNING_ID && x.PUNIT_LOADER.ToUpper() == input.PUNIT_LOADER.ToUpper());
+
+                //foreach (var item in getLoader)
+                //{
+                //    if ((input.PUNIT_STARTDATE <= item.PUNIT_STARTDATE || input.PUNIT_STARTDATE >= item.PUNIT_STARTDATE) && ((input.PUNIT_ENDDATE <= item.PUNIT_ENDDATE || input.PUNIT_ENDDATE >= item.PUNIT_ENDDATE)))
+                //    {
+                //        flag = false;
+                //        message = "Terdapat Loader Sedang Beroperasi";
+                //    } 
+                //}
+                #endregion
 
                 if (flag)
                 {
